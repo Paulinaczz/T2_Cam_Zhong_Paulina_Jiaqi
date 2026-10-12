@@ -1,0 +1,53 @@
+{
+  "protocolo": "CPDP_INDEPENDIENTE_V11_NESTED_LOGO_20261011",
+  "nombre": "Modelo_general_CPDP",
+  "algoritmo": "SVM",
+  "escenario": "E7_SMOTE_RF",
+  "seleccion_criterios": "F1_macro, AP_macro, AUC_macro en LOGO",
+  "cv_global_f1": 0.3972503492210537,
+  "cv_global_ap": 0.3284176195322347,
+  "datasets_entrenamiento": [
+    "CM1",
+    "JM1",
+    "KC1",
+    "KC2",
+    "PC1"
+  ],
+  "columnas": [
+    "loc",
+    "v(g)",
+    "ev(g)",
+    "iv(g)",
+    "n",
+    "v",
+    "l",
+    "d",
+    "i",
+    "e",
+    "b",
+    "t",
+    "lOCode",
+    "lOComment",
+    "lOBlank",
+    "locCodeAndComment",
+    "uniq_Op",
+    "uniq_Opnd",
+    "total_Op",
+    "total_Opnd",
+    "branchCount"
+  ],
+  "etiqueta": "1=defecto_historico_registrado",
+  "score_aviso": "SVM margen sin calibrar / RF o XGB probabilidad sin calibrar",
+  "documentally_verified": false,
+  "fuentes": {
+    "CM1": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+    "JM1": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+    "KC1": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+    "KC2": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+    "PC1": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4"
+  },
+  "algoritmo_final_elegido_por_logo_completo": true,
+  "limite": "El modelo final se entrenó con los cinco proyectos; sus métricas son de validación LOGO de procedimientos reentrenados, no una prueba inédita del .joblib final.",
+  "creado_utc": "2026-10-11T20:40:14.293880+00:00",
+  "advertencia_generalizacion": "Evaluación entre estos 5 proyectos; no asegura rendimiento universal"
+}
