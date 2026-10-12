@@ -1,0 +1,7 @@
+# Compatibilidad imprescindible con el artefacto Joblib del entrenamiento v11.
+streamlit>=1.40,<2.0
+scikit-learn==1.6.1
+imbalanced-learn==0.14.2
+pandas>=2.2,<3.0
+numpy>=2.0,<3.0
+joblib>=1.4,<2.0

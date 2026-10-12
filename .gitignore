@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.env
+.env.*
+*.log
+.DS_Store
+.idea/
+.vscode/
+.streamlit/secrets.toml
+# PDS: las ejecuciones y CSV de usuarios no van a GitHub.
+data/runtime/
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+exports/
+results_tmp/
+# Los datasets experimentales originales se descargan desde su fuente.
+research/raw/
+*.zip
+!*.example.zip
