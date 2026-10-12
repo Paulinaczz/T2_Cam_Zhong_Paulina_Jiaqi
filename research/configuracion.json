@@ -1,0 +1,142 @@
+{
+  "hash": "039810e0bb31271bd8a10ecc6f3a665c1a58dc48aca3cfac19642f19a10f20a4",
+  "especificacion": {
+    "version": "CPDP_INDEPENDIENTE_V11_NESTED_LOGO_20261011",
+    "datasets": {
+      "CM1": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+      "JM1": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+      "KC1": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+      "KC2": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+      "PC1": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4"
+    },
+    "proyectos": [
+      "CM1",
+      "JM1",
+      "KC1",
+      "KC2",
+      "PC1"
+    ],
+    "candidatos": [
+      [
+        "E0_BASELINE",
+        "SVM"
+      ],
+      [
+        "E0_BASELINE",
+        "Random Forest"
+      ],
+      [
+        "E0_BASELINE",
+        "XGBoost"
+      ],
+      [
+        "E1_SMOTE",
+        "SVM"
+      ],
+      [
+        "E1_SMOTE",
+        "Random Forest"
+      ],
+      [
+        "E1_SMOTE",
+        "XGBoost"
+      ],
+      [
+        "E2_ADASYN",
+        "SVM"
+      ],
+      [
+        "E2_ADASYN",
+        "Random Forest"
+      ],
+      [
+        "E2_ADASYN",
+        "XGBoost"
+      ],
+      [
+        "E3_MI",
+        "SVM"
+      ],
+      [
+        "E3_MI",
+        "Random Forest"
+      ],
+      [
+        "E3_MI",
+        "XGBoost"
+      ],
+      [
+        "E4_RF_FS",
+        "SVM"
+      ],
+      [
+        "E4_RF_FS",
+        "Random Forest"
+      ],
+      [
+        "E4_RF_FS",
+        "XGBoost"
+      ],
+      [
+        "E5_SMOTE_MI",
+        "SVM"
+      ],
+      [
+        "E5_SMOTE_MI",
+        "Random Forest"
+      ],
+      [
+        "E5_SMOTE_MI",
+        "XGBoost"
+      ],
+      [
+        "E6_ADASYN_MI",
+        "SVM"
+      ],
+      [
+        "E6_ADASYN_MI",
+        "Random Forest"
+      ],
+      [
+        "E6_ADASYN_MI",
+        "XGBoost"
+      ],
+      [
+        "E7_SMOTE_RF",
+        "SVM"
+      ],
+      [
+        "E7_SMOTE_RF",
+        "Random Forest"
+      ],
+      [
+        "E7_SMOTE_RF",
+        "XGBoost"
+      ],
+      [
+        "E8_ADASYN_RF",
+        "SVM"
+      ],
+      [
+        "E8_ADASYN_RF",
+        "Random Forest"
+      ],
+      [
+        "E8_ADASYN_RF",
+        "XGBoost"
+      ]
+    ],
+    "seed": 42,
+    "librerias": {
+      "scikit-learn": "1.6.1",
+      "imbalanced-learn": "0.14.2",
+      "xgboost": "3.4.1"
+    }
+  },
+  "advertencias": [
+    "No generalización universal",
+    "Proveniencia/alias pendientes de comprobación humana",
+    "F1 test independiente solo de la SELECCIÓN, no del pipeline final ajustado con todos los datos",
+    "Se debe comprobar solapamiento de vectores entre proyectos"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "candidatos_por_busqueda": 27,
+  "folds_externos": 5,
+  "macro_f1_outer": 0.39900836430916486,
+  "macro_ap_outer": 0.36068197160103477,
+  "macro_auc_outer": 0.7554865270977444,
+  "ganador_final": {
+    "algoritmo": "SVM",
+    "escenario": "E7_SMOTE_RF",
+    "f1_cv_proyectos": 0.3972503492210537,
+    "ap_cv_proyectos": 0.3284176195322347
+  },
+  "errores_en_seleccion_final": 0,
+  "nota": "La evaluación outer estima el procedimiento de selección, no es Test inédito del pipeline final."
+}
