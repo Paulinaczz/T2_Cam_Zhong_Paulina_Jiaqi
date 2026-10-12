@@ -1,0 +1,6 @@
+proyecto,filas,positivos,negativos,prevalencia,variables,etiqueta_original,etiqueta_binaria,sha256,duplicados_fila_completa,duplicados_vector_caracteristicas,faltantes,verificacion_documental_realizada
+CM1,498,49,449,0.09839357429718876,21,defects,1=defecto_historico_registrado,c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5,56,57,0,False
+JM1,13204,2103,11101,0.15926991820660405,21,defects,1=defecto_historico_registrado,013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03,4296,4384,0,False
+KC1,2109,326,1783,0.15457562825983878,21,defects,1=defecto_historico_registrado,bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798,897,917,0,False
+KC2,522,107,415,0.2049808429118774,21,problems,1=defecto_historico_registrado,fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7,147,153,0,False
+PC1,1109,77,1032,0.06943192064923355,21,defects,1=defecto_historico_registrado,9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4,155,161,0,False
