@@ -1,0 +1,6 @@
+{
+  "archivo": "modelo_predictivo_pds.joblib",
+  "sha256": "7acdffbba8904cc1de03d67c930202fd9a4188a3f1795385761633208a10c7b3",
+  "origen": "Entrenamiento experimental CPDP v11 (pipeline SVM con SMOTE y Random Forest)",
+  "politica": "Solo cargar modelos confiables incluidos en este repositorio; nunca desde archivos del usuario."
+}
