@@ -1,0 +1,20 @@
+{
+  "unidad_principal": "proyectos separados; promedio de F1 positivo por proyecto",
+  "indicadores_QA": [
+    "Recall por módulos",
+    "Recall por LOC (módulos completos)",
+    "Popt por integración"
+  ],
+  "comparadores": [
+    "ManualUp",
+    "LOC_desc",
+    "Aleatorio_esperado"
+  ],
+  "limitaciones": [
+    "datos del espejo público con procedencia no verificada",
+    "grupos conflictivos tratados como sensibilidad",
+    "LOC como aproximación a esfuerzo",
+    "solo cinco proyectos y ninguna evaluación independiente del artefacto final"
+  ],
+  "busqueda_completa": true
+}

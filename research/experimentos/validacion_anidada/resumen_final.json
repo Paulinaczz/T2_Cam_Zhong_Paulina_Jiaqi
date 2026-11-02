@@ -1,0 +1,15 @@
+{
+  "modo": "deduplicado",
+  "candidatos_por_busqueda": 27,
+  "folds_externos": 5,
+  "macro_f1_outer": 0.4122225477134025,
+  "macro_ap_outer": 0.349042017450373,
+  "macro_auc_outer": 0.7276729642842424,
+  "ganador_final": {
+    "algoritmo": "SVM",
+    "escenario": "E6_ADASYN_MI",
+    "f1_cv_proyectos": 0.41911964964178683,
+    "ap_cv_proyectos": 0.36036126620855324
+  },
+  "nota": "Nested outer estima procedimiento selección por proyecto; final es receta global reentrenada. Sin prueba inédita del joblib."
+}

@@ -49,14 +49,14 @@ def test_unknown_extra_column():
 
 
 def test_inf_rejected():
-    raw=pd.read_csv(DATA)
+    raw=pd.read_csv(DATA).astype({'loc': 'object'})
     raw.loc[0,'loc']='inf'
     with pytest.raises(InputError,match='infinitos'):
         validate_input(raw,FEATURES)
 
 
 def test_non_numeric_rejected():
-    raw=pd.read_csv(DATA)
+    raw=pd.read_csv(DATA).astype({'v': 'object'})
     raw.loc[1,'v']='palabra'
     with pytest.raises(InputError,match='no numéricos'):
         validate_input(raw,FEATURES)

@@ -23,7 +23,7 @@ class FakePipeline:
 def fixture_result():
     raw=pd.read_csv(ROOT/'data'/'sample'/'ejemplo_carga.csv').head(6)
     data=validate_input(raw,FEATURES)
-    model=ModelArtifact(FakePipeline(),{'columnas':FEATURES,'protocolo':'test','algoritmo':'SVM','escenario':'E7_SMOTE_RF'},'f'*64,Path('fake.joblib'))
+    model=ModelArtifact(FakePipeline(),{'columnas':FEATURES,'protocolo':'test','algoritmo':'SVM','escenario':'E6_ADASYN_MI'},'f'*64,Path('fake.joblib'))
     return data,model,predict(data,model)
 
 def test_rank_and_classes():

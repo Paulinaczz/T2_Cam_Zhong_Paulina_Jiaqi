@@ -76,7 +76,7 @@ def load_model(directory: Path) -> ModelArtifact:
         raise ModelError("El artefacto no contiene exactamente 21 métricas únicas")
     if list(cols) != manifest_file.get("columnas") or bundle["manifest"] != manifest_file:
         raise ModelError("El manifiesto externo no coincide con los metadatos del modelo")
-    if manifest_file.get("algoritmo") != "SVM" or manifest_file.get("escenario") != "E7_SMOTE_RF":
+    if manifest_file.get("algoritmo") != "SVM" or manifest_file.get("escenario") != "E6_ADASYN_MI":
         raise ModelError("No se reconoce la configuración del modelo esperado")
     if not hasattr(pipeline, "predict") or not hasattr(pipeline, "decision_function"):
         raise ModelError("El modelo no implementa los métodos de predicción necesarios")
@@ -84,4 +84,6 @@ def load_model(directory: Path) -> ModelArtifact:
     steps = getattr(pipeline, "named_steps", {})
     if not all(k in steps for k in ("imputer", "scaler", "selection", "sampler", "model")):
         raise ModelError("Faltan transformaciones del pipeline original")
+    if steps["selection"].__class__.__name__ != "SelectKBest" or steps["sampler"].__class__.__name__ != "ADASYN" or steps["model"].__class__.__name__ != "SVC":
+        raise ModelError("Los estimadores del pipeline no corresponden al escenario E6_ADASYN_MI")
     return ModelArtifact(pipeline=pipeline, manifest=manifest_file, sha256=actual_sha, path=model_path)

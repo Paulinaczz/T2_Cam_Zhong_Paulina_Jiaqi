@@ -1,0 +1,30 @@
+{
+  "n": 8787,
+  "positivos": 1996,
+  "prevalencia": 0.2271537498577444,
+  "f1": 0.423562412342216,
+  "average_precision": 0.3576886036656904,
+  "auc_roc": 0.6582948329290004,
+  "precision": 0.325782092772384,
+  "recall": 0.6052104208416834,
+  "accuracy": 0.6258108569477637,
+  "tn": 4291,
+  "fp": 2500,
+  "fn": 788,
+  "tp": 1208,
+  "score_tipo": "margen_no_calibrado",
+  "proyecto_test": "JM1",
+  "proyectos_entrenamiento": [
+    "CM1",
+    "KC1",
+    "KC2",
+    "PC1"
+  ],
+  "escenario": "E5_SMOTE_MI",
+  "algoritmo": "SVM",
+  "cv_f1_macro_fuente": 0.38826137304804464,
+  "vectores_test_presentes_en_train": 0,
+  "modo": "deduplicado",
+  "validation_protocolo": "nested_leave_one_project_out",
+  "elegido_procedimiento_general": true
+}
