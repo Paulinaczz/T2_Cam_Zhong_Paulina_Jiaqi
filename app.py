@@ -116,9 +116,17 @@ if page=="Inicio":
     with c2:
         if st.button("Comenzar análisis →",type="primary",use_container_width=True):move("Carga")
     with st.expander("Contexto del experimento científico"):
-        st.write("Pipeline final: SVM + SMOTE + selección de características basada en Random Forest; entrenado con CM1, JM1, KC1, KC2 y PC1 tras validación entre proyectos.")
-        st.write(f"F1 promedio de selección entre proyectos: **{model.manifest.get('cv_global_f1',0):.3f}**. Este resultado no es una evaluación independiente del archivo final entrenado con los cinco proyectos.")
-        st.write("La documentación de procedencia y equivalencias de métricas requiere revisión humana.")
+        st.markdown("""
+        - **Algoritmo:** Support Vector Machine (SVM).
+        - **Balanceo:** ADASYN, aplicado durante entrenamiento.
+        - **Selección de características:** Mutual Information (SelectKBest).
+        - **Escenario:** E6_ADASYN_MI.
+        - **Métricas:** 21 métricas estáticas compatibles (NASA/PROMISE).
+        """)
+        st.write("Entrenado sobre la cohorte deduplicada de cinco proyectos históricos (CM1, JM1, KC1, KC2 y PC1) tras evaluación entre proyectos (CPDP).")
+        st.write("F1 promedio de selección entre proyectos: **0.419** (frente a E7 con 0.415; diferencia pareada Wilcoxon p=0.4375, sin significancia estadística).")
+        st.write("Este resultado proviene de la validación entre proyectos y no equivale a una prueba independiente del artefacto final sobre un proyecto inédito.")
+        st.write("La procedencia documental y equivalencias de métricas continúan sujetas a verificación humana.")
 
 elif page=="Carga":
     heading("UI02 · CARGA DE DATOS", "Sube las métricas de tu proyecto",
@@ -167,7 +175,7 @@ elif page=="Validación":
             example=data.features.head(5).copy()
             example.insert(0,"id_modulo",data.identifiers.head(5).values)
             st.dataframe(example,use_container_width=True,hide_index=True)
-        st.caption("El pipeline incorpora imputación y escalado aprendidos en entrenamiento. SMOTE se empleó solo al ajustar el modelo, no en inferencia.")
+        st.caption("El pipeline incorpora imputación y escalado aprendidos en entrenamiento. ADASYN se empleó solo al ajustar el modelo, no en inferencia.")
         if st.button("▶ Ejecutar predicción y guardar evidencia",type="primary",use_container_width=True):
             try:
                 execution_id,result=run_analysis(data,model,DB_PATH)

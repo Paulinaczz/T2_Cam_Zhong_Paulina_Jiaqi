@@ -26,7 +26,7 @@ Abre la dirección local que indique Streamlit, normalmente `http://localhost:85
 
 ## Demostración de PI8
 
-1. **Inicio:** confirma `SVM · E7_SMOTE_RF`, descarga la plantilla.
+1. **Inicio:** confirma `SVM · E6_ADASYN_MI`, descarga la plantilla.
 2. **Carga:** selecciona `data/sample/ejemplo_carga.csv` (18 registros ilustrativos) y pulsa **Validar archivo**.
 3. **Validación:** observa las 21 columnas, SHA-256 y vista previa; pulsa **Ejecutar predicción y guardar evidencia**.
 4. **Resultados:** observa clases 0/1, `score_riesgo` y `prioridad`; descarga el ranking CSV.
@@ -37,35 +37,43 @@ Las filas del ejemplo se usan exclusivamente para probar el flujo funcional y **
 
 ## Modelo y datos
 
-- **Algoritmo del pipeline:** SVM; balanceo **SMOTE** durante entrenamiento; selección de características mediante **Random Forest**.
-- **Entrenamiento histórico:** CM1, JM1, KC1, KC2 y PC1; evaluación con validación anidada dejando un proyecto fuera (CPDP).
-- **Criterio de selección:** promedio no ponderado del F1 de la clase defectuosa entre los proyectos, con desempate por Average Precision y AUC-ROC.
-- **F1 de selección reportado:** `0.39725`; **no** equivale a la exactitud esperada para cualquier nuevo proyecto ni es una prueba independiente del `.joblib` entrenado con los cinco proyectos.
-- **Evaluación QA:** en los resultados externos la priorización por ML **no superó sistemáticamente** la selección por líneas de código.
-- **Auditoría:** la verificación humana de origen, etiquetas y alias de métricas figura **pendiente** (`documentally_verified: false`).
+- **Algoritmo del pipeline:** Support Vector Machine (`SVM`); balanceo **ADASYN** durante entrenamiento; selección de características mediante **Mutual Information** (`SelectKBest`).
+- **Escenario seleccionado:** `E6_ADASYN_MI`.
+- **Entrenamiento histórico:** CM1, JM1, KC1, KC2 y PC1; evaluado con validación anidada dejando un proyecto fuera (CPDP) sobre 11 690 instancias deduplicadas.
+- **Criterio de selección:** Promedio no ponderado del F1 de la clase defectuosa entre los proyectos.
+- **Rendimiento comparativo F1:** `E6_ADASYN_MI` obtuvo F1 = **0,4191** frente a `E7_SMOTE_RF` con F1 = **0,4146**.
+- **Contraste pareado:** La prueba de Wilcoxon (\(W = 4,0\), \(p = 0,4375\)) no detectó diferencia estadísticamente significativa, lo que **no demuestra equivalencia**.
+- **Evaluación externa anidada:** En Nested LOPO, SVM obtuvo macro F1 outer = **0,4122** (superior a XGBoost con 0,3983 y Random Forest con 0,3606). Esta métrica evalúa el *procedimiento de modelado*; no equivale a una prueba independiente sobre un proyecto inédito del archivo serializado final.
+- **Evaluación QA y esfuerzo:** Al medir presupuesto en líneas de código (LOC), la heurística **ManualUp** (inspeccionar primero módulos con menos LOC) superó al ranking ML puro y al ranking híbrido (Recall@20% LOC: ManualUp 28,74 % vs Híbrido 25,13 % vs ML 18,02 %). El modelo **no garantiza ahorro de tiempo ni mejora universal frente a ManualUp**.
+- **Métricas requeridas:** El prototipo no inspecciona código fuente ni repositorios Git; requiere un CSV con las **21 métricas estáticas compatibles** previamente calculadas con definiciones y granularidad homogéneas.
+- **Auditoría documental:** La procedencia histórica y equivalencias de columnas en el repositorio público figuran **pendientes de verificación humana** (`documentally_verified: false`).
 
 **`score_riesgo`:** margen de decisión SVM *sin calibrar*; puede ser negativo o positivo, no está entre 0 y 1 ni significa «porcentaje de probabilidad de defecto». El ranking ordena de mayor a menor margen.
 
-Solo usar métricas con **definiciones, granularidad y unidades compatibles**. Una nueva app o lenguaje de programación puede producir métricas con una distribución diferente; no se garantiza desempeño universal. Las columnas opcionales `defects` / `problems`, si existen, se ignoran para predecir.
+Las columnas opcionales `defects` / `problems`, si existen, se ignoran para predecir.
 
 ### Estructura del repositorio
 
 ```text
-PDS_QA_Streamlit/
+T2_Cam_Zhong_Paulina_Jiaqi/
 ├── app.py                         # M01/UI01–UI06: interfaz Streamlit
 ├── src/pds/
 │   ├── service.py                 # M02: orquestación
 │   ├── validation.py              # M03: lectura y validación de 21 métricas
-│   ├── model.py                   # M05: carga y verificación del pipeline
+│   ├── model.py                   # M05: carga y verificación del pipeline E6
 │   ├── prediction.py              # M04/M06/M07: inferencia, ranking, exportación
 │   └── persistence.py             # M08: trazabilidad SQLite
 ├── artifacts/models/
-│   ├── modelo_predictivo_pds.joblib
+│   ├── modelo_predictivo_pds.joblib (E6_ADASYN_MI)
 │   ├── metadatos_modelo.json
 │   └── integridad_modelo.json
 ├── data/sample/                   # Plantilla y CSV ilustrativo
 ├── docs/                          # DDL, trazabilidad y criterios metodológicos
-├── research/                      # Código y síntesis reproducible del Colab v11
+├── research/                      # Cuaderno, scripts y evidencias experimentales
+│   ├── auditoria/                 # Deduplicación y matriz de conflictos
+│   ├── experimentos/              # Validaciones anidadas, comparaciones y gráficos
+│   ├── Entrenamiento_Prediccion_Defectos.ipynb
+│   └── entrenamiento_defectos.py
 ├── tests/                         # Pruebas unitarias y de integración
 ├── requirements.txt
 └── .github/workflows/tests.yml

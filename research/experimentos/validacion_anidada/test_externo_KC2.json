@@ -1,0 +1,30 @@
+{
+  "n": 351,
+  "positivos": 98,
+  "prevalencia": 0.2792022792022792,
+  "f1": 0.6283524904214559,
+  "average_precision": 0.550350917865933,
+  "auc_roc": 0.802895861902073,
+  "precision": 0.5030674846625767,
+  "recall": 0.8367346938775511,
+  "accuracy": 0.7236467236467237,
+  "tn": 172,
+  "fp": 81,
+  "fn": 16,
+  "tp": 82,
+  "score_tipo": "margen_no_calibrado",
+  "proyecto_test": "KC2",
+  "proyectos_entrenamiento": [
+    "CM1",
+    "JM1",
+    "KC1",
+    "PC1"
+  ],
+  "escenario": "E8_ADASYN_RF",
+  "algoritmo": "SVM",
+  "cv_f1_macro_fuente": 0.36767251486920605,
+  "vectores_test_presentes_en_train": 0,
+  "modo": "deduplicado",
+  "validation_protocolo": "nested_leave_one_project_out",
+  "elegido_procedimiento_general": true
+}

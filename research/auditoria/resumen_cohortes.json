@@ -1,0 +1,34 @@
+{
+  "original_total": 17442,
+  "principal_total": 11690,
+  "sensibilidad_total": 11569,
+  "principal_resumen": {
+    "metodo": "Una ocurrencia por huella de las 21 métricas a escala global ANTES de las particiones; propietario determinado sin y",
+    "huellas_unicas": 11690,
+    "grupos_repetidos": 2532,
+    "grupos_repetidos_entre_proyectos": 66,
+    "grupos_con_etiquetas_contradictorias": 121,
+    "filas_afectadas_por_etiquetas_contradictorias": 1610,
+    "eliminados_totales": 5752,
+    "nota": "Los valores de etiqueta contradictorios se auditan, pero NO se usan para decidir qué instancia se conserva; la selección basada en y ocasionaría fuga."
+  },
+  "sensibilidad_resumen": {
+    "metodo": "Una ocurrencia por huella de las 21 métricas a escala global ANTES de las particiones; propietario determinado sin y",
+    "huellas_unicas": 11569,
+    "grupos_repetidos": 2411,
+    "grupos_repetidos_entre_proyectos": 42,
+    "grupos_con_etiquetas_contradictorias": 0,
+    "filas_afectadas_por_etiquetas_contradictorias": 0,
+    "eliminados_totales": 4263,
+    "nota": "Los valores de etiqueta contradictorios se auditan, pero NO se usan para decidir qué instancia se conserva; la selección basada en y ocasionaría fuga."
+  },
+  "conflictos": {
+    "grupos_contradictorios": 121,
+    "filas_en_grupos_contradictorios": 1610,
+    "regla_principal": "Conservar una sola X global, propietario elegido sin consultar la etiqueta.",
+    "regla_sensibilidad": "Descartar los grupos contradictorios del corpus etiquetado y después conservar una sola X por grupo.",
+    "advertencia": "El descarte usa etiquetas del corpus entero como limpieza de benchmark; NO puede simularse en un nuevo proyecto sin y. Resultados solo análisis de sensibilidad."
+  },
+  "huella_principal": "a633609a3bb142fe82940c334042c255984e9cebed2216897a06ea94e50c68fd",
+  "huella_sensibilidad": "2350df19a1306d33b65425491a629a07a408e27be68a55df01989e7bac682e78"
+}

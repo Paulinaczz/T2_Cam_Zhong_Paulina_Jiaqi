@@ -1,15 +1,15 @@
 {
+  "modo": "deduplicado",
   "candidatos_por_busqueda": 27,
   "folds_externos": 5,
-  "macro_f1_outer": 0.39900836430916486,
-  "macro_ap_outer": 0.36068197160103477,
-  "macro_auc_outer": 0.7554865270977444,
+  "macro_f1_outer": 0.4122225477134025,
+  "macro_ap_outer": 0.349042017450373,
+  "macro_auc_outer": 0.7276729642842424,
   "ganador_final": {
     "algoritmo": "SVM",
-    "escenario": "E7_SMOTE_RF",
-    "f1_cv_proyectos": 0.3972503492210537,
-    "ap_cv_proyectos": 0.3284176195322347
+    "escenario": "E6_ADASYN_MI",
+    "f1_cv_proyectos": 0.41911964964178683,
+    "ap_cv_proyectos": 0.36036126620855324
   },
-  "errores_en_seleccion_final": 0,
-  "nota": "La evaluación outer estima el procedimiento de selección, no es Test inédito del pipeline final."
+  "nota": "Nested outer estima procedimiento selección por proyecto; final es receta global reentrenada. Sin prueba inédita del joblib."
 }
