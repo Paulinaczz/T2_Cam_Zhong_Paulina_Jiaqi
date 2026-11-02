@@ -2,5 +2,6 @@
   "archivo": "modelo_predictivo_pds.joblib",
   "sha256": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
   "origen": "Entrenamiento experimental CPDP v11 (pipeline SVM con ADASYN y Mutual Information - E6_ADASYN_MI)",
-  "politica": "Solo cargar modelos confiables incluidos en este repositorio; nunca desde archivos del usuario."
+  "politica": "Solo cargar modelos confiables incluidos en este repositorio; nunca desde archivos del usuario.",
+  "nota_despliegue": "El campo candidato_no_desplegado del manifiesto original corresponde a la fase de comparacion del notebook Colab; el modelo E6 es ahora el artefacto operativo oficial en Streamlit."
 }

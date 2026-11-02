@@ -44,7 +44,11 @@ Las filas del ejemplo se usan exclusivamente para probar el flujo funcional y **
 - **Rendimiento comparativo F1:** `E6_ADASYN_MI` obtuvo F1 = **0,4191** frente a `E7_SMOTE_RF` con F1 = **0,4146**.
 - **Contraste pareado:** La prueba de Wilcoxon (\(W = 4,0\), \(p = 0,4375\)) no detectó diferencia estadísticamente significativa, lo que **no demuestra equivalencia**.
 - **Evaluación externa anidada:** En Nested LOPO, SVM obtuvo macro F1 outer = **0,4122** (superior a XGBoost con 0,3983 y Random Forest con 0,3606). Esta métrica evalúa el *procedimiento de modelado*; no equivale a una prueba independiente sobre un proyecto inédito del archivo serializado final.
-- **Evaluación QA y esfuerzo:** Al medir presupuesto en líneas de código (LOC), la heurística **ManualUp** (inspeccionar primero módulos con menos LOC) superó al ranking ML puro y al ranking híbrido (Recall@20% LOC: ManualUp 28,74 % vs Híbrido 25,13 % vs ML 18,02 %). El modelo **no garantiza ahorro de tiempo ni mejora universal frente a ManualUp**.
+- **Evaluación QA y esfuerzo (distinción de experimentos):** Al medir presupuesto en líneas de código (LOC), la heurística **ManualUp** (inspeccionar primero módulos con menor LOC) superó a las estrategias basadas en Machine Learning:
+  - En el **experimento original de selección anidada (Nested LOPO)**, ML puro obtuvo un Recall@20% LOC de **18,02 %** frente al **28,74 %** de ManualUp.
+  - En el **experimento adicional de ranking híbrido** (cohorte completa), el modelo **SVM solo** obtuvo **16,85 %**, la combinación híbrida con LOC alcanzó **25,13 %**, y ManualUp mantuvo **28,74 %**.
+  - En consecuencia, el modelo **no garantiza ahorro de tiempo ni mejora universal frente a ManualUp** si el esfuerzo se mide por volumen de líneas de código inspeccionadas.
+- **Contextualización de metadatos:** En `metadatos_modelo.json` figura la clave `"candidato_no_desplegado": true` correspondiente a la fase comparativa del Colab cuando E7 figuraba previamente desplegado; E6 es ahora el **modelo operativo oficial en Streamlit**. El artefacto Joblib conserva intacta su firma criptográfica original (`5a420bc5...`).
 - **Métricas requeridas:** El prototipo no inspecciona código fuente ni repositorios Git; requiere un CSV con las **21 métricas estáticas compatibles** previamente calculadas con definiciones y granularidad homogéneas.
 - **Auditoría documental:** La procedencia histórica y equivalencias de columnas en el repositorio público figuran **pendientes de verificación humana** (`documentally_verified: false`).
 

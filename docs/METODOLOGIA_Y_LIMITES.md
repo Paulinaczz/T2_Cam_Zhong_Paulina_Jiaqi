@@ -34,28 +34,45 @@ Este documento resume los fundamentos metodológicos, la evidencia experimental 
 
 ---
 
-## 3. Evaluación de priorización y esfuerzo de QA
+## 3. Evaluación de priorización y esfuerzo de QA: Distinción de experimentos
 
-Se evaluó la eficacia de priorización bajo dos métricas de presupuesto: porcentaje de módulos inspeccionados y porcentaje de líneas de código (LOC).
+Se evaluó la eficacia de priorización bajo dos métricas de presupuesto: porcentaje de módulos inspeccionados y porcentaje de líneas de código (LOC). Es fundamental distinguir dos evaluaciones con alcances diferentes:
 
-| Estrategia de priorización | Recall@20% Módulos | Recall@20% LOC (módulos completos) | Popt (0–20%) |
+### A. Experimento original: Procedimiento de selección anidada (Nested LOPO)
+En la evaluación externa del pipeline seleccionado dinámicamente (`03_experimentos/QA_promedios_proyecto.csv`), los promedios al 20 % de presupuesto fueron:
+
+| Estrategia (Nested LOPO) | Recall@20% Módulos | Recall@20% LOC (módulos completos) | Popt (0–20%) |
 | :--- | :---: | :---: | :---: |
 | **ManualUp (ordenar por LOC ascendente)** | 6,24 % | **28,74 %** | **0,2571** |
-| **Ranking Híbrido (ML + LOC)** | 6,47 % | 25,13 % | 0,2186 |
-| **ML puro (Margen SVM)** | **42,39 %** | 18,02 % | 0,1519 |
-| **LOC descendente (inspeccionar más grandes)** | 44,20 % | 9,40 % | 0,0607 |
-| **Referencia aleatoria** | 20,12 % | 19,87 % | 0,1698 |
+| **ML puro (procedimiento de selección)** | **42,39 %** | **18,02 %** | **0,1519** |
+| **LOC descendente (módulos más grandes)** | 44,20 % | 9,40 % | 0,0607 |
+| **Referencia aleatoria esperada** | 20,12 % | 19,87 % | 0,1698 |
 
-### Conclusiones clave sobre el esfuerzo:
-1. **ManualUp superó a ML cuando el costo se mide en LOC:** Inspeccionar módulos pequeños primero (`ManualUp`) capturó el 28,74 % de defectos al 20 % de LOC acumuladas, superando tanto al modelo ML (18,02 %) como al ranking híbrido (25,13 %).
-2. **ML es superior cuando el presupuesto se fija en cantidad de módulos:** Al revisar el 20 % de los módulos de un proyecto, ML detectó el 42,39 % de los defectos frente al 6,24 % de ManualUp.
-3. **Ausencia de garantía de ahorro universal:** El modelo predictivo **no garantiza un ahorro sistemático de tiempo ni una mejora universal frente a ManualUp** en contextos donde el esfuerzo de revisión está estrictamente ligado al tamaño del código.
+*Resultado clave:* Al medir el presupuesto en líneas de código, **ManualUp (28,74 %)** superó ampliamente a **ML puro (18,02 %)**.
+
+### B. Experimento adicional: Ranking híbrido consciente del esfuerzo
+En el análisis post-hoc exploratorio sobre la cohorte deduplicada completa (`03_experimentos/ranking_consciente_del_esfuerzo/comparacion_promedio.csv`), se combinaron los rangos porcentuales del margen SVM y del tamaño en LOC:
+
+| Estrategia (Cohorte completa) | Recall@20% Módulos | Recall@20% LOC (módulos completos) | Popt (0–20%) |
+| :--- | :---: | :---: | :---: |
+| **ManualUp (LOC ascendente puro)** | 6,24 % | **28,74 %** | **0,2571** |
+| **Ranking Híbrido (peso óptimo ML)** | 6,47 % | **25,13 %** | **0,2186** |
+| **SVM solo (sin combinar con LOC)** | **42,61 %** | **16,85 %** | **0,1460** |
+| **LOC descendente** | 44,20 % | 9,40 % | 0,0607 |
+| **Referencia aleatoria** | 19,96 % | 19,53 % | 0,1670 |
+
+*Distinción metodológica:*
+- En el **experimento anidado original**, la selección de ML alcanzó **18,02 %** de Recall@20% LOC.
+- En el **experimento adicional**, el modelo fijo de SVM solo alcanzó **16,85 %** de Recall@20% LOC. La ponderación híbrida elevó este valor a **25,13 %**, pero **ManualUp siguió obteniendo el mejor desempeño con 28,74 %**.
+- **Conclusión unificada:** Tanto al 18,02 % como al 16,85 %, el modelo predictivo de Machine Learning **no supera a ManualUp en ahorro de esfuerzo por LOC**. Por consiguiente, el modelo **no garantiza ahorro de tiempo ni mejora universal frente a ManualUp** si la auditoría se planifica estrictamente en función del volumen de líneas de código inspeccionadas.
 
 ---
 
 ## 4. Limitaciones y alcances operativos
 
-1. **Dependencia de métricas calculadas previamente:** El software no inspecciona código fuente ni repositorios Git; requiere que las **21 métricas estáticas compatibles** se hayan calculado y tabulado previamente con definiciones homogéneas.
-2. **Procedencia documental de los datos:** Los datasets provienen del repositorio público NASA/PROMISE sin auditoría documental primaria del creador original (`documentally_verified: false`). Existen alias (p. ej. `locCodeAndComment`) y 121 tuplas con métricas idénticas y etiquetas dispares que fueron identificadas durante la auditoría.
-3. **Naturaleza del score:** El valor `score_riesgo` es el margen funcional de decisión SVM sin calibrar; **no representa una probabilidad porcentual de defecto**. Se emplea estrictamente como criterio de ordenación relativa.
-4. **Juicio profesional de SQA:** La clasificación como «potencialmente defectuoso» es una estimación estadística y nunca sustituye las pruebas funcionales, la inspección humana ni el juicio de los analistas de calidad de software.
+1. **Contextualización del metadato `candidato_no_desplegado`:**
+   En `metadatos_modelo.json` y en el paquete serializado Joblib figura la clave `"candidato_no_desplegado": true`. Este campo proviene de la fase experimental de Colab (en la que E6 era un candidato de investigación mientras E7 figuraba previamente en el prototipo). Al integrarse formalmente en este prototipo, E6 es el **modelo operativo oficial en Streamlit**. El artefacto Joblib no fue alterado artificialmente para mantener la coincidencia criptográfica byte a byte y la estricta verificación de integridad (`5a420bc5...`).
+2. **Dependencia de métricas calculadas previamente:** El software no inspecciona código fuente ni repositorios Git; requiere que las **21 métricas estáticas compatibles** se hayan calculado y tabulado previamente con definiciones homogéneas.
+3. **Procedencia documental de los datos:** Los datasets provienen del repositorio público NASA/PROMISE sin auditoría documental primaria del creador original (`documentally_verified: false`). Existen alias (p. ej. `locCodeAndComment`) y 121 tuplas con métricas idénticas y etiquetas dispares que fueron identificadas durante la auditoría.
+4. **Naturaleza del score:** El valor `score_riesgo` es el margen funcional de decisión SVM sin calibrar; **no representa una probabilidad porcentual de defecto**. Se emplea estrictamente como criterio de ordenación relativa.
+5. **Juicio profesional de SQA:** La clasificación como «potencialmente defectuoso» es una estimación estadística y nunca sustituye las pruebas funcionales, la inspección humana ni el juicio de los analistas de calidad de software.
