@@ -4,9 +4,9 @@ Este directorio reúne las versiones más recientes de los informes de validaci�
 
 ## Documentos Disponibles
 
-- [T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](file:///docs/avances/T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](file:///docs/avances/T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.docx): Informe de ejecución de pruebas técnicas y de seguridad (CP01–CP06, CP11–CP12), mediciones de tiempo y adenda con respaldo fotográfico de la interfaz.
-- [T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](file:///docs/avances/T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](file:///docs/avances/T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.docx): Informe de consolidación de resultados, análisis descriptivo de metas, matriz de trazabilidad y estado de cumplimiento.
-- [T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md](file:///docs/avances/T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md): Resumen de la adenda visual con las 11 capturas incorporadas el 10 de noviembre de 2026.
+- [T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.docx): Informe de ejecución de pruebas técnicas y de seguridad (CP01–CP06, CP11–CP12), mediciones de tiempo y adenda con respaldo fotográfico de la interfaz.
+- [T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.docx): Informe de consolidación de resultados, análisis descriptivo de metas, matriz de trazabilidad y estado de cumplimiento.
+- [T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md](T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md): Resumen de la adenda visual con las 11 capturas incorporadas el 10 de noviembre de 2026.
 
 ## Estado de Ejecución de Casos de Prueba (PI11–PI12 a PI13–PI14)
 

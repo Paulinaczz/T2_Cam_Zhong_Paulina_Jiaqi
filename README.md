@@ -65,16 +65,16 @@ En el marco de la investigación en Google Colab sobre predicción entre proyect
 | **$P_{\text{opt}}$ normalizado (0–20 %)** | 25,50 % | **25,71 %** | -0,21 p.p. | KC1: [-3,04, +1,06] p.p. |
 | **Proyectos ganados** | 2 de 5 (CM1, JM1) | **3 de 5** (KC1, KC2, PC1) | — | Todos incluyen el 0 |
 
-> **Conclusión metodológica:** La diferencia media en Recall@20 % LOC es de +0,36 puntos porcentuales y los intervalos bootstrap al 95 % de las diferencias incluyen el cero en la totalidad de los proyectos. Por lo tanto, **no existe evidencia estadística suficiente para sostener una superioridad consistente del aprendizaje automático frente a la regla determinista de priorizar módulos pequeños (ManualUp)**. Estos resultados forman parte del análisis experimental de investigación y se documentan con rigurosidad académica en [docs/METODOLOGIA_Y_LIMITES.md](file:///docs/METODOLOGIA_Y_LIMITES.md).
+> **Conclusión metodológica:** La diferencia media en Recall@20 % LOC es de +0,36 puntos porcentuales y los intervalos bootstrap al 95 % de las diferencias incluyen el cero en la totalidad de los proyectos. Por lo tanto, **no existe evidencia estadística suficiente para sostener una superioridad consistente del aprendizaje automático frente a la regla determinista de priorizar módulos pequeños (ManualUp)**. Estos resultados forman parte del análisis experimental de investigación y se documentan con rigurosidad académica en [docs/METODOLOGIA_Y_LIMITES.md](docs/METODOLOGIA_Y_LIMITES.md).
 
 ---
 
 ## 4. Evidencias de Validación Técnica y Operativa (PI13–PI14)
 
 Los informes formales se encuentran disponibles en:
-- [T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](file:///docs/avances/T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](file:///docs/avances/T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.docx)
-- [T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](file:///docs/avances/T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](file:///docs/avances/T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.docx)
-- [T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md](file:///docs/avances/T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md)
+- [T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](docs/avances/T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](docs/avances/T2_PI13_CON_EVIDENCIAS_VISUALES_10NOV2026.docx)
+- [T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf](docs/avances/T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.pdf) / [.docx](docs/avances/T2_PI14_CON_EVIDENCIAS_VISUALES_10NOV2026.docx)
+- [T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md](docs/avances/T2_ADENDA_CAPTURAS_RESUMEN_10NOV2026.md)
 
 ### Resumen de Pruebas Ejecutadas
 
@@ -90,7 +90,7 @@ Los informes formales se encuentran disponibles en:
 | **CP12** | Seguridad | Bloqueo estricto del pipeline ante alteración del hash SHA-256 | `evidencias/pi13/validacion_local/casos/CP12/` |
 | **Pytest** | Automatizada | **14 pruebas aprobadas al 100 %** (0 fallos, 0 omisiones) | `evidencias/pi13/validacion_local/suite_pytest.txt` |
 
-Las evidencias visuales con las 11 capturas de pantalla de la interfaz y su matriz de trazabilidad se ubican en [evidencias/pi13/capturas/INDICE_CAPTURAS.csv](file:///evidencias/pi13/capturas/INDICE_CAPTURAS.csv).
+Las evidencias visuales con las 11 capturas de pantalla de la interfaz y su matriz de trazabilidad se ubican en [evidencias/pi13/capturas/INDICE_CAPTURAS.csv](evidencias/pi13/capturas/INDICE_CAPTURAS.csv).
 
 ---
 
