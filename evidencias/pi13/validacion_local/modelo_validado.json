@@ -1,0 +1,6 @@
+{
+  "algoritmo": "SVM",
+  "escenario": "E6_ADASYN_MI",
+  "sha256": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "nombre": "modelo_predictivo_pds.joblib"
+}

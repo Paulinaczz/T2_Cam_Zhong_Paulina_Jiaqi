@@ -8,6 +8,7 @@ venv/
 .env
 .env.*
 *.log
+!evidencias/**/ejecucion.log
 .DS_Store
 .idea/
 .vscode/

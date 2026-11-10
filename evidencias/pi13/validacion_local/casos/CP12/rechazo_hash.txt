@@ -1,0 +1,2 @@
+El SHA-256 del pipeline no coincide con el valor registrado
+Hash del modelo ORIGINAL sin cambios: 5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f

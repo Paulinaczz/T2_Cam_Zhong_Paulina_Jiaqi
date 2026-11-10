@@ -1,0 +1,9 @@
+{
+  "fuente": "Archivo proporcionado por la tesista: Resultados_Entrenamiento_Prediccion_Defectos.zip / 01_datos_originales/JM1.csv",
+  "transformacion": "Se quitó la etiqueta histórica defects y se añadió id_modulo secuencial; se conservaron las 21 métricas sin modificar.",
+  "registros": 13204,
+  "metricas": 21,
+  "sha256_csv_original": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+  "sha256_csv_prueba": "cd5b399ed10a77234c39da4e8242f260761cf844c1bfb4b96eb0e07727e555e3",
+  "uso": "Solo para CP06; no sirve para evaluar rendimiento predictivo ni accuracy."
+}

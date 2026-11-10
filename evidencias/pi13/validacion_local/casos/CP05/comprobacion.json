@@ -1,0 +1,8 @@
+{
+  "execution_id": "da618506-0674-4081-a6a9-8e489e46d3f5",
+  "estado": "COMPLETADA",
+  "filas": 18,
+  "hash_entrada": "be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1",
+  "hash_modelo": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "base_aislada": "casos\\CP05\\traza_cp05.sqlite3"
+}

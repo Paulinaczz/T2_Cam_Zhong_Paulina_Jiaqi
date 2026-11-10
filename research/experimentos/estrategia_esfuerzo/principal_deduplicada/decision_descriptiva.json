@@ -1,0 +1,14 @@
+{
+  "comparacion": "ML_prob_calibrada_por_LOC menos ManualUp en Recall@20% LOC",
+  "cohorte": "principal_deduplicada",
+  "n_proyectos": 5,
+  "promedio_ml_calibrado_por_loc": 0.2909320955525395,
+  "promedio_manualup": 0.2873727433214882,
+  "mediana_delta": -0.009708737864077666,
+  "media_delta": 0.0035593522310512883,
+  "proyectos_delta_positivo": 2,
+  "proyectos_delta_negativo": 3,
+  "proyectos_empate": 0,
+  "cumple_criterio_descriptivo_estricto": false,
+  "advertencia": "Resultado exploratorio. No constituye prueba de superioridad externa ni se cambia el criterio segun el resultado; delta por proyecto e IC condicionales."
+}

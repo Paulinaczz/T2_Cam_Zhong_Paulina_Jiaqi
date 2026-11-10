@@ -1,0 +1,2 @@
+Inf: 'loc' contiene valores infinitos
+Texto: 'v' contiene valores no numéricos (líneas CSV: [2])

@@ -1,0 +1,18 @@
+{
+  "hash_modelo": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "repeticiones": 30,
+  "datasets": {
+    "ejemplo_18": {
+      "ruta": "data/sample/ejemplo_carga.csv",
+      "sha256": "be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1",
+      "filas_esperadas": 18
+    },
+    "JM1_completo": {
+      "ruta": "herramientas_pi13/datos/JM1_para_CP06.csv",
+      "sha256": "cd5b399ed10a77234c39da4e8242f260761cf844c1bfb4b96eb0e07727e555e3",
+      "filas_esperadas": 13204
+    }
+  },
+  "excluye_arranque": true,
+  "sin_persistencia_en_tiempos": true
+}

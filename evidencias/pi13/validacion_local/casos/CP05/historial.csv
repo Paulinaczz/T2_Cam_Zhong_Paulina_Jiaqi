@@ -1,0 +1,2 @@
+﻿execution_id,fecha_utc,nombre_csv,total_registros,total_positivos,algoritmo,escenario,estado,sha256_entrada,sha256_modelo,version_modelo,tipo_score
+da618506-0674-4081-a6a9-8e489e46d3f5,2026-11-10T04:27:49.063865+00:00,ejemplo_carga.csv,18,2,SVM,E6_ADASYN_MI,COMPLETADA,be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1,5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f,CPDP_NESTED_LOPO_DEDUP_ESFUERZO,margen_svm_no_calibrado

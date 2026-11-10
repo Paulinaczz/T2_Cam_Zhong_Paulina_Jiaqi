@@ -1,0 +1,2 @@
+Extensión: Solo se permiten archivos con extensión .csv
+ID repetido: id_modulo no debe contener valores vacíos ni repetidos

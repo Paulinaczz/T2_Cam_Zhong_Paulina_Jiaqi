@@ -1,0 +1,9 @@
+﻿ID caso,Escenario,Fecha UTC,Resultado backend,Resultado UI,Observación,Evidencia JSON
+CP01,ES01,2026-11-10T04:27:48+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP02,ES02,2026-11-10T04:27:48+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP03,ES03,2026-11-10T04:27:48+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP04,ES04,2026-11-10T04:27:48+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP05,ES05,2026-11-10T04:27:49+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP11,ES11,2026-11-10T04:27:49+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP12,ES12,2026-11-10T04:27:49+00:00,APROBADO_BACKEND,PENDIENTE_DE_VERIFICACION_MANUAL,Aprobado en núcleo/backend; requiere capturas UI,registro_casos.json
+CP06,ES06,2026-11-10T04:54:08+00:00,MEDICION_EJECUTADA,PENDIENTE_DE_VERIFICACION_MANUAL,Medición completa; consultar el veredicto real de p95 en resumen_cp06.csv,registro_casos.json

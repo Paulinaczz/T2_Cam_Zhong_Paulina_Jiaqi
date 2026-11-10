@@ -1,0 +1,6 @@
+{
+  "mensaje": "El SHA-256 del pipeline no coincide con el valor registrado",
+  "original_intacto": true,
+  "sha256_modelo": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "nota": "Solo se modificó una copia temporal de integridad_modelo.json."
+}

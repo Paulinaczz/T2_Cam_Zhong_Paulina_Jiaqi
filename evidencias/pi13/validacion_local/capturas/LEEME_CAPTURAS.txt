@@ -1,0 +1,4 @@
+Las 11 capturas de pantalla reales de la interfaz Streamlit y archivos de soporte se encuentran organizadas y verificadas en la carpeta:
+evidencias/pi13/capturas/
+
+Consulte evidencias/pi13/capturas/INDICE_CAPTURAS.csv y evidencias/pi13/capturas/LEEME_EVIDENCIAS.md para el índice detallado con SHA-256, casos relacionados y limitaciones de cada evidencia visual.
