@@ -1,0 +1,6 @@
+proyecto,cohorte,bootstrap_repeticiones,bootstrap_replicas_validas,bootstrap_replicas_sin_positivos,IC95_delta_inferior,IC95_delta_superior,nota_IC
+CM1,principal_deduplicada,1000,1000,0,-0.0555817610062893,0.116313269493844,Remuestreo de modulos condicionado en scores fijos; no representa incertidumbre entre proyectos ni reentrenamiento.
+JM1,principal_deduplicada,1000,1000,0,-0.008302724508301502,0.0230463471897366,Remuestreo de modulos condicionado en scores fijos; no representa incertidumbre entre proyectos ni reentrenamiento.
+KC1,principal_deduplicada,1000,1000,0,-0.030395393493797752,0.010569906360994448,Remuestreo de modulos condicionado en scores fijos; no representa incertidumbre entre proyectos ni reentrenamiento.
+KC2,principal_deduplicada,1000,1000,0,-0.0721680536579307,0.019230769230769246,Remuestreo de modulos condicionado en scores fijos; no representa incertidumbre entre proyectos ni reentrenamiento.
+PC1,principal_deduplicada,1000,1000,0,-0.042857142857142844,0.03799934242972216,Remuestreo de modulos condicionado en scores fijos; no representa incertidumbre entre proyectos ni reentrenamiento.

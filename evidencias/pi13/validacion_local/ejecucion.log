@@ -1,0 +1,87 @@
+2026-11-10T04:27:19+00:00 | EVIDENCIAS: evidencias/pi13/validacion_local
+2026-11-10T04:27:19+00:00 | COMMIT: 76a4786f638ba5fae248d100ae2b6310e86905a2
+2026-11-10T04:27:48+00:00 | INICIO CP01: Importar, validar, inferir y ordenar 18 módulos
+2026-11-10T04:27:48+00:00 | APROBADO CP01 (0.23 s)
+2026-11-10T04:27:48+00:00 | INICIO CP02: Rechazo de CSV sin métrica LOC
+2026-11-10T04:27:48+00:00 | APROBADO CP02 (0.05 s)
+2026-11-10T04:27:48+00:00 | INICIO CP03: Rechazo de Inf y texto no numérico
+2026-11-10T04:27:48+00:00 | APROBADO CP03 (0.07 s)
+2026-11-10T04:27:48+00:00 | INICIO CP04: Escapado de fórmulas en exportación CSV
+2026-11-10T04:27:48+00:00 | APROBADO CP04 (0.14 s)
+2026-11-10T04:27:48+00:00 | INICIO CP05: Persistencia e historial SQLite de 18 predicciones
+2026-11-10T04:27:49+00:00 | APROBADO CP05 (0.26 s)
+2026-11-10T04:27:49+00:00 | INICIO CP11: Rechazo de extensión inválida e ID duplicado
+2026-11-10T04:27:49+00:00 | APROBADO CP11 (0.05 s)
+2026-11-10T04:27:49+00:00 | INICIO CP12: Bloqueo de un modelo con SHA-256 alterado (copia)
+2026-11-10T04:27:49+00:00 | APROBADO CP12 (0.05 s)
+2026-11-10T04:27:49+00:00 | Iniciando suite existente pytest (evidencia COMPLEMENTARIA; distinta de CP01–CP12)
+2026-11-10T04:27:55+00:00 | Pytest finalizó con código 0. Revisar suite_pytest.txt y posibles SKIP
+2026-11-10T04:27:55+00:00 | RESUMEN: 7 casos evaluados, 0 fallidos en backend. Capturas UI pendientes hasta verificarlas.
+2026-11-10T04:27:55+00:00 | REVISAR: registro_casos_para_PI13.csv, resumen_cp06.csv, suite_pytest.txt, capturas_para_PI13.csv
+2026-11-10T04:28:34+00:00 | EVIDENCIAS: evidencias/pi13/validacion_local
+2026-11-10T04:28:34+00:00 | COMMIT: 76a4786f638ba5fae248d100ae2b6310e86905a2
+2026-11-10T04:28:37+00:00 | CP06: ya hay 0 registros guardados; se reanudará donde terminó.
+2026-11-10T04:28:37+00:00 | CP06 calentamiento terminado: ejemplo_18
+2026-11-10T04:29:24+00:00 | CP06 calentamiento terminado: JM1_completo
+2026-11-10T04:29:24+00:00 | CP06 ejemplo_18: 1/30 | validar=0.029s | inferir=0.070s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 2/30 | validar=0.035s | inferir=0.069s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 3/30 | validar=0.030s | inferir=0.074s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 4/30 | validar=0.031s | inferir=0.072s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 5/30 | validar=0.033s | inferir=0.063s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 6/30 | validar=0.029s | inferir=0.066s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 7/30 | validar=0.027s | inferir=0.085s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 8/30 | validar=0.030s | inferir=0.067s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 9/30 | validar=0.029s | inferir=0.075s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 10/30 | validar=0.029s | inferir=0.066s
+2026-11-10T04:29:25+00:00 | CP06 ejemplo_18: 11/30 | validar=0.027s | inferir=0.067s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 12/30 | validar=0.027s | inferir=0.068s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 13/30 | validar=0.033s | inferir=0.075s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 14/30 | validar=0.030s | inferir=0.070s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 15/30 | validar=0.027s | inferir=0.064s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 16/30 | validar=0.029s | inferir=0.068s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 17/30 | validar=0.027s | inferir=0.066s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 18/30 | validar=0.027s | inferir=0.069s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 19/30 | validar=0.033s | inferir=0.077s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 20/30 | validar=0.033s | inferir=0.068s
+2026-11-10T04:29:26+00:00 | CP06 ejemplo_18: 21/30 | validar=0.030s | inferir=0.071s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 22/30 | validar=0.030s | inferir=0.063s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 23/30 | validar=0.028s | inferir=0.076s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 24/30 | validar=0.028s | inferir=0.070s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 25/30 | validar=0.032s | inferir=0.074s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 26/30 | validar=0.037s | inferir=0.067s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 27/30 | validar=0.031s | inferir=0.075s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 28/30 | validar=0.035s | inferir=0.076s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 29/30 | validar=0.032s | inferir=0.066s
+2026-11-10T04:29:27+00:00 | CP06 ejemplo_18: 30/30 | validar=0.028s | inferir=0.071s
+2026-11-10T04:30:14+00:00 | CP06 JM1_completo: 1/30 | validar=0.428s | inferir=46.072s
+2026-11-10T04:31:01+00:00 | CP06 JM1_completo: 2/30 | validar=0.485s | inferir=46.255s
+2026-11-10T04:31:47+00:00 | CP06 JM1_completo: 3/30 | validar=0.421s | inferir=45.642s
+2026-11-10T04:32:32+00:00 | CP06 JM1_completo: 4/30 | validar=0.505s | inferir=44.672s
+2026-11-10T04:33:19+00:00 | CP06 JM1_completo: 5/30 | validar=0.431s | inferir=46.303s
+2026-11-10T04:34:08+00:00 | CP06 JM1_completo: 6/30 | validar=0.445s | inferir=48.859s
+2026-11-10T04:34:58+00:00 | CP06 JM1_completo: 7/30 | validar=0.471s | inferir=49.745s
+2026-11-10T04:35:48+00:00 | CP06 JM1_completo: 8/30 | validar=0.432s | inferir=49.750s
+2026-11-10T04:36:39+00:00 | CP06 JM1_completo: 9/30 | validar=0.449s | inferir=49.797s
+2026-11-10T04:37:29+00:00 | CP06 JM1_completo: 10/30 | validar=0.448s | inferir=50.148s
+2026-11-10T04:38:19+00:00 | CP06 JM1_completo: 11/30 | validar=0.467s | inferir=49.740s
+2026-11-10T04:39:09+00:00 | CP06 JM1_completo: 12/30 | validar=0.455s | inferir=49.507s
+2026-11-10T04:39:59+00:00 | CP06 JM1_completo: 13/30 | validar=0.435s | inferir=49.438s
+2026-11-10T04:40:49+00:00 | CP06 JM1_completo: 14/30 | validar=0.486s | inferir=49.550s
+2026-11-10T04:41:39+00:00 | CP06 JM1_completo: 15/30 | validar=0.480s | inferir=49.319s
+2026-11-10T04:42:29+00:00 | CP06 JM1_completo: 16/30 | validar=0.429s | inferir=49.192s
+2026-11-10T04:43:18+00:00 | CP06 JM1_completo: 17/30 | validar=0.431s | inferir=48.590s
+2026-11-10T04:44:06+00:00 | CP06 JM1_completo: 18/30 | validar=0.473s | inferir=47.629s
+2026-11-10T04:44:54+00:00 | CP06 JM1_completo: 19/30 | validar=0.508s | inferir=47.570s
+2026-11-10T04:45:42+00:00 | CP06 JM1_completo: 20/30 | validar=0.439s | inferir=47.445s
+2026-11-10T04:46:30+00:00 | CP06 JM1_completo: 21/30 | validar=0.459s | inferir=48.197s
+2026-11-10T04:47:21+00:00 | CP06 JM1_completo: 22/30 | validar=0.432s | inferir=49.912s
+2026-11-10T04:48:12+00:00 | CP06 JM1_completo: 23/30 | validar=0.481s | inferir=51.081s
+2026-11-10T04:49:03+00:00 | CP06 JM1_completo: 24/30 | validar=0.498s | inferir=50.397s
+2026-11-10T04:49:54+00:00 | CP06 JM1_completo: 25/30 | validar=0.496s | inferir=50.008s
+2026-11-10T04:50:45+00:00 | CP06 JM1_completo: 26/30 | validar=0.468s | inferir=50.387s
+2026-11-10T04:51:35+00:00 | CP06 JM1_completo: 27/30 | validar=0.503s | inferir=50.058s
+2026-11-10T04:52:26+00:00 | CP06 JM1_completo: 28/30 | validar=0.494s | inferir=50.522s
+2026-11-10T04:53:17+00:00 | CP06 JM1_completo: 29/30 | validar=0.555s | inferir=50.468s
+2026-11-10T04:54:08+00:00 | CP06 JM1_completo: 30/30 | validar=0.539s | inferir=50.434s
+2026-11-10T04:54:08+00:00 | RESUMEN: 8 casos evaluados, 0 fallidos en backend. Capturas UI pendientes hasta verificarlas.
+2026-11-10T04:54:08+00:00 | REVISAR: registro_casos_para_PI13.csv, resumen_cp06.csv, suite_pytest.txt, capturas_para_PI13.csv

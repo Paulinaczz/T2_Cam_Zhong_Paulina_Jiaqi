@@ -1,0 +1,5 @@
+{
+  "entrada": "=1+2",
+  "exportado": "'=1+2",
+  "advertencia": "Se comprueba la sanitización textual del CSV; no se abre Microsoft Excel ni se simulan macros."
+}

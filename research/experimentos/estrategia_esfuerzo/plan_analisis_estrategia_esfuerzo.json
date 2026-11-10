@@ -1,0 +1,37 @@
+{
+  "caracter": "Analisis adicional exploratorio formulado tras conocer resultados de cinco proyectos; no confirmatorio ni preregistrado",
+  "modelo_fijo": "E6_ADASYN_MI / SVM",
+  "proyectos": [
+    "CM1",
+    "JM1",
+    "KC1",
+    "KC2",
+    "PC1"
+  ],
+  "cohorte_primaria": "principal_deduplicada: una X global representativa sin consultar y",
+  "estrategia_nueva": "mayor probabilidad calibrada de defecto dividida entre max(LOC, 1)",
+  "calibracion": "sigmoide_logistica_en_margenes_OOF_por_proyecto",
+  "comparacion_primaria_nueva": "ML_prob_calibrada_por_LOC frente a ManualUp, Recall@20 % LOC, modulos completos",
+  "indicadores_secundarios": [
+    "Recall@10 % LOC",
+    "Recall@30 % LOC",
+    "Recall@20 % modulos",
+    "Popt normalizado 0-20",
+    "Popt normalizado 0-100",
+    "Brier de calibracion"
+  ],
+  "unidad_primaria": "proyecto (cinco proyectos independientes a nivel conceptual, con amenazas de calidad NASA)",
+  "resumen_descriptivo": [
+    "diferencia por proyecto",
+    "mediana",
+    "numero de proyectos con diferencia positiva",
+    "intervalo bootstrap por proyecto"
+  ],
+  "criterio_descriptivo_estricto": "Cinco de cinco deltas positivos; para apoyo adicional, limite inferior bootstrap de cada proyecto > 0",
+  "limitaciones": [
+    "El intervalo bootstrap re-muestrea modulos y condiciona en los modelos entrenados; no captura incertidumbre por nuevos proyectos.",
+    "Cinco proyectos no permiten concluir superioridad estadistica con Wilcoxon bilateral exacto al 5%.",
+    "No cambiar retrospectivamente el criterio primario del plan original; documentar este analisis adicional como desviacion motivada por observacion del asesor.",
+    "El costo LOC es una aproximacion del esfuerzo de QA, no un tiempo real medido."
+  ]
+}

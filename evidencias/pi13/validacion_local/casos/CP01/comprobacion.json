@@ -1,0 +1,19 @@
+{
+  "registros": 18,
+  "metricas": 21,
+  "algoritmo": "SVM",
+  "escenario": "E6_ADASYN_MI",
+  "tipo_score": "margen_svm_no_calibrado",
+  "id_ejecucion": "0c37abc3-d5e8-4eda-a99a-de33249ba9e4",
+  "sha256_modelo": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "sha256_entrada": "be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1",
+  "columnas_salida": [
+    "prioridad",
+    "id_modulo",
+    "clase_predicha",
+    "score_riesgo",
+    "tipo_score",
+    "interpretacion"
+  ],
+  "advertencias": []
+}

@@ -1,0 +1,12 @@
+﻿ID caso,Captura esperada,Qué debe mostrar,Existe
+CP01,capturas/CP01_UI02_carga.png,UI02: carga de ejemplo_carga.csv,No
+CP01,capturas/CP01_UI03_validacion.png,UI03: 18 módulos y 21 métricas,No
+CP01,capturas/CP01_UI04_resultados.png,UI04: ranking de 18 módulos,No
+CP02,capturas/CP02_rechazo_sin_loc.png,UI02: rechazo del CSV sin la columna loc,No
+CP03,capturas/CP03_rechazo_inf.png,UI02: rechazo de valores Inf,No
+CP03,capturas/CP03_rechazo_texto.png,UI02: rechazo de dato no numérico,No
+CP04,capturas/CP04_exportacion_escapada.png,"CSV exportado abierto como texto, identificador con comilla inicial",No
+CP05,capturas/CP05_UI05_historial.png,"UI05: UUID, hash y 18 registros consultables",No
+CP06,capturas/CP06_equipo_y_ejecucion.png,Consola local mostrando equipo y corrida de rendimiento,No
+CP11,capturas/CP11_rechazo_id_duplicado.png,UI02: rechazo de IDs duplicados,No
+CP12,capturas/CP12_bloqueo_hash.png,Consola: rechazo SHA-256 sobre una copia aislada,No

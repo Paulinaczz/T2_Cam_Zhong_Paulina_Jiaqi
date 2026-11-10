@@ -34,12 +34,12 @@ Este documento resume los fundamentos metodológicos, la evidencia experimental 
 
 ---
 
-## 3. Evaluación de priorización y esfuerzo de QA: Distinción de experimentos
+## 3. Evaluación de priorización y esfuerzo de QA: Comparaciones experimentales
 
-Se evaluó la eficacia de priorización bajo dos métricas de presupuesto: porcentaje de módulos inspeccionados y porcentaje de líneas de código (LOC). Es fundamental distinguir dos evaluaciones con alcances diferentes:
+Se evaluó la eficacia de priorización bajo dos métricas de presupuesto: porcentaje de módulos inspeccionados y porcentaje de líneas de código (LOC). Es fundamental distinguir las tres evaluaciones realizadas:
 
 ### A. Experimento original: Procedimiento de selección anidada (Nested LOPO)
-En la evaluación externa del pipeline seleccionado dinámicamente (`03_experimentos/QA_promedios_proyecto.csv`), los promedios al 20 % de presupuesto fueron:
+En la evaluación externa del pipeline seleccionado dinámicamente (`research/experimentos/QA_promedios_proyecto.csv`), los promedios al 20 % de presupuesto fueron:
 
 | Estrategia (Nested LOPO) | Recall@20% Módulos | Recall@20% LOC (módulos completos) | Popt (0–20%) |
 | :--- | :---: | :---: | :---: |
@@ -48,31 +48,70 @@ En la evaluación externa del pipeline seleccionado dinámicamente (`03_experime
 | **LOC descendente (módulos más grandes)** | 44,20 % | 9,40 % | 0,0607 |
 | **Referencia aleatoria esperada** | 20,12 % | 19,87 % | 0,1698 |
 
-*Resultado clave:* Al medir el presupuesto en líneas de código, **ManualUp (28,74 %)** superó ampliamente a **ML puro (18,02 %)**.
+*Resultado:* Al medir el esfuerzo en líneas de código, la regla determinista **ManualUp (28,74 %)** superó al **ML puro (18,02 %)**.
 
-### B. Experimento adicional: Ranking híbrido consciente del esfuerzo
-En el análisis post-hoc exploratorio sobre la cohorte deduplicada completa (`03_experimentos/ranking_consciente_del_esfuerzo/comparacion_promedio.csv`), se combinaron los rangos porcentuales del margen SVM y del tamaño en LOC:
+### B. Experimento exploratorio: Ranking híbrido lineal
+En el análisis post-hoc exploratorio sobre la cohorte deduplicada completa (`research/experimentos/ranking_consciente_del_esfuerzo/comparacion_promedio.csv`):
 
-| Estrategia (Cohorte completa) | Recall@20% Módulos | Recall@20% LOC (módulos completos) | Popt (0–20%) |
+| Estrategia | Recall@20% Módulos | Recall@20% LOC | Popt (0–20%) |
 | :--- | :---: | :---: | :---: |
 | **ManualUp (LOC ascendente puro)** | 6,24 % | **28,74 %** | **0,2571** |
 | **Ranking Híbrido (peso óptimo ML)** | 6,47 % | **25,13 %** | **0,2186** |
 | **SVM solo (sin combinar con LOC)** | **42,61 %** | **16,85 %** | **0,1460** |
-| **LOC descendente** | 44,20 % | 9,40 % | 0,0607 |
-| **Referencia aleatoria** | 19,96 % | 19,53 % | 0,1670 |
 
-*Distinción metodológica:*
-- En el **experimento anidado original**, la selección de ML alcanzó **18,02 %** de Recall@20% LOC.
-- En el **experimento adicional**, el modelo fijo de SVM solo alcanzó **16,85 %** de Recall@20% LOC. La ponderación híbrida elevó este valor a **25,13 %**, pero **ManualUp siguió obteniendo el mejor desempeño con 28,74 %**.
-- **Conclusión unificada:** Tanto al 18,02 % como al 16,85 %, el modelo predictivo de Machine Learning **no supera a ManualUp en ahorro de esfuerzo por LOC**. Por consiguiente, el modelo **no garantiza ahorro de tiempo ni mejora universal frente a ManualUp** si la auditoría se planifica estrictamente en función del volumen de líneas de código inspeccionadas.
+### C. Nueva estrategia solicitada por el asesor: Probabilidad Calibrada / LOC
+Para abordar rigurosamente la relación entre probabilidad de defecto y esfuerzo sin recurrir a ponderaciones heurísticas arbitrarias, se implementó la calibración de probabilidad mediante regresión sigmoide (Platt scaling) entrenada **exclusivamente con los proyectos fuente** (*out-of-fold*, sin fuga de información del proyecto objetivo). La prioridad se definió como:
+
+$$\text{Prioridad}_i = \frac{\widehat{P}(\text{defecto}_i)}{\text{LOC}_i}$$
+
+Los resultados consolidados en `research/experimentos/estrategia_esfuerzo/principal_deduplicada/` muestran:
+
+| Métrica / Parámetro | E6 Calibrado / LOC | Heurística ManualUp | Diferencia ($\Delta$) | Interpretación |
+| :--- | :--- | :--- | :--- | :--- |
+| **Recall@20 % LOC (Promedio)** | **29,09 %** | **28,74 %** | **+0,36 p.p.** | Ventaja promedio marginal (+0,00356) |
+| **Recall@10 % LOC (Promedio)** | 15,39 % | 15,25 % | +0,15 p.p. | Comportamiento prácticamente idéntico |
+| **$P_{\text{opt}}$ normalizado (0–20 %)** | 25,50 % | 25,71 % | -0,21 p.p. | ManualUp ligeramente superior en área |
+| **$P_{\text{opt}}$ normalizado (0–100 %)** | 62,39 % | 62,27 % | +0,12 p.p. | Empate global |
+| **Proyectos con $\Delta > 0$ (favorece ML)** | 2 de 5 (CM1: +4,35 p.p., JM1: +0,85 p.p.) | — | — | ML gana en 2 proyectos |
+| **Proyectos con $\Delta < 0$ (favorece ManualUp)** | — | 3 de 5 (KC1: -0,97 p.p., KC2: -1,02 p.p., PC1: -1,43 p.p.) | — | ManualUp gana en 3 proyectos |
+
+#### Intervalos de Confianza Bootstrap al 95 % (1000 iteraciones)
+- **CM1:** $\Delta = +4,35\text{ p.p.}$, IC 95 %: $[-5,56\text{ p.p.},\; +11,63\text{ p.p.}]$ (incluye 0)
+- **JM1:** $\Delta = +0,85\text{ p.p.}$, IC 95 %: $[-0,83\text{ p.p.},\; +2,30\text{ p.p.}]$ (incluye 0)
+- **KC1:** $\Delta = -0,97\text{ p.p.}$, IC 95 %: $[-3,04\text{ p.p.},\; +1,06\text{ p.p.}]$ (incluye 0)
+- **KC2:** $\Delta = -1,02\text{ p.p.}$, IC 95 %: $[-7,22\text{ p.p.},\; +1,92\text{ p.p.}]$ (incluye 0)
+- **PC1:** $\Delta = -1,43\text{ p.p.}$, IC 95 %: $[-4,29\text{ p.p.},\; +3,80\text{ p.p.}]$ (incluye 0)
+
+### Conclusión Científica Unificada sobre Esfuerzo de QA
+1. **Ausencia de superioridad consistente:** Dado que los intervalos bootstrap de las diferencias incluyen el cero en los 5 proyectos y el clasificador solo supera a ManualUp en 2 de los 5 casos, **no existe evidencia estadística suficiente para sostener superioridad consistente del modelo predictivo frente a la heurística de módulos pequeños (ManualUp)** cuando el esfuerzo se mide en líneas de código.
+2. **Separación de propósitos:** Este resultado experimental corresponde a la investigación científica de esfuerzo en Colab y no debe confundirse con la aplicación operativa Streamlit, la cual ordena módulos por el margen del SVM `E6_ADASYN_MI`.
 
 ---
 
-## 4. Limitaciones y alcances operativos
+## 4. Evidencias de Validación Técnica y Operativa (PI13–PI14)
 
-1. **Contextualización del metadato `candidato_no_desplegado`:**
-   En `metadatos_modelo.json` y en el paquete serializado Joblib figura la clave `"candidato_no_desplegado": true`. Este campo proviene de la fase experimental de Colab (en la que E6 era un candidato de investigación mientras E7 figuraba previamente en el prototipo). Al integrarse formalmente en este prototipo, E6 es el **modelo operativo oficial en Streamlit**. El artefacto Joblib no fue alterado artificialmente para mantener la coincidencia criptográfica byte a byte y la estricta verificación de integridad (`5a420bc5...`).
-2. **Dependencia de métricas calculadas previamente:** El software no inspecciona código fuente ni repositorios Git; requiere que las **21 métricas estáticas compatibles** se hayan calculado y tabulado previamente con definiciones homogéneas.
-3. **Procedencia documental de los datos:** Los datasets provienen del repositorio público NASA/PROMISE sin auditoría documental primaria del creador original (`documentally_verified: false`). Existen alias (p. ej. `locCodeAndComment`) y 121 tuplas con métricas idénticas y etiquetas dispares que fueron identificadas durante la auditoría.
-4. **Naturaleza del score:** El valor `score_riesgo` es el margen funcional de decisión SVM sin calibrar; **no representa una probabilidad porcentual de defecto**. Se emplea estrictamente como criterio de ordenación relativa.
-5. **Juicio profesional de SQA:** La clasificación como «potencialmente defectuoso» es una estimación estadística y nunca sustituye las pruebas funcionales, la inspección humana ni el juicio de los analistas de calidad de software.
+Las pruebas locales reproducibles registraron los siguientes resultados en `evidencias/pi13/validacion_local/`:
+
+- **Casos funcionales y de seguridad:**
+  - **CP01 (Importación y ranking 18 módulos):** Aprobado en backend y validado en UI.
+  - **CP02 (Rechazo sin columna `loc`):** Aprobado en backend (`rechazo.txt`).
+  - **CP03 (Rechazo de Inf y no numéricos):** Aprobado en backend (`rechazos.txt`).
+  - **CP04 (Protección contra inyección de fórmulas CSV):** Aprobado en backend (`salida_sanitizada.csv`), comprobando que `=1+2` se escapa como `'=1+2`.
+  - **CP05 (Historial e integridad SQLite):** Aprobado en backend y visualmente (`historial.csv`, `predicciones_sqlite.csv`).
+  - **CP11 (Rechazo de formato no CSV y duplicados):** Aprobado en backend (`rechazos.txt`).
+  - **CP12 (Bloqueo por alteración SHA-256):** Aprobado en backend sobre copia temporal (`rechazo_hash.txt`).
+  - **Suite Pytest:** 14 pruebas unitarias e integración aprobadas al 100 %.
+- **Rendimiento (CP06 — 30 repeticiones por lote):**
+  - **Lote `ejemplo_18` (18 módulos):** Tiempo de inferencia $p_{95} = \mathbf{0,0767\text{ s}}$, cumpliendo con holgura la meta exigida de $p_{95} \le 5\text{ s}$.
+  - **Lote `JM1_completo` (13 204 módulos):** Tiempo de inferencia $p_{95} \approx \mathbf{50,50\text{ s}}$ (media 48,89 s; validación 0,47 s), reportado con fines descriptivos de escalabilidad.
+
+---
+
+## 5. Estado de Observaciones y Casos Pendientes
+
+Para mantener el rigor académico y no declarar aprobaciones prematuras:
+
+1. **CP09 (Sensibilidad y repetibilidad):** Permanece como pendiente formal hasta consolidar un protocolo de repetición con número suficiente de semillas e iteraciones independientes.
+2. **CP10 (Aceptación y usabilidad con usuarios):** Permanece pendiente de ejecución real mediante la aplicación del instrumento validado I-05 a evaluadores y analistas de QA; no se simulan participantes ni respuestas ficticias.
+3. **Capturas de rechazo de interfaz:** Las evidencias visuales cubren el flujo positivo (EVV01–EVV11). Los mensajes específicos de error para CP02, CP03 y CP11 en el navegador no disponen de captura fotográfica en esta entrega, quedando respaldados por los reportes de backend.
+4. **Observaciones del asesor:** Permanecen en revisión continua hasta contar con el dictamen y aprobación formal correspondiente.

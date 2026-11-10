@@ -1,0 +1,2 @@
+Faltan métricas obligatorias: loc
+No se crearon ejecuciones en SQLite.

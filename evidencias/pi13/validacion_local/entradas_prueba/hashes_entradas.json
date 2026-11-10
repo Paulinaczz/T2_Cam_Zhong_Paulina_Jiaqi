@@ -1,0 +1,30 @@
+{
+  "CP02_sin_loc": {
+    "archivo": "entradas_prueba\\CP02_sin_loc.csv",
+    "sha256": "18d6674906ba957015c774ebb7d036190f2c235bc7fde10044e4e1e13c7d4b5e"
+  },
+  "CP03_inf": {
+    "archivo": "entradas_prueba\\CP03_inf.csv",
+    "sha256": "aa90e7e3ea4aede66649f46cc9827c5d45035a77c5fed4187b240b33a1307b77"
+  },
+  "CP03_texto": {
+    "archivo": "entradas_prueba\\CP03_texto.csv",
+    "sha256": "d77e7ead1cce5dc9a75deda1637d0871cbd8f06f0deaf3915bfa2d22a94fbd74"
+  },
+  "CP04_formula": {
+    "archivo": "entradas_prueba\\CP04_formula.csv",
+    "sha256": "df3805804296efd23741ad05f062b4d67ac06ee81c289a308a4e9dae2c318fad"
+  },
+  "CP11_id_duplicado": {
+    "archivo": "entradas_prueba\\CP11_id_duplicado.csv",
+    "sha256": "dcb4b19159e2ad09693edb2ee6945bc7656f127ea3dd0a3aacae1b0d860b48cf"
+  },
+  "CP11_extension_invalida": {
+    "archivo": "entradas_prueba\\CP11_extension_invalida.xlsx",
+    "sha256": "be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1"
+  },
+  "CP01_original": {
+    "archivo": "data/sample/ejemplo_carga.csv",
+    "sha256": "be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1"
+  }
+}

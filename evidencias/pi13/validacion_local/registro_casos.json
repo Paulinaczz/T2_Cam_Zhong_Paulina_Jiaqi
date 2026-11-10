@@ -1,0 +1,112 @@
+[
+  {
+    "caso": "CP01",
+    "escenario": "ES01",
+    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP01",
+      "filas": 18,
+      "evidencia": "comprobacion.json + predicciones_cp01.csv + traza_cp01.sqlite3"
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP02",
+    "escenario": "ES02",
+    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP02",
+      "rechazo": "Faltan métricas obligatorias: loc",
+      "ejecuciones_guardadas": 0
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP03",
+    "escenario": "ES03",
+    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP03",
+      "inf": "'loc' contiene valores infinitos",
+      "texto": "'v' contiene valores no numéricos (líneas CSV: [2])",
+      "ejecuciones_guardadas": 0
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP04",
+    "escenario": "ES04",
+    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP04",
+      "resultado": "Identificador escapado antes de exportación"
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP05",
+    "escenario": "ES05",
+    "fecha_utc": "2026-11-10T04:27:49+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP05",
+      "UUID": "da618506-0674-4081-a6a9-8e489e46d3f5",
+      "filas_sqlite": 18
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP11",
+    "escenario": "ES11",
+    "fecha_utc": "2026-11-10T04:27:49+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP11",
+      "extension": "Solo se permiten archivos con extensión .csv",
+      "ids": "id_modulo no debe contener valores vacíos ni repetidos",
+      "ejecuciones_guardadas": 0
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP12",
+    "escenario": "ES12",
+    "fecha_utc": "2026-11-10T04:27:49+00:00",
+    "estado_backend": "APROBADO_BACKEND",
+    "evidencia": {
+      "ruta": "casos\\CP12",
+      "modelo_original_intacto": true,
+      "rechazo": "El SHA-256 del pipeline no coincide con el valor registrado"
+    },
+    "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  },
+  {
+    "caso": "CP06",
+    "escenario": "ES06",
+    "fecha_utc": "2026-11-10T04:54:08+00:00",
+    "estado_backend": "MEDICION_EJECUTADA",
+    "evidencia": {
+      "ruta": "casos\\CP06",
+      "repeticiones_por_lote": 30,
+      "lotes": {
+        "ejemplo_18": 18,
+        "JM1_completo": 13204
+      },
+      "validacion_e_inferencia_separadas": true,
+      "advertencia": "p95 <=5s es criterio original solo para 18 filas. Para JM1 se reporta rendimiento descriptivo, no se inventa nueva meta."
+    },
+    "observacion": "Medición completa; consultar el veredicto real de p95 en resumen_cp06.csv",
+    "captura_ui": "PENDIENTE_DE_VERIFICACION_MANUAL"
+  }
+]
