@@ -1,4 +1,15 @@
-Las 11 capturas de pantalla reales de la interfaz Streamlit y archivos de soporte se encuentran organizadas y verificadas en la carpeta:
-evidencias/pi13/capturas/
+Capturas de pantalla reales pendientes de realizar por la tesista en Streamlit.
+No se generan capturas ficticias ni se considera superado el componente de interfaz.
+Ver GUIA_EJECUCION_PI13.md para las instrucciones paso a paso.
 
-Consulte evidencias/pi13/capturas/INDICE_CAPTURAS.csv y evidencias/pi13/capturas/LEEME_EVIDENCIAS.md para el índice detallado con SHA-256, casos relacionados y limitaciones de cada evidencia visual.
+CP01 | CP01_UI02_carga.png | UI02: carga de ejemplo_carga.csv
+CP01 | CP01_UI03_validacion.png | UI03: 18 módulos y 21 métricas
+CP01 | CP01_UI04_resultados.png | UI04: ranking de 18 módulos
+CP02 | CP02_rechazo_sin_loc.png | UI02: rechazo del CSV sin la columna loc
+CP03 | CP03_rechazo_inf.png | UI02: rechazo de valores Inf
+CP03 | CP03_rechazo_texto.png | UI02: rechazo de dato no numérico
+CP04 | CP04_exportacion_escapada.png | CSV exportado abierto como texto, identificador con comilla inicial
+CP05 | CP05_UI05_historial.png | UI05: UUID, hash y 18 registros consultables
+CP06 | CP06_equipo_y_ejecucion.png | Consola local mostrando equipo y corrida de rendimiento
+CP11 | CP11_rechazo_id_duplicado.png | UI02: rechazo de IDs duplicados
+CP12 | CP12_bloqueo_hash.png | Consola: rechazo SHA-256 sobre una copia aislada

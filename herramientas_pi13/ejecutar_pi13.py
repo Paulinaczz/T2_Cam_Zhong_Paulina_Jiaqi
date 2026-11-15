@@ -135,7 +135,7 @@ def prepare_fixtures(root: Path, evidencias: Path):
     inval = folder / "CP11_extension_invalida.xlsx"
     inval.write_bytes(src.read_bytes()); fixtures["CP11_extension_invalida"] = inval
     fixtures["CP01_original"] = src
-    json_write(folder/"hashes_entradas.json", {n: {"archivo": str(p.relative_to(evidencias)) if p.is_relative_to(evidencias) else str(p), "sha256": sha256_file(p)} for n,p in fixtures.items()})
+    json_write(folder/"hashes_entradas.json", {n: {"archivo": p.relative_to(evidencias).as_posix() if p.is_relative_to(evidencias) else (p.relative_to(root).as_posix() if p.is_relative_to(root) else str(p)), "sha256": sha256_file(p)} for n,p in fixtures.items()})
     return fixtures
 
 
@@ -328,7 +328,7 @@ def run_performance(repo: Path,out: Path,log:Logger,pds,artifact,jm1:Path,repeti
     outputs=out/"casos/CP06"; outputs.mkdir(parents=True,exist_ok=True)
     progress_file=outputs/"mediciones_parciales.jsonl"
     meta_file=outputs/"configuracion.json"
-    datasets={key:{"ruta":str(path.resolve()),"sha256":sha256_file(path),"filas_esperadas":18 if key=="ejemplo_18" else 13204}
+    datasets={key:{"ruta":path.relative_to(repo).as_posix() if path.is_relative_to(repo) else str(path.resolve()),"sha256":sha256_file(path),"filas_esperadas":18 if key=="ejemplo_18" else 13204}
               for key,path in inputs.items()}
     config={"hash_modelo":artifact.sha256,"repeticiones":repetitions,"datasets":datasets,
             "excluye_arranque":True,"sin_persistencia_en_tiempos":True}

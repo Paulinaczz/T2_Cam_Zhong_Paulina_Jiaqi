@@ -86,6 +86,18 @@ Los resultados consolidados en `research/experimentos/estrategia_esfuerzo/princi
 1. **Ausencia de superioridad consistente:** Dado que los intervalos bootstrap de las diferencias incluyen el cero en los 5 proyectos y el clasificador solo supera a ManualUp en 2 de los 5 casos, **no existe evidencia estadística suficiente para sostener superioridad consistente del modelo predictivo frente a la heurística de módulos pequeños (ManualUp)** cuando el esfuerzo se mide en líneas de código.
 2. **Separación de propósitos:** Este resultado experimental corresponde a la investigación científica de esfuerzo en Colab y no debe confundirse con la aplicación operativa Streamlit, la cual ordena módulos por el margen del SVM `E6_ADASYN_MI`.
 
+### D. Integración en el Prototipo Operativo (Atención a la Observación O1)
+En respuesta a la observación O1 del asesor, se integró en la aplicación web la comparación interactiva entre las tres estrategias de priorización:
+1. **Estrategia Operativa (Margen SVM E6):** Ordenamiento por margen de decisión descendente, preservando el comportamiento original del artefacto validado.
+2. **Estrategia Experimental (Probabilidad Calibrada / LOC):** Modela la densidad de riesgo dividiendo la probabilidad estimada mediante calibración Platt $\widehat{P}(\text{defecto})$ entre las líneas de código $\text{LOC}$.
+3. **Estrategia de Referencia (ManualUp):** Ordenamiento por $\text{LOC}$ ascendente (módulos más pequeños primero).
+
+**Detalles de implementación y trazabilidad:**
+- **Calibrador serializado:** `artifacts/models/calibrador_probabilidad_e6.joblib` (SHA-256: `a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19`), acompañado de `metadatos_calibrador.json` e `integridad_calibrador.json`.
+- **Ajuste del calibrador:** En el experimento científico (Nested LOPO), cada pliegue ajustó su calibración exclusivamente con los 4 proyectos fuente. Para la inferencia en producción con el artefacto reentrenado en los 5 proyectos, se entrenó un calibrador logístico sobre las 11 690 predicciones históricas fuera de pliegue (*out-of-fold*) documentadas en `research/experimentos/estrategia_esfuerzo/principal_deduplicada/predicciones_por_proyecto.csv` ($\beta_1 = 0,7743$, $\beta_0 = -1,2852$).
+- **Integridad del pipeline E6:** El archivo del pipeline original `modelo_predictivo_pds.joblib` (SHA-256: `5a420bc5...`) no sufrió ninguna alteración ni sustitución silenciosa.
+- **Visualización en UI04:** La interfaz organiza la vista de resultados en dos pestañas claramente diferenciadas: una para el ranking operativo con margen SVM y otra para la matriz comparativa de estrategias, advirtiendo explícitamente que el ML no demostró superioridad consistente sobre ManualUp.
+
 ---
 
 ## 4. Evidencias de Validación Técnica y Operativa (PI13–PI14)
@@ -100,7 +112,7 @@ Las pruebas locales reproducibles registraron los siguientes resultados en `evid
   - **CP05 (Historial e integridad SQLite):** Aprobado en backend y visualmente (`historial.csv`, `predicciones_sqlite.csv`).
   - **CP11 (Rechazo de formato no CSV y duplicados):** Aprobado en backend (`rechazos.txt`).
   - **CP12 (Bloqueo por alteración SHA-256):** Aprobado en backend sobre copia temporal (`rechazo_hash.txt`).
-  - **Suite Pytest:** 14 pruebas unitarias e integración aprobadas al 100 %.
+  - **Suite Pytest:** 15 pruebas unitarias e integración aprobadas al 100 % (incluye pruebas de calibración y comparación de estrategias).
 - **Rendimiento (CP06 — 30 repeticiones por lote):**
   - **Lote `ejemplo_18` (18 módulos):** Tiempo de inferencia $p_{95} = \mathbf{0,0767\text{ s}}$, cumpliendo con holgura la meta exigida de $p_{95} \le 5\text{ s}$.
   - **Lote `JM1_completo` (13 204 módulos):** Tiempo de inferencia $p_{95} \approx \mathbf{50,50\text{ s}}$ (media 48,89 s; validación 0,47 s), reportado con fines descriptivos de escalabilidad.

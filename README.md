@@ -40,9 +40,9 @@ La interfaz web se iniciará automáticamente en `http://localhost:8501`.
 1. **UI01 (Inicio y Verificación):** Muestra los metadatos del pipeline activo (`SVM · E6_ADASYN_MI`), su hash criptográfico SHA-256 y permite descargar la plantilla CSV oficial.
 2. **UI02 (Carga de Datos):** Permite subir archivos CSV con métricas de software (p. ej., `data/sample/ejemplo_carga.csv`).
 3. **UI03 (Validación de Esquema):** Valida las 21 columnas requeridas, tipo de datos numéricos y ausencia de duplicados, mostrando el hash SHA-256 del archivo cargado.
-4. **UI04 (Inferencia y Priorización):** Ejecuta la predicción mediante el clasificador SVM, asigna la prioridad según el margen funcional decreciente y permite exportar el ranking sanitizado en CSV.
+4. **UI04 (Inferencia, Priorización y Comparativa):** Ejecuta la predicción mediante el clasificador SVM. Ofrece dos pestañas: **Ranking Operativo** (orden decreciente por margen SVM) y **Comparación de Estrategias** (en atención a la **Observación O1**, contrasta el margen SVM, la densidad experimental de probabilidad calibrada por LOC y la heurística ManualUp). Permite exportar ambos rankings en CSV sanitizado.
 5. **UI05 (Historial y Trazabilidad):** Consulta el registro auditable persistido en base de datos SQLite aislada (identificador UUID, marcas de tiempo UTC, hashes y estado de ejecución).
-6. **UI06 (Guía y Limitaciones):** Explica el significado del margen de soporte y advierte que el valor numérico no es una probabilidad porcentual.
+6. **UI06 (Guía y Limitaciones):** Explica el significado del margen de soporte, la calibración Platt y advierte sobre los límites empíricos del modelo frente a ManualUp.
 
 ---
 
@@ -67,6 +67,11 @@ En el marco de la investigación en Google Colab sobre predicción entre proyect
 
 > **Conclusión metodológica:** La diferencia media en Recall@20 % LOC es de +0,36 puntos porcentuales y los intervalos bootstrap al 95 % de las diferencias incluyen el cero en la totalidad de los proyectos. Por lo tanto, **no existe evidencia estadística suficiente para sostener una superioridad consistente del aprendizaje automático frente a la regla determinista de priorizar módulos pequeños (ManualUp)**. Estos resultados forman parte del análisis experimental de investigación y se documentan con rigurosidad académica en [docs/METODOLOGIA_Y_LIMITES.md](docs/METODOLOGIA_Y_LIMITES.md).
 
+### C. Artefacto Calibrador para Inferencia (Observación O1)
+- **Calibrador serializado:** `artifacts/models/calibrador_probabilidad_e6.joblib` (SHA-256: `a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19`).
+- **Función de calibración:** Sigmoide de Platt ajustada sobre los 11 690 márgenes *out-of-fold* del conjunto histórico ($\beta_1 = 0,7743$, $\beta_0 = -1,2852$). Mapea el margen SVM continuo a una probabilidad en $[0, 1]$.
+- **Integridad del pipeline base:** El modelo predictivo principal `modelo_predictivo_pds.joblib` (SHA-256: `5a420bc5...`) permanece 100 % intacto e inalterado.
+
 ---
 
 ## 4. Evidencias de Validación Técnica y Operativa (PI13–PI14)
@@ -88,7 +93,7 @@ Los informes formales se encuentran disponibles en:
 | **CP06** | Rendimiento | 30 repeticiones lote 18: $p_{95} = \mathbf{0,0767\text{ s}}$ (meta $\le 5\text{ s}$ superada). 30 repeticiones JM1: $p_{95} \approx \mathbf{50,50\text{ s}}$ | `evidencias/pi13/validacion_local/casos/CP06/` |
 | **CP11** | Seguridad | Rechazo de extensiones incompatibles (`.xlsx`) e IDs duplicados | `evidencias/pi13/validacion_local/casos/CP11/` |
 | **CP12** | Seguridad | Bloqueo estricto del pipeline ante alteración del hash SHA-256 | `evidencias/pi13/validacion_local/casos/CP12/` |
-| **Pytest** | Automatizada | **14 pruebas aprobadas al 100 %** (0 fallos, 0 omisiones) | `evidencias/pi13/validacion_local/suite_pytest.txt` |
+| **Pytest** | Automatizada | **15 pruebas aprobadas al 100 %** (0 fallos, 0 omisiones, incluye tests de calibración) | `evidencias/pi13/validacion_local/suite_pytest.txt` |
 
 Las evidencias visuales con las 11 capturas de pantalla de la interfaz y su matriz de trazabilidad se ubican en [evidencias/pi13/capturas/INDICE_CAPTURAS.csv](evidencias/pi13/capturas/INDICE_CAPTURAS.csv).
 

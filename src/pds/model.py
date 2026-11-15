@@ -9,6 +9,7 @@ from pathlib import Path
 import hashlib
 import json
 import joblib
+import numpy as np
 from importlib.metadata import version, PackageNotFoundError
 
 # Guardado en Colab v11: scikit-learn 1.6.1 / imbalanced-learn 0.14.2.
@@ -32,11 +33,26 @@ from .errors import ModelError
 
 
 @dataclass(frozen=True)
+class CalibratorArtifact:
+    estimator: object
+    coef: float
+    intercept: float
+    manifest: dict
+    sha256: str
+    path: Path
+
+    def predict_proba(self, margins: np.ndarray) -> np.ndarray:
+        m = np.asarray(margins, dtype=float)
+        return 1.0 / (1.0 + np.exp(-(self.coef * m + self.intercept)))
+
+
+@dataclass(frozen=True)
 class ModelArtifact:
     pipeline: object
     manifest: dict
     sha256: str
     path: Path
+    calibrator: CalibratorArtifact | None = None
 
 
 def file_sha256(path: Path) -> str:
@@ -86,4 +102,39 @@ def load_model(directory: Path) -> ModelArtifact:
         raise ModelError("Faltan transformaciones del pipeline original")
     if steps["selection"].__class__.__name__ != "SelectKBest" or steps["sampler"].__class__.__name__ != "ADASYN" or steps["model"].__class__.__name__ != "SVC":
         raise ModelError("Los estimadores del pipeline no corresponden al escenario E6_ADASYN_MI")
-    return ModelArtifact(pipeline=pipeline, manifest=manifest_file, sha256=actual_sha, path=model_path)
+    calibrator = load_calibrator(directory)
+    return ModelArtifact(pipeline=pipeline, manifest=manifest_file, sha256=actual_sha, path=model_path, calibrator=calibrator)
+
+
+def load_calibrator(directory: Path) -> CalibratorArtifact | None:
+    directory = Path(directory)
+    calib_path = directory / "calibrador_probabilidad_e6.joblib"
+    integrity_path = directory / "integridad_calibrador.json"
+    manifest_path = directory / "metadatos_calibrador.json"
+    if not calib_path.is_file() or not integrity_path.is_file() or not manifest_path.is_file():
+        return None
+    try:
+        integrity = json.loads(integrity_path.read_text(encoding="utf-8"))
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    actual_sha = file_sha256(calib_path)
+    if integrity.get("sha256") != actual_sha:
+        raise ModelError("El SHA-256 del calibrador de probabilidad no coincide con el valor registrado")
+    try:
+        bundle = joblib.load(calib_path)
+    except Exception as ex:
+        raise ModelError("No se pudo cargar el artefacto del calibrador") from ex
+    if isinstance(bundle, dict):
+        estimator = bundle.get("estimator")
+        coef = float(bundle.get("coef", manifest.get("coeficiente_sigmoide", 0.0)))
+        intercept = float(bundle.get("intercept", manifest.get("intercepto_sigmoide", 0.0)))
+    elif hasattr(bundle, "coef_"):
+        estimator = bundle
+        coef = float(bundle.coef_[0, 0])
+        intercept = float(bundle.intercept_[0])
+    else:
+        coef = float(manifest.get("coeficiente_sigmoide", 0.0))
+        intercept = float(manifest.get("intercepto_sigmoide", 0.0))
+        estimator = None
+    return CalibratorArtifact(estimator=estimator, coef=coef, intercept=intercept, manifest=manifest, sha256=actual_sha, path=calib_path)
