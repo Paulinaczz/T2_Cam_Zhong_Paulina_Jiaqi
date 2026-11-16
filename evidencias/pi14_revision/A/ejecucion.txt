@@ -1,0 +1,49 @@
+semilla42_a: seed=42
+  CM1 | SVM | E7_SMOTE_RF
+  CM1 | Random Forest | E6_ADASYN_MI
+  CM1 | XGBoost | E5_SMOTE_MI
+  JM1 | SVM | E5_SMOTE_MI
+  JM1 | Random Forest | E5_SMOTE_MI
+  JM1 | XGBoost | E5_SMOTE_MI
+  KC1 | SVM | E6_ADASYN_MI
+  KC1 | Random Forest | E7_SMOTE_RF
+  KC1 | XGBoost | E6_ADASYN_MI
+  KC2 | SVM | E8_ADASYN_RF
+  KC2 | Random Forest | E6_ADASYN_MI
+  KC2 | XGBoost | E6_ADASYN_MI
+  PC1 | SVM | E8_ADASYN_RF
+  PC1 | Random Forest | E2_ADASYN
+  PC1 | XGBoost | E8_ADASYN_RF
+semilla42_b: seed=42
+  CM1 | SVM | E7_SMOTE_RF
+  CM1 | Random Forest | E6_ADASYN_MI
+  CM1 | XGBoost | E5_SMOTE_MI
+  JM1 | SVM | E5_SMOTE_MI
+  JM1 | Random Forest | E5_SMOTE_MI
+  JM1 | XGBoost | E5_SMOTE_MI
+  KC1 | SVM | E6_ADASYN_MI
+  KC1 | Random Forest | E7_SMOTE_RF
+  KC1 | XGBoost | E6_ADASYN_MI
+  KC2 | SVM | E8_ADASYN_RF
+  KC2 | Random Forest | E6_ADASYN_MI
+  KC2 | XGBoost | E6_ADASYN_MI
+  PC1 | SVM | E8_ADASYN_RF
+  PC1 | Random Forest | E2_ADASYN
+  PC1 | XGBoost | E8_ADASYN_RF
+semilla43: seed=43
+  CM1 | SVM | E7_SMOTE_RF
+  CM1 | Random Forest | E6_ADASYN_MI
+  CM1 | XGBoost | E5_SMOTE_MI
+  JM1 | SVM | E5_SMOTE_MI
+  JM1 | Random Forest | E5_SMOTE_MI
+  JM1 | XGBoost | E5_SMOTE_MI
+  KC1 | SVM | E6_ADASYN_MI
+  KC1 | Random Forest | E7_SMOTE_RF
+  KC1 | XGBoost | E6_ADASYN_MI
+  KC2 | SVM | E8_ADASYN_RF
+  KC2 | Random Forest | E6_ADASYN_MI
+  KC2 | XGBoost | E6_ADASYN_MI
+  PC1 | SVM | E8_ADASYN_RF
+  PC1 | Random Forest | E2_ADASYN
+  PC1 | XGBoost | E8_ADASYN_RF
+Igualdad exacta de métricas, semilla fija: True

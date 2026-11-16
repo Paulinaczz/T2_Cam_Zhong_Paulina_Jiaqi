@@ -1,0 +1,5 @@
+    - generic "CP11_id_duplicado.csv, 2.2KB":
+      - generic "CP11_id_duplicado.csv": CP11_id...licado.csv
+      - button "Remove CP11_id_duplicado.csv":
+    - strong: CP11_id_duplicado.csv
+    - paragraph: "No se pudo validar: id_modulo no debe contener valores vacíos ni repetidos"

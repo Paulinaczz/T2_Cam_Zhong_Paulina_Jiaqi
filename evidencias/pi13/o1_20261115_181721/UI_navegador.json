@@ -1,0 +1,13 @@
+{
+  "ejecucion": "0f32945b-8bae-4ee9-b5de-b631b8473d59",
+  "estado": "COMPLETADA",
+  "modulos": 18,
+  "capturas": [
+    "UI03_validacion.jpg",
+    "UI04_comparacion.jpg",
+    "UI04_matriz.jpg",
+    "UI04_matriz_ampliada.jpg",
+    "UI04_ranking_svm.jpg",
+    "UI05_historial.jpg"
+  ]
+}

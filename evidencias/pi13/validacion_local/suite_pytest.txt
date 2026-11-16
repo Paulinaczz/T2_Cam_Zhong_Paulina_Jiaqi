@@ -1,7 +1,7 @@
 COMANDO: python -m pytest -q tests
 CÓDIGO: 0
 STDOUT:
-..............                                                           [100%]
-14 passed in 4.38s
+...............                                                          [100%]
+15 passed in 5.37s
 
 STDERR:

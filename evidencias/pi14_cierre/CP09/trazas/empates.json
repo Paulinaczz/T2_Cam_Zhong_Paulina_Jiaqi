@@ -1,0 +1,599 @@
+{
+  "variante": "empates",
+  "config_historica": "1d813bae1fa9f91a944be4e355ff6887bde6af8d09a70f9d71df6ac7ea3db51e",
+  "python": "3.13.0",
+  "sistema": "Windows",
+  "versiones": {
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.6.1",
+    "imbalanced-learn": "0.14.2",
+    "xgboost": "3.4.1"
+  },
+  "hilos": 1,
+  "backend_cython": true,
+  "bibliotecas_nativas": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "version": "0.3.34.237.2",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "vcomp",
+      "version": null
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "version": "0.3.31.dev",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    }
+  ],
+  "casos": [
+    {
+      "proyecto": "PC1",
+      "algoritmo": "Random Forest",
+      "escenario": "E2_ADASYN",
+      "etapas": {
+        "01_entrada": {
+          "CM1": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+          "JM1": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+          "KC1": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+          "KC2": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+          "PC1": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4"
+        },
+        "02_filas": {
+          "CM1": {
+            "x": {
+              "shape": [
+                439,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "8fb0c8c0dd08073f51e9eeaae5339052f46e2f676ecd206de70d3132a0b7badf"
+            },
+            "y": {
+              "shape": [
+                439
+              ],
+              "tipo": "<i8",
+              "sha256": "ded7b389232c5f4349c92c25d0956d96279a6825daa82250eea344625fc2c70b"
+            }
+          },
+          "JM1": {
+            "x": {
+              "shape": [
+                8787,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "b60f198ebfe310096870108e02b375cd675c63de55d17c51686e7ee26169914a"
+            },
+            "y": {
+              "shape": [
+                8787
+              ],
+              "tipo": "<i8",
+              "sha256": "56926090c3f9c0411454e5ce0b6c9a171fb5d35e78db0784a31cddee8408a2dd"
+            }
+          },
+          "KC1": {
+            "x": {
+              "shape": [
+                1166,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "dab8b7fcdc464fc8666065de6277ba46325e1a4c24cad81a788f775ee3779c6e"
+            },
+            "y": {
+              "shape": [
+                1166
+              ],
+              "tipo": "<i8",
+              "sha256": "52e8fde4d5c13ef6b7a389a90950f96b21add07967fbef22e791d68d4ae759d1"
+            }
+          },
+          "KC2": {
+            "x": {
+              "shape": [
+                351,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "6d98828e8304325a99762deb7a562700834a697b9718b9738dbe32174dd9ed40"
+            },
+            "y": {
+              "shape": [
+                351
+              ],
+              "tipo": "<i8",
+              "sha256": "3f990f974633f6c444504226ac9cac24e9deb911813deb907c410c0032735bd4"
+            }
+          },
+          "PC1": {
+            "x": {
+              "shape": [
+                947,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "e2d6cd5f7c4283d869caeca375c089b9e09718f8788de2cb47bbc3c31dd4a26a"
+            },
+            "y": {
+              "shape": [
+                947
+              ],
+              "tipo": "<i8",
+              "sha256": "6a2d0c4fac4abfdcbe5d6dc3162af38fed7d31c476066da6a270cae1eda75d5c"
+            }
+          }
+        },
+        "03_particion": {
+          "fuentes": [
+            "CM1",
+            "JM1",
+            "KC1",
+            "KC2"
+          ],
+          "train": {
+            "x": {
+              "shape": [
+                10743,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "670acb16a64730a3e538a88ee6862f05abdd4f6150e63dc7e975741dcfda9b6f"
+            },
+            "y": {
+              "shape": [
+                10743
+              ],
+              "tipo": "<i8",
+              "sha256": "92e6cb739c45b266cd876042bb8447e1ff15fa3039849d7e9dbeef4aed955960"
+            }
+          },
+          "test": {
+            "x": {
+              "shape": [
+                947,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "e2d6cd5f7c4283d869caeca375c089b9e09718f8788de2cb47bbc3c31dd4a26a"
+            },
+            "y": {
+              "shape": [
+                947
+              ],
+              "tipo": "<i8",
+              "sha256": "6a2d0c4fac4abfdcbe5d6dc3162af38fed7d31c476066da6a270cae1eda75d5c"
+            }
+          }
+        },
+        "04_imputer": {
+          "train": {
+            "shape": [
+              10743,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "670acb16a64730a3e538a88ee6862f05abdd4f6150e63dc7e975741dcfda9b6f"
+          },
+          "test": {
+            "shape": [
+              947,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "e2d6cd5f7c4283d869caeca375c089b9e09718f8788de2cb47bbc3c31dd4a26a"
+          }
+        },
+        "05_scaler": {
+          "train": {
+            "shape": [
+              10743,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "441eac1fe7da683c8f7c723b209ad2f6853c94ac9400fa519bfb61edc4e6c3a7"
+          },
+          "test": {
+            "shape": [
+              947,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "757bef2014df63c92960bc9dc2bdb2f82fdf8cc3a115791a58671e2409ce3dcf"
+          }
+        },
+        "07_vecinos_globales": {
+          "metodo": "brute",
+          "indices": {
+            "shape": [
+              2449,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "2f14886a3c11ffc132b182e9dcd42660258e18793f3ab93f2ca484a2bc37cdf9"
+          },
+          "conjunto_por_fila": {
+            "shape": [
+              2449,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "9bd4ffc11fe6e04c1eb0c45477d87c86b09c0dcdb3d329abd704f3f775b5fa5e"
+          },
+          "filas_con_empate_exacto_dentro_de_k": 26,
+          "filas_reordenadas_en_variante": 15
+        },
+        "08_vecinos_minoritarios": {
+          "metodo": "brute",
+          "indices": {
+            "shape": [
+              2449,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "766d38003f4ac47f700da790360952d83312d26215e49325da20422cd5537622"
+          },
+          "conjunto_por_fila": {
+            "shape": [
+              2449,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "88aa6cd045cf169acc373e34f7e225806f2fe8375841461d885c6ea4a3c5d67e"
+          },
+          "filas_con_empate_exacto_dentro_de_k": 5,
+          "filas_reordenadas_en_variante": 4
+        },
+        "09_muestras_ADASYN": {
+          "x": {
+            "shape": [
+              5666,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "9a8ce120a2ff7699004546e7fe74851c7742402011561df4204a69c9a12f2057"
+          },
+          "y": {
+            "shape": [
+              5666
+            ],
+            "tipo": "<i8",
+            "sha256": "cbe96d015a2def401bb487fb0e7221a361ccd7b6aa2f76a7847f458d1a37fd53"
+          }
+        },
+        "10_margen_o_score": {
+          "shape": [
+            947
+          ],
+          "tipo": "<f8",
+          "sha256": "cc17487ccb450fa86c24ea48e45ddd5fd325ce50d7fb97e68392445e9fb40e1d"
+        },
+        "11_predicciones": {
+          "shape": [
+            947
+          ],
+          "tipo": "<i8",
+          "sha256": "1a1cc8bb87355b08d3d9bc2c8dc7e7c0b13139286c8fe4b71438133add2fbe19"
+        }
+      },
+      "local": {
+        "f1": 0.3417085427135678,
+        "auc_roc": 0.7786202964652224,
+        "average_precision": 0.26281670689940395
+      },
+      "historico_agregado": {
+        "f1": 0.2914572864321608,
+        "auc_roc": 0.7816826844762991,
+        "average_precision": 0.263334237651507
+      }
+    },
+    {
+      "proyecto": "KC1",
+      "algoritmo": "SVM",
+      "escenario": "E6_ADASYN_MI",
+      "etapas": {
+        "01_entrada": {
+          "CM1": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+          "JM1": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+          "KC1": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+          "KC2": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+          "PC1": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4"
+        },
+        "02_filas": {
+          "CM1": {
+            "x": {
+              "shape": [
+                439,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "8fb0c8c0dd08073f51e9eeaae5339052f46e2f676ecd206de70d3132a0b7badf"
+            },
+            "y": {
+              "shape": [
+                439
+              ],
+              "tipo": "<i8",
+              "sha256": "ded7b389232c5f4349c92c25d0956d96279a6825daa82250eea344625fc2c70b"
+            }
+          },
+          "JM1": {
+            "x": {
+              "shape": [
+                8787,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "b60f198ebfe310096870108e02b375cd675c63de55d17c51686e7ee26169914a"
+            },
+            "y": {
+              "shape": [
+                8787
+              ],
+              "tipo": "<i8",
+              "sha256": "56926090c3f9c0411454e5ce0b6c9a171fb5d35e78db0784a31cddee8408a2dd"
+            }
+          },
+          "KC1": {
+            "x": {
+              "shape": [
+                1166,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "dab8b7fcdc464fc8666065de6277ba46325e1a4c24cad81a788f775ee3779c6e"
+            },
+            "y": {
+              "shape": [
+                1166
+              ],
+              "tipo": "<i8",
+              "sha256": "52e8fde4d5c13ef6b7a389a90950f96b21add07967fbef22e791d68d4ae759d1"
+            }
+          },
+          "KC2": {
+            "x": {
+              "shape": [
+                351,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "6d98828e8304325a99762deb7a562700834a697b9718b9738dbe32174dd9ed40"
+            },
+            "y": {
+              "shape": [
+                351
+              ],
+              "tipo": "<i8",
+              "sha256": "3f990f974633f6c444504226ac9cac24e9deb911813deb907c410c0032735bd4"
+            }
+          },
+          "PC1": {
+            "x": {
+              "shape": [
+                947,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "e2d6cd5f7c4283d869caeca375c089b9e09718f8788de2cb47bbc3c31dd4a26a"
+            },
+            "y": {
+              "shape": [
+                947
+              ],
+              "tipo": "<i8",
+              "sha256": "6a2d0c4fac4abfdcbe5d6dc3162af38fed7d31c476066da6a270cae1eda75d5c"
+            }
+          }
+        },
+        "03_particion": {
+          "fuentes": [
+            "CM1",
+            "JM1",
+            "KC2",
+            "PC1"
+          ],
+          "train": {
+            "x": {
+              "shape": [
+                10524,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "0b94593ef939cdc5d1a946f2c1e385b71fa3732cba9863e67c10ba986d5ff338"
+            },
+            "y": {
+              "shape": [
+                10524
+              ],
+              "tipo": "<i8",
+              "sha256": "c9eef67b7ef53f99d210c57c1ae7533d9eecaf0bf81dc0f34e350f70b177dd0e"
+            }
+          },
+          "test": {
+            "x": {
+              "shape": [
+                1166,
+                21
+              ],
+              "tipo": "<f8",
+              "sha256": "dab8b7fcdc464fc8666065de6277ba46325e1a4c24cad81a788f775ee3779c6e"
+            },
+            "y": {
+              "shape": [
+                1166
+              ],
+              "tipo": "<i8",
+              "sha256": "52e8fde4d5c13ef6b7a389a90950f96b21add07967fbef22e791d68d4ae759d1"
+            }
+          }
+        },
+        "04_imputer": {
+          "train": {
+            "shape": [
+              10524,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "0b94593ef939cdc5d1a946f2c1e385b71fa3732cba9863e67c10ba986d5ff338"
+          },
+          "test": {
+            "shape": [
+              1166,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "dab8b7fcdc464fc8666065de6277ba46325e1a4c24cad81a788f775ee3779c6e"
+          }
+        },
+        "05_scaler": {
+          "train": {
+            "shape": [
+              10524,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "597dcacc2a0a2812da91f050d2eb8824ba3c4ead2e295ade35b4a00fc6d5bc78"
+          },
+          "test": {
+            "shape": [
+              1166,
+              21
+            ],
+            "tipo": "<f8",
+            "sha256": "c91ea9023dc5c340f7f40f9f8800ce27a41ad37903a44582531bb0d132407087"
+          }
+        },
+        "06_selection": {
+          "train": {
+            "shape": [
+              10524,
+              10
+            ],
+            "tipo": "<f8",
+            "sha256": "f38cc2293ffdc69dec7435ffdf3cf5c5faab308cb73ae94abc7e54a2587166bc"
+          },
+          "test": {
+            "shape": [
+              1166,
+              10
+            ],
+            "tipo": "<f8",
+            "sha256": "0c4b8db1f17e33fdee751bcd5228bfb322485936348301685e21640ae65c7d8d"
+          },
+          "columnas": [
+            "loc",
+            "v(g)",
+            "n",
+            "v",
+            "e",
+            "b",
+            "lOCode",
+            "uniq_Opnd",
+            "total_Op",
+            "total_Opnd"
+          ]
+        },
+        "07_vecinos_globales": {
+          "metodo": "kd_tree",
+          "indices": {
+            "shape": [
+              2210,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "8c75d46a07053d9ad7383ab284a03164e133df53ebfbc0061bd989b2f796155f"
+          },
+          "conjunto_por_fila": {
+            "shape": [
+              2210,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "faabe6144b8a1d5442dba047ff90c88101d089f25737af10cf161a30f7efa46d"
+          },
+          "filas_con_empate_exacto_dentro_de_k": 174,
+          "filas_reordenadas_en_variante": 110
+        },
+        "08_vecinos_minoritarios": {
+          "metodo": "kd_tree",
+          "indices": {
+            "shape": [
+              2210,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "2d4a32d764af12997bd9777863ddb7b073828a5351c1af8b0a8abc59dbcf0562"
+          },
+          "conjunto_por_fila": {
+            "shape": [
+              2210,
+              4
+            ],
+            "tipo": "<i8",
+            "sha256": "f1e7b3872d69262b6cf899032fb2bb852933df3f77da56e5e3a8df6ec3d2001d"
+          },
+          "filas_con_empate_exacto_dentro_de_k": 72,
+          "filas_reordenadas_en_variante": 46
+        },
+        "09_muestras_ADASYN": {
+          "x": {
+            "shape": [
+              6069,
+              10
+            ],
+            "tipo": "<f8",
+            "sha256": "f1e24e23d18bbdafcff958d5c812bd83cf6fa5c79f2188e3f756c5f9c331e618"
+          },
+          "y": {
+            "shape": [
+              6069
+            ],
+            "tipo": "<i8",
+            "sha256": "f12db1123636f838cd1723865cc7a5f2f42b1d1e53a6705d652d17c8bcb8fb42"
+          }
+        },
+        "10_margen_o_score": {
+          "shape": [
+            1166
+          ],
+          "tipo": "<f8",
+          "sha256": "3b85f4f1add0d0f660a83d454a698af6c475704eec7fd6fed3797dd06759adc0"
+        },
+        "11_predicciones": {
+          "shape": [
+            1166
+          ],
+          "tipo": "<i8",
+          "sha256": "f52fea88a1243aa214a427cf64318ab95f888a63cb678c522152de04fd356f12"
+        }
+      },
+      "local": {
+        "f1": 0.41910631741140214,
+        "auc_roc": 0.6408711052705116,
+        "average_precision": 0.384633447938597
+      },
+      "historico_agregado": {
+        "f1": 0.4220183486238532,
+        "auc_roc": 0.642151253903698,
+        "average_precision": 0.385212010485827
+      }
+    }
+  ]
+}

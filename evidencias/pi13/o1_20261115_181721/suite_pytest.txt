@@ -1,0 +1,10 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.0, pytest-9.2.0, pluggy-1.7.0
+plugins: anyio-4.16.0
+collected 15 items
+
+tests\test_integration_real_model.py .                                   [  6%]
+tests\test_prediction_and_persistence.py ....                            [ 33%]
+tests\test_validation.py ..........                                      [100%]
+
+============================= 15 passed in 3.63s ==============================

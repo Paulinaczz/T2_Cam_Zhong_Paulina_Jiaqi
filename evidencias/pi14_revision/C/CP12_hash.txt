@@ -1,0 +1,1 @@
+No se puede iniciar el prototipo: El SHA-256 del pipeline no coincide con el valor registrado

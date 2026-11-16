@@ -2,7 +2,7 @@
   {
     "caso": "CP01",
     "escenario": "ES01",
-    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP01",
@@ -15,7 +15,7 @@
   {
     "caso": "CP02",
     "escenario": "ES02",
-    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP02",
@@ -28,7 +28,7 @@
   {
     "caso": "CP03",
     "escenario": "ES03",
-    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP03",
@@ -42,7 +42,7 @@
   {
     "caso": "CP04",
     "escenario": "ES04",
-    "fecha_utc": "2026-11-10T04:27:48+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP04",
@@ -54,11 +54,11 @@
   {
     "caso": "CP05",
     "escenario": "ES05",
-    "fecha_utc": "2026-11-10T04:27:49+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP05",
-      "UUID": "da618506-0674-4081-a6a9-8e489e46d3f5",
+      "UUID": "d7b9579e-e2da-4147-8665-725888ee8cd4",
       "filas_sqlite": 18
     },
     "observacion": "Aprobado en núcleo/backend; requiere capturas UI",
@@ -67,7 +67,7 @@
   {
     "caso": "CP11",
     "escenario": "ES11",
-    "fecha_utc": "2026-11-10T04:27:49+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP11",
@@ -81,7 +81,7 @@
   {
     "caso": "CP12",
     "escenario": "ES12",
-    "fecha_utc": "2026-11-10T04:27:49+00:00",
+    "fecha_utc": "2026-11-15T22:11:58+00:00",
     "estado_backend": "APROBADO_BACKEND",
     "evidencia": {
       "ruta": "casos\\CP12",
@@ -94,7 +94,7 @@
   {
     "caso": "CP06",
     "escenario": "ES06",
-    "fecha_utc": "2026-11-10T04:54:08+00:00",
+    "fecha_utc": "2026-11-15T22:14:31+00:00",
     "estado_backend": "MEDICION_EJECUTADA",
     "evidencia": {
       "ruta": "casos\\CP06",

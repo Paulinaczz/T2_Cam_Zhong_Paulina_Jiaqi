@@ -85,3 +85,50 @@
 2026-11-10T04:54:08+00:00 | CP06 JM1_completo: 30/30 | validar=0.539s | inferir=50.434s
 2026-11-10T04:54:08+00:00 | RESUMEN: 8 casos evaluados, 0 fallidos en backend. Capturas UI pendientes hasta verificarlas.
 2026-11-10T04:54:08+00:00 | REVISAR: registro_casos_para_PI13.csv, resumen_cp06.csv, suite_pytest.txt, capturas_para_PI13.csv
+2026-11-15T22:11:54+00:00 | EVIDENCIAS: evidencias\pi13\validacion_local
+2026-11-15T22:11:54+00:00 | COMMIT: 473669c87e810f967219112804833bbde533bede
+2026-11-15T22:11:58+00:00 | INICIO CP01: Importar, validar, inferir y ordenar 18 módulos
+2026-11-15T22:11:58+00:00 | APROBADO CP01 (0.17 s)
+2026-11-15T22:11:58+00:00 | INICIO CP02: Rechazo de CSV sin métrica LOC
+2026-11-15T22:11:58+00:00 | APROBADO CP02 (0.05 s)
+2026-11-15T22:11:58+00:00 | INICIO CP03: Rechazo de Inf y texto no numérico
+2026-11-15T22:11:58+00:00 | APROBADO CP03 (0.07 s)
+2026-11-15T22:11:58+00:00 | INICIO CP04: Escapado de fórmulas en exportación CSV
+2026-11-15T22:11:58+00:00 | APROBADO CP04 (0.12 s)
+2026-11-15T22:11:58+00:00 | INICIO CP05: Persistencia e historial SQLite de 18 predicciones
+2026-11-15T22:11:58+00:00 | APROBADO CP05 (0.17 s)
+2026-11-15T22:11:58+00:00 | INICIO CP11: Rechazo de extensión inválida e ID duplicado
+2026-11-15T22:11:58+00:00 | APROBADO CP11 (0.05 s)
+2026-11-15T22:11:58+00:00 | INICIO CP12: Bloqueo de un modelo con SHA-256 alterado (copia)
+2026-11-15T22:11:58+00:00 | APROBADO CP12 (0.04 s)
+2026-11-15T22:11:58+00:00 | Iniciando suite existente pytest (evidencia COMPLEMENTARIA; distinta de CP01–CP12)
+2026-11-15T22:12:05+00:00 | Pytest finalizó con código 0. Revisar suite_pytest.txt y posibles SKIP
+2026-11-15T22:12:05+00:00 | RESUMEN: 8 casos evaluados, 0 fallidos en backend. Capturas UI pendientes hasta verificarlas.
+2026-11-15T22:12:05+00:00 | REVISAR: registro_casos_para_PI13.csv, resumen_cp06.csv, suite_pytest.txt, capturas_para_PI13.csv
+2026-11-15T22:12:39+00:00 | EVIDENCIAS: evidencias\pi13\validacion_local
+2026-11-15T22:12:39+00:00 | COMMIT: 473669c87e810f967219112804833bbde533bede
+2026-11-15T22:12:42+00:00 | FALLÓ CP06: RuntimeError: No puede reanudar con otro modelo/datos/repeticiones. Use nueva carpeta --salida
+2026-11-15T22:12:42+00:00 | Traceback (most recent call last):
+  File "herramientas_pi13\ejecutar_pi13.py", line 450, in main
+    result=run_performance(repo,folder,log,pds,artifact,args.jm1.resolve(),args.repeticiones)
+  File "herramientas_pi13\ejecutar_pi13.py", line 338, in run_performance
+    raise RuntimeError("No puede reanudar con otro modelo/datos/repeticiones. Use nueva carpeta --salida")
+RuntimeError: No puede reanudar con otro modelo/datos/repeticiones. Use nueva carpeta --salida
+
+2026-11-15T22:13:07+00:00 | EVIDENCIAS: evidencias\pi13\validacion_local
+2026-11-15T22:13:07+00:00 | COMMIT: 473669c87e810f967219112804833bbde533bede
+2026-11-15T22:13:10+00:00 | FALLÓ CP06: RuntimeError: No puede reanudar con otro modelo/datos/repeticiones. Use nueva carpeta --salida
+2026-11-15T22:13:10+00:00 | Traceback (most recent call last):
+  File "herramientas_pi13\ejecutar_pi13.py", line 450, in main
+    result=run_performance(repo,folder,log,pds,artifact,args.jm1.resolve(),args.repeticiones)
+  File "herramientas_pi13\ejecutar_pi13.py", line 338, in run_performance
+    raise RuntimeError("No puede reanudar con otro modelo/datos/repeticiones. Use nueva carpeta --salida")
+RuntimeError: No puede reanudar con otro modelo/datos/repeticiones. Use nueva carpeta --salida
+
+2026-11-15T22:13:41+00:00 | EVIDENCIAS: evidencias\pi13\validacion_local
+2026-11-15T22:13:41+00:00 | COMMIT: 473669c87e810f967219112804833bbde533bede
+2026-11-15T22:13:44+00:00 | CP06: ya hay 60 registros guardados; se reanudará donde terminó.
+2026-11-15T22:13:44+00:00 | CP06 calentamiento terminado: ejemplo_18
+2026-11-15T22:14:31+00:00 | CP06 calentamiento terminado: JM1_completo
+2026-11-15T22:14:31+00:00 | RESUMEN: 8 casos evaluados, 0 fallidos en backend. Capturas UI pendientes hasta verificarlas.
+2026-11-15T22:14:31+00:00 | REVISAR: registro_casos_para_PI13.csv, resumen_cp06.csv, suite_pytest.txt, capturas_para_PI13.csv

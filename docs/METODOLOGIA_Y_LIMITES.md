@@ -86,6 +86,18 @@ Los resultados consolidados en `research/experimentos/estrategia_esfuerzo/princi
 1. **Ausencia de superioridad consistente:** Dado que los intervalos bootstrap de las diferencias incluyen el cero en los 5 proyectos y el clasificador solo supera a ManualUp en 2 de los 5 casos, **no existe evidencia estadística suficiente para sostener superioridad consistente del modelo predictivo frente a la heurística de módulos pequeños (ManualUp)** cuando el esfuerzo se mide en líneas de código.
 2. **Separación de propósitos:** Este resultado experimental corresponde a la investigación científica de esfuerzo en Colab y no debe confundirse con la aplicación operativa Streamlit, la cual ordena módulos por el margen del SVM `E6_ADASYN_MI`.
 
+### D. Integración en el Prototipo Operativo (Atención a la Observación O1)
+En respuesta a la observación O1 del asesor, se integró en la aplicación web la comparación interactiva entre las tres estrategias de priorización:
+1. **Estrategia Operativa (Margen SVM E6):** Ordenamiento por margen de decisión descendente, preservando el comportamiento original del artefacto validado.
+2. **Estrategia Experimental (Probabilidad Calibrada / LOC):** Modela la densidad de riesgo dividiendo la probabilidad estimada mediante calibración Platt $\widehat{P}(\text{defecto})$ entre las líneas de código $\text{LOC}$.
+3. **Estrategia de Referencia (ManualUp):** Ordenamiento por $\text{LOC}$ ascendente (módulos más pequeños primero).
+
+**Detalles de implementación y trazabilidad:**
+- **Calibrador serializado:** `artifacts/models/calibrador_probabilidad_e6.joblib` (SHA-256: `a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19`), acompañado de `metadatos_calibrador.json` e `integridad_calibrador.json`.
+- **Ajuste del calibrador:** En el experimento científico (Nested LOPO), cada pliegue ajustó su calibración exclusivamente con los 4 proyectos fuente. Para la inferencia en producción con el artefacto reentrenado en los 5 proyectos, se entrenó un calibrador logístico sobre las 11 690 predicciones históricas fuera de pliegue (*out-of-fold*) documentadas en `research/experimentos/estrategia_esfuerzo/principal_deduplicada/predicciones_por_proyecto.csv` ($\beta_1 = 0,7743$, $\beta_0 = -1,2852$).
+- **Integridad del pipeline E6:** El archivo del pipeline original `modelo_predictivo_pds.joblib` (SHA-256: `5a420bc5...`) no sufrió ninguna alteración ni sustitución silenciosa.
+- **Visualización en UI04:** La interfaz organiza la vista de resultados en dos pestañas claramente diferenciadas: una para el ranking operativo con margen SVM y otra para la matriz comparativa de estrategias, advirtiendo explícitamente que el ML no demostró superioridad consistente sobre ManualUp.
+
 ---
 
 ## 4. Evidencias de Validación Técnica y Operativa (PI13–PI14)
@@ -100,18 +112,22 @@ Las pruebas locales reproducibles registraron los siguientes resultados en `evid
   - **CP05 (Historial e integridad SQLite):** Aprobado en backend y visualmente (`historial.csv`, `predicciones_sqlite.csv`).
   - **CP11 (Rechazo de formato no CSV y duplicados):** Aprobado en backend (`rechazos.txt`).
   - **CP12 (Bloqueo por alteración SHA-256):** Aprobado en backend sobre copia temporal (`rechazo_hash.txt`).
-  - **Suite Pytest:** 14 pruebas unitarias e integración aprobadas al 100 %.
-- **Rendimiento (CP06 — 30 repeticiones por lote):**
-  - **Lote `ejemplo_18` (18 módulos):** Tiempo de inferencia $p_{95} = \mathbf{0,0767\text{ s}}$, cumpliendo con holgura la meta exigida de $p_{95} \le 5\text{ s}$.
-  - **Lote `JM1_completo` (13 204 módulos):** Tiempo de inferencia $p_{95} \approx \mathbf{50,50\text{ s}}$ (media 48,89 s; validación 0,47 s), reportado con fines descriptivos de escalabilidad.
+  - **Suite pytest de O1:** 15 pruebas aprobadas en la rama del PR #3. [Registro](../evidencias/pi13/o1_20261115_181721/suite_pytest.txt)
+
+La [verificación operativa de O1](../evidencias/pi13/o1_20261115_181721/LEEME.md) comprobó la integridad de E6 y del calibrador serializado, los tres rankings y la exportación para 18 módulos (CP01), y la persistencia del UUID, las huellas y las 18 predicciones (CP05). En el prototipo, el ranking operativo sigue ordenado por margen E6. El calibrador ajustado sobre márgenes históricos fuera de pliegue se usa en la comparación de estrategias. El Nested LOPO de la sección anterior utiliza una calibración por pliegue y es la fuente de los resultados científicos frente a ManualUp. Esa evaluación no aporta evidencia de una mejora consistente.
+
+**CP06 en el PR #3.** Se realizaron 30 repeticiones independientes por tamaño de lote, con un p95 del flujo comparativo de **0,096739 s** para 18 módulos y **47,783318 s** para JM1 completo (13 204 módulos). La meta original de 5 s aplica al lote pequeño. La inferencia en JM1 alcanzó un p95 de 47,193291 s. Se midieron por separado validación, inferencia, calibración, rankings y exportación. El total excluye arranque, persistencia, inferencia adicional en UI04 y renderizado. [Mediciones individuales](../evidencias/pi13/o1_20261115_181721/CP06_mediciones.csv) · [Resumen estadístico](../evidencias/pi13/o1_20261115_181721/CP06_resumen_segundos.csv)
+
 
 ---
 
-## 5. Estado de Observaciones y Casos Pendientes
+## 5. Seguimiento PI13–PI14
 
-Para mantener el rigor académico y no declarar aprobaciones prematuras:
-
-1. **CP09 (Sensibilidad y repetibilidad):** Permanece como pendiente formal hasta consolidar un protocolo de repetición con número suficiente de semillas e iteraciones independientes.
-2. **CP10 (Aceptación y usabilidad con usuarios):** Permanece pendiente de ejecución real mediante la aplicación del instrumento validado I-05 a evaluadores y analistas de QA; no se simulan participantes ni respuestas ficticias.
-3. **Capturas de rechazo de interfaz:** Las evidencias visuales cubren el flujo positivo (EVV01–EVV11). Los mensajes específicos de error para CP02, CP03 y CP11 en el navegador no disponen de captura fotográfica en esta entrega, quedando respaldados por los reportes de backend.
-4. **Observaciones del asesor:** Permanecen en revisión continua hasta contar con el dictamen y aprobación formal correspondiente.
+- **UI04 corregida.** CM1 y JM1 son los proyectos con delta positivo en Recall@20 % LOC. La prueba de regresión obtiene los proyectos del CSV experimental y los compara con lo mostrado. Los resultados históricos conservan sus cifras. [Verificación](../evidencias/pi14_revision/UI04/LEEME.md)
+- **CP09 — parcialmente comprobado.** Dos repeticiones locales con semilla 42 dieron CSV idénticos. Con NumPy 2.1.3 coincidieron las tres métricas históricas de 4 de 15 recetas, frente a 3 de 15 con la versión base. Cambiar el paquete NumPy y su OpenBLAS incluido produjo la primera diferencia local en el escalado. Cambiar el backend de distancias o el orden de empates afectó la vecindad y el balanceo ADASYN. No se recuperaron el entorno completo de Colab ni sus trazas intermedias; la primera divergencia histórica y la repetición Nested LOPO de 27 configuraciones siguen pendientes. [Diagnóstico y comparaciones](../evidencias/pi14_cierre/CP09/LEEME.md)
+- **Pruebas negativas.** CP02, CP03, CP04, CP11 y CP12 se comprobaron en Streamlit. CP12 usó una copia aislada alterada. [Capturas y resultados](../evidencias/pi14_revision/C/LEEME.md)
+- **CP10 — no ejecutado.** I-05, matriz V de Aiken e I-06 quedan como borradores. Faltan revisión por jueces expertos, aprobación, consentimiento y sesiones con participantes reales. [Instrumentos](../evidencias/pi14_revision/B/)
+- **Auditoría de criterios.** Los indicadores históricos de cobertura y protocolo se distinguen de umbrales de calidad. F1, AUC-ROC y Average Precision se reportan como descriptivos por proyecto y en macro. Cualquier criterio de calidad nuevo y la reformulación de OE2 requieren aprobación previa. [Tabla y criterios](../evidencias/pi14_revision/D/criterios_y_metricas.md)
+- **Escalabilidad.** El lector admite 20 000 filas y 10 MiB. JM1 aportó una medición con 13 204 módulos. El ensayo nuevo midió 30 corridas secuenciales con 20 000 módulos sintéticos que repiten 18 perfiles con identificadores únicos (2,12 MiB). El flujo de lectura y validación, inferencia comparativa, calibración, rankings y serialización CSV obtuvo **p95 67,837039 s** y **mediana 64,824879 s** en Windows 10, Python 3.13, Ryzen 5 3600, 12 procesadores lógicos y unos 16 GiB de RAM. El total excluye arranque, espera del servidor, persistencia, inferencia adicional del ranking operativo, transferencia y renderizado. Parte de las corridas coincidió con diagnóstico local. El plan no fija una meta de tiempo para ese volumen. [Mediciones crudas, estadísticas y entorno](../evidencias/pi14_cierre/escalabilidad/LEEME.md)
+- **Extracción.** Lizard 1.25.0 se ejecutó sobre dos funciones C y produjo NLOC, complejidad ciclomática y tokens. La equivalencia con las 21 entradas del modelo está pendiente. La demostración es independiente de Streamlit. [Mapeo y reproducción](../evidencias/pi14_cierre/metricas/LEEME.md)
+- **OE4.** La comparación exploratoria frente a ManualUp y el análisis de cohortes tienen un alcance distinto de la validación del prototipo. [Alcance experimental](../evidencias/pi14_revision/E/escalabilidad_y_OE4.md) · [Matriz final](../evidencias/pi14_cierre/INFORME.md)

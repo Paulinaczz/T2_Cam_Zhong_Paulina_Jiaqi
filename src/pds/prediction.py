@@ -8,6 +8,19 @@ from .validation import ValidatedInput
 
 SCORE_TYPE = "margen_svm_no_calibrado"
 
+# Coeficientes sigmoides validados sobre los 11 690 márgenes OOF de los 5 proyectos históricos
+DEFAULT_CALIBRATOR_COEF = 0.77433473
+DEFAULT_CALIBRATOR_INTERCEPT = -1.28524283
+
+
+def calibrate_probabilities(margins: np.ndarray, calibrator: object = None) -> np.ndarray:
+    """Calcula la probabilidad P(defecto) in [0, 1] mediante la sigmoide logística ajustada (Platt scaling)."""
+    m = np.asarray(margins, dtype=float)
+    if calibrator is not None and hasattr(calibrator, "predict_proba"):
+        return np.asarray(calibrator.predict_proba(m), dtype=float)
+    # Regresión logística sigmoide estándar de respaldo
+    return 1.0 / (1.0 + np.exp(-(DEFAULT_CALIBRATOR_COEF * m + DEFAULT_CALIBRATOR_INTERCEPT)))
+
 
 def predict(valid: ValidatedInput, artifact: ModelArtifact) -> pd.DataFrame:
     expected = list(artifact.manifest["columnas"])
@@ -50,3 +63,65 @@ def csv_results(frame: pd.DataFrame) -> bytes:
         lambda value: "'" + value if value.lstrip().startswith(("=", "+", "-", "@", "\t", "\r")) else value
     )
     return safe.to_csv(index=False, float_format="%.8f").encode("utf-8-sig")
+
+
+def compare_strategies(valid: ValidatedInput, artifact: ModelArtifact) -> pd.DataFrame:
+    """Compara las 3 estrategias: Operativa (Margen SVM), Experimental (Prob/LOC) y Referencia (ManualUp)."""
+    expected = list(artifact.manifest["columnas"])
+    if list(valid.features.columns) != expected:
+        raise ModelError("El orden/esquema de características no coincide con el del pipeline")
+    pipe = artifact.pipeline
+    try:
+        labels = np.asarray(pipe.predict(valid.features), dtype=int).ravel()
+        margins = np.asarray(pipe.decision_function(valid.features), dtype=float).ravel()
+    except Exception as ex:
+        raise ModelError("Error al ejecutar el pipeline durante la comparación de estrategias") from ex
+
+    calibrator = getattr(artifact, "calibrator", None)
+    probs = calibrate_probabilities(margins, calibrator)
+
+    if "loc" not in valid.features.columns:
+        raise ModelError("La métrica 'loc' es obligatoria para la priorización por esfuerzo")
+    raw_loc = np.asarray(valid.features["loc"], dtype=float).ravel()
+    loc_cost = np.maximum(raw_loc, 1.0)
+    density = probs / loc_cost
+
+    n = len(valid.features)
+    ids = np.arange(n)
+
+    # 1. Prioridad Operativa (SVM Margin decreciente)
+    order_svm = np.lexsort((ids, -margins))
+    rank_svm = np.empty(n, dtype=int)
+    rank_svm[order_svm] = np.arange(1, n + 1)
+
+    # 2. Prioridad Experimental (Probabilidad / LOC decreciente)
+    order_density = np.lexsort((ids, -density))
+    rank_density = np.empty(n, dtype=int)
+    rank_density[order_density] = np.arange(1, n + 1)
+
+    # 3. Prioridad Referencia / Línea Base (ManualUp: LOC ascendente)
+    order_manualup = np.lexsort((ids, loc_cost))
+    rank_manualup = np.empty(n, dtype=int)
+    rank_manualup[order_manualup] = np.arange(1, n + 1)
+
+    comp = pd.DataFrame({
+        "id_modulo": valid.identifiers.to_numpy(),
+        "loc": raw_loc,
+        "clase_predicha": labels,
+        "score_riesgo_svm": margins,
+        "prioridad_operativa_svm": rank_svm,
+        "probabilidad_calibrada": probs,
+        "densidad_riesgo_loc": density,
+        "prioridad_experimental_calibrada_loc": rank_density,
+        "prioridad_referencia_manualup": rank_manualup,
+    })
+    return comp.sort_values("prioridad_operativa_svm", ascending=True).reset_index(drop=True)
+
+
+def csv_comparison_results(frame: pd.DataFrame) -> bytes:
+    """Exportación CSV de la tabla comparativa con sanitización de identificadores."""
+    safe = frame.copy()
+    safe["id_modulo"] = safe["id_modulo"].astype(str).apply(
+        lambda value: "'" + value if value.lstrip().startswith(("=", "+", "-", "@", "\t", "\r")) else value
+    )
+    return safe.to_csv(index=False, float_format="%.6f").encode("utf-8-sig")

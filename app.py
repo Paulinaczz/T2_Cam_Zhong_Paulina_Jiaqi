@@ -12,8 +12,8 @@ import streamlit as st
 from src.pds.errors import PDSError
 from src.pds.model import load_model
 from src.pds.persistence import init_db, list_executions, get_execution
-from src.pds.prediction import csv_results
-from src.pds.service import prepare_csv, run_analysis
+from src.pds.prediction import csv_results, csv_comparison_results
+from src.pds.service import prepare_csv, run_analysis, run_strategy_comparison
 
 ROOT = Path(__file__).resolve().parent
 MODEL_DIR = ROOT / "artifacts" / "models"
@@ -75,6 +75,8 @@ if "resultado" not in st.session_state:
     st.session_state.resultado=None
 if "entrada" not in st.session_state:
     st.session_state.entrada=None
+if "comparacion" not in st.session_state:
+    st.session_state.comparacion=None
 
 pages={
     "Inicio":"UI01 · Inicio y modelo",
@@ -115,16 +117,18 @@ if page=="Inicio":
     with c1: st.download_button("⬇️ Descargar plantilla CSV",data=TEMPLATE_PATH.read_bytes(),file_name="plantilla_metricas_pds.csv",mime="text/csv",use_container_width=True)
     with c2:
         if st.button("Comenzar análisis →",type="primary",use_container_width=True):move("Carga")
-    with st.expander("Contexto del experimento científico"):
+    with st.expander("Contexto del experimento científico y Observación O1"):
         st.markdown("""
         - **Algoritmo:** Support Vector Machine (SVM).
         - **Balanceo:** ADASYN, aplicado durante entrenamiento.
         - **Selección de características:** Mutual Information (SelectKBest).
         - **Escenario:** E6_ADASYN_MI.
         - **Métricas:** 21 métricas estáticas compatibles (NASA/PROMISE).
+        - **Observación O1 (PI13–PI14):** Se incorpora la comparación visible entre el ranking operativo por margen SVM, la estrategia experimental de probabilidad calibrada por LOC (densidad de riesgo) y la heurística de referencia ManualUp.
         """)
         st.write("Entrenado sobre la cohorte deduplicada de cinco proyectos históricos (CM1, JM1, KC1, KC2 y PC1) tras evaluación entre proyectos (CPDP).")
         st.write("F1 promedio de selección entre proyectos: **0.419** (frente a E7 con 0.415; diferencia pareada Wilcoxon p=0.4375, sin significancia estadística).")
+        st.write("En la evaluación de esfuerzo (Recall@20 % LOC), la estrategia calibrada/LOC promedió 29.09 % frente a 28.74 % de ManualUp (+0.36 p.p.), superando a ManualUp en 2 de 5 proyectos con intervalos bootstrap que incluyen el cero.")
         st.write("Este resultado proviene de la validación entre proyectos y no equivale a una prueba independiente del artefacto final sobre un proyecto inédito.")
         st.write("La procedencia documental y equivalencias de métricas continúan sujetas a verificación humana.")
 
@@ -145,10 +149,12 @@ elif page=="Carga":
             except PDSError as ex:
                 st.session_state.entrada=None
                 st.session_state.resultado=None
+                st.session_state.comparacion=None
                 st.error(f"No se pudo validar: {ex}")
             else:
                 st.session_state.entrada=validated
                 st.session_state.resultado=None
+                st.session_state.comparacion=None
                 move("Validación")
     with st.expander("¿Qué columnas se admiten?"):
         st.code(", ".join(model.manifest["columnas"]),language="text")
@@ -179,36 +185,94 @@ elif page=="Validación":
         if st.button("▶ Ejecutar predicción y guardar evidencia",type="primary",use_container_width=True):
             try:
                 execution_id,result=run_analysis(data,model,DB_PATH)
+                comparison=run_strategy_comparison(data,model)
             except PDSError as ex:
                 st.error(f"No se pudo completar la inferencia: {ex}")
             else:
                 st.session_state.resultado=(execution_id,result)
+                st.session_state.comparacion=comparison
                 move("Resultados")
 
 elif page=="Resultados":
-    heading("UI04 · RESULTADOS", "Ranking para priorizar QA",
-        "Los módulos se ordenan de mayor a menor margen SVM estimado. El score NO representa un porcentaje de probabilidad.")
+    heading("UI04 · RESULTADOS", "Priorización de módulos y comparación de estrategias",
+        "Consulta el ranking operativo del modelo E6 y la comparación con la estrategia de esfuerzo (Observación O1).")
     current=st.session_state.resultado
     if current is None:
         st.info("Primero valida un CSV y ejecuta la predicción en la pantalla anterior.")
         if st.button("Ir a carga"):move("Carga")
     else:
         execution_id,results=current
-        summary_cards(results)
-        st.caption(f"Ejecución: {execution_id}")
-        st.warning("El margen puede ser negativo o positivo. La categoría 'potencialmente defectuoso' es una predicción, no un defecto confirmado.")
-        s1,s2=st.columns([2,1])
-        with s1:
-            show_only=st.checkbox("Mostrar solo módulos clasificados con riesgo",value=False)
-        with s2:
-            top_n=st.number_input("Máximo de módulos visibles",min_value=1,max_value=len(results),value=min(30,len(results)))
-        viewed=results[results["clase_predicha"]==1] if show_only else results
-        st.dataframe(viewed.head(int(top_n)),use_container_width=True,hide_index=True)
-        st.download_button("⬇️ Exportar ranking completo CSV",csv_results(results),file_name=f"ranking_qa_{execution_id[:8]}.csv",mime="text/csv",type="primary")
-        st.subheader("Distribución de las clasificaciones")
-        count=(results["interpretacion"].value_counts().rename_axis("categoría").reset_index(name="módulos"))
-        st.bar_chart(count.set_index("categoría"))
-        if st.button("Ver trazabilidad de ejecución"):move("Historial")
+        comparison=st.session_state.get("comparacion")
+        if comparison is None and st.session_state.entrada is not None:
+            comparison=run_strategy_comparison(st.session_state.entrada, model)
+            st.session_state.comparacion=comparison
+
+        tab_operativo, tab_comparativo = st.tabs([
+            "🟢 Ranking Operativo (Margen SVM E6)",
+            "🔬 Comparación de Estrategias (Observación O1)"
+        ])
+
+        with tab_operativo:
+            summary_cards(results)
+            st.caption(f"Ejecución: {execution_id}")
+            st.warning("El margen SVM (score_riesgo) puede ser negativo o positivo. No es una probabilidad porcentual. La categoría 'potencialmente defectuoso' es una predicción orientativa, no un defecto confirmado.")
+            s1,s2=st.columns([2,1])
+            with s1:
+                show_only=st.checkbox("Mostrar solo módulos clasificados con riesgo",value=False)
+            with s2:
+                top_n=st.number_input("Máximo de módulos visibles",min_value=1,max_value=len(results),value=min(30,len(results)))
+            viewed=results[results["clase_predicha"]==1] if show_only else results
+            st.dataframe(viewed.head(int(top_n)),use_container_width=True,hide_index=True)
+            st.download_button("⬇️ Exportar ranking operativo CSV",csv_results(results),file_name=f"ranking_qa_{execution_id[:8]}.csv",mime="text/csv",type="primary")
+            st.subheader("Distribución de las clasificaciones")
+            count=(results["interpretacion"].value_counts().rename_axis("categoría").reset_index(name="módulos"))
+            st.bar_chart(count.set_index("categoría"))
+            if st.button("Ver trazabilidad de ejecución"):move("Historial")
+
+        with tab_comparativo:
+            st.subheader("Comparación de Criterios de Priorización para QA")
+            st.markdown("""
+            En atención a la **Observación O1**, esta vista contrasta tres criterios de priorización:
+            1. **🟢 Prioridad Operativa (Margen SVM E6):** Ordena de mayor a menor margen de decisión $m$. Prioriza módulos con mayor evidencia estadística según el modelo base, sin ponderar su tamaño en código.
+            2. **🔬 Prioridad Experimental (Probabilidad Calibrada / LOC):** Pondera la probabilidad de defecto calibrada mediante escalado de Platt $\\widehat{P}$ entre las líneas de código $\\text{LOC}$ (densidad de riesgo). Busca maximizar defectos encontrados por línea inspeccionada.
+            3. **📏 Prioridad de Referencia (ManualUp):** Ordena de menor a mayor $\\text{LOC}$ (módulos más pequeños primero). Heurística de referencia estándar en la literatura de esfuerzo-conciencia (*effort-aware*).
+            """)
+
+            st.info("""
+            **Marco Metodológico y Conclusiones del Experimento Científico:**
+            - En la evaluación entre proyectos (CPDP) con cinco proyectos (CM1, JM1, KC1, KC2, PC1), la estrategia ML calibrada/LOC alcanzó un **Recall@20 % LOC promedio de 29.09 %** frente a **28.74 % de ManualUp** (+0.36 p.p.).
+            - La estrategia ML superó a ManualUp en **2 de los 5 proyectos** (CM1 y JM1), mientras que ManualUp fue superior en los otros 3.
+            - Los intervalos de confianza bootstrap del 95 % para la diferencia incluyen el cero ([-4.90, +4.84]), por lo que **no existe evidencia estadística para afirmar superioridad consistente del ML sobre ManualUp**.
+            - La estrategia operativa desplegada sigue siendo el margen SVM, mientras que la calibración por LOC se presenta como herramienta analítica experimental.
+            """)
+
+            if comparison is not None:
+                total_loc = int(comparison["loc"].sum())
+                budget_20_loc = total_loc * 0.20
+                c_m1, c_m2, c_m3 = st.columns(3)
+                c_m1.metric("Módulos totales", len(comparison))
+                c_m2.metric("Líneas de código (LOC) totales", f"{total_loc:,}")
+                c_m3.metric("Presupuesto 20% LOC", f"{budget_20_loc:,.0f} LOC")
+
+                st.markdown("#### Matriz comparativa de prioridades")
+                column_config = {
+                    "prioridad_operativa_svm": st.column_config.NumberColumn("Prio. SVM (Operativa)", help="Orden por margen SVM"),
+                    "prioridad_experimental_calibrada_loc": st.column_config.NumberColumn("Prio. Prob/LOC (Experimental)", help="Orden por densidad de riesgo"),
+                    "prioridad_referencia_manualup": st.column_config.NumberColumn("Prio. ManualUp (Referencia)", help="Orden por menor LOC"),
+                    "score_riesgo": st.column_config.NumberColumn("Margen SVM", format="%.3f"),
+                    "probabilidad_calibrada": st.column_config.NumberColumn("P(Defecto) Calibrada", format="%.3f"),
+                    "densidad_riesgo_loc": st.column_config.NumberColumn("Densidad (P/LOC)", format="%.6f"),
+                    "loc": st.column_config.NumberColumn("LOC", format="%d")
+                }
+                st.dataframe(comparison, use_container_width=True, hide_index=True, column_config=column_config)
+                st.download_button(
+                    "⬇️ Exportar comparación de estrategias (CSV)",
+                    csv_comparison_results(comparison),
+                    file_name=f"comparacion_estrategias_{execution_id[:8]}.csv",
+                    mime="text/csv"
+                )
+            else:
+                st.warning("No se pudieron calcular las estrategias comparativas.")
 
 elif page=="Historial":
     heading("UI05 · TRAZABILIDAD", "Historial y evidencia",
@@ -244,6 +308,13 @@ elif page=="Ayuda":
         st.write("No. Esta primera versión solo acepta un archivo CSV con métricas extraídas previamente. La extracción automática de código está fuera del alcance actual.")
     with st.expander("¿Qué significa score_riesgo?"):
         st.write("Es el margen de decisión no calibrado de SVM. Es útil para establecer un orden relativo entre módulos bajo este pipeline, pero no debe presentarse como probabilidad porcentual.")
+    with st.expander("¿En qué se diferencian el Margen SVM, la Probabilidad Calibrada/LOC y ManualUp (Observación O1)?"):
+        st.markdown("""
+        - **Margen SVM (Operativo):** Es la distancia con signo del módulo al hiperplano de decisión aprendido por SVM. No toma en cuenta el tamaño del módulo (LOC) ni está acotado en [0, 1].
+        - **Probabilidad Calibrada / LOC (Experimental):** Transforma el margen a una probabilidad mediante regresión logística (escalado de Platt) y la divide por las líneas de código (LOC). Representa la expectativa de defectos por unidad de esfuerzo de inspección.
+        - **ManualUp (Referencia):** Heurística ingenieril simple que prioriza los módulos más pequeños (menor LOC primero). Permite revisar más módulos dentro de un presupuesto fijo de líneas de código.
+        - **Evidencia empírica de la tesis:** En el experimento científico, la estrategia calibrada/LOC obtuvo un Recall@20 % LOC de 29.09 % frente a 28.74 % de ManualUp (+0.36 p.p.), superando a ManualUp en 2 de 5 proyectos. Al incluir el cero los intervalos bootstrap, no se concluye superioridad del modelo sobre la heurística de líneas de código.
+        """)
     with st.expander("¿Qué debo revisar si mi CSV es rechazado?"):
         st.write("Verifica que haya 21 métricas numéricas compatibles, encabezados correctos, sin columnas extra (excepto id_modulo, defects o problems) y sin identificadores duplicados.")
     with st.expander("¿Cuál es el alcance de la evaluación científica?"):

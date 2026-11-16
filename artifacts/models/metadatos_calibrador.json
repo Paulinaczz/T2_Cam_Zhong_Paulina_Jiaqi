@@ -1,0 +1,12 @@
+{
+  "nombre": "Calibrador_probabilidad_E6",
+  "metodo": "sigmoide_logistica_Platt",
+  "modelo_base": "E6_ADASYN_MI",
+  "algoritmo_calibrador": "LogisticRegression",
+  "datos_entrenamiento": 11690,
+  "positivos_entrenamiento": 2519,
+  "coeficiente_sigmoide": 0.7743347339651538,
+  "intercepto_sigmoide": -1.2852428257799364,
+  "proposito": "Mapeo de margen funcional SVM a probabilidad calibrada P(defecto) in [0, 1] para la estrategia experimental P/LOC",
+  "nota_metodologica": "Ajustado sobre los 11 690 margenes OOF de los 5 proyectos historicos para permitir inferencia reproducible en el prototipo. Difiere del protocolo de investigacion donde cada proyecto test tuvo su calibrador ajustado solo en 4 fuentes."
+}
