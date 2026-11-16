@@ -1,0 +1,16 @@
+{
+  "commit": "18108025d5108d6f73bcd98bf465e5d494a58c77",
+  "e6": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "calibrador": "a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19",
+  "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+  "sistema": "Windows-10-10.0.19045-SP0",
+  "paquetes": {
+    "streamlit": "1.67.0",
+    "pytest": "9.2.0",
+    "scikit-learn": "1.6.1",
+    "imbalanced-learn": "0.14.2",
+    "numpy": "2.5.5",
+    "pandas": "2.3.3",
+    "joblib": "1.6.0"
+  }
+}

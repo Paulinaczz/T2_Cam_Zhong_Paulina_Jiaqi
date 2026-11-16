@@ -1,0 +1,20 @@
+{
+  "CP01": "aprobado",
+  "CP05": "aprobado",
+  "ejecucion": {
+    "execution_id": "4f58737a-3c0d-4623-83ce-609faa2d75f1",
+    "fecha_utc": "2026-11-15T23:19:04.382054+00:00",
+    "nombre_csv": "ejemplo_carga.csv",
+    "sha256_entrada": "be64b0ec70a669572d2f4adca9f4eb82154125844a95091024c6f4d831ffaff1",
+    "sha256_modelo": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+    "version_modelo": "CPDP_NESTED_LOPO_DEDUP_ESFUERZO",
+    "algoritmo": "SVM",
+    "escenario": "E6_ADASYN_MI",
+    "total_registros": 18,
+    "total_positivos": 2,
+    "tipo_score": "margen_svm_no_calibrado",
+    "estado": "COMPLETADA"
+  },
+  "predicciones_verificadas": 18,
+  "metricas": 21
+}

@@ -85,17 +85,19 @@ Los informes formales se encuentran disponibles en:
 
 | Caso | Tipo | Resultado Técnico Obtenido | Archivos de Respaldo |
 | :--- | :--- | :--- | :--- |
-| **CP01** | Funcional | Importación, validación, inferencia y ordenación exitosa de 18 módulos | `evidencias/pi13/validacion_local/casos/CP01/` |
+| **CP01** | Funcional | 18 módulos y 21 métricas validados. Se verificaron el ranking SVM, el ranking calibrado/LOC y ManualUp. | [Matriz exportada](evidencias/pi13/o1_20261115_181721/CP01_comparacion.csv) |
 | **CP02** | Seguridad | Rechazo inmediato de CSV sin columna `loc`; SQLite inalterada | `evidencias/pi13/validacion_local/casos/CP02/` |
 | **CP03** | Seguridad | Rechazo controlado de valores infinitos (`inf`) y datos alfanuméricos | `evidencias/pi13/validacion_local/casos/CP03/` |
 | **CP04** | Seguridad | Escapado de fórmulas CSV (`=1+2` sanitizado a `'=1+2`) | `evidencias/pi13/validacion_local/casos/CP04/` |
-| **CP05** | Funcional | Generación de UUID, verificación de hashes y persistencia de 18 registros | `evidencias/pi13/validacion_local/casos/CP05/` |
-| **CP06** | Rendimiento | 30 repeticiones lote 18: $p_{95} = \mathbf{0,0767\text{ s}}$ (meta $\le 5\text{ s}$ superada). 30 repeticiones JM1: $p_{95} \approx \mathbf{50,50\text{ s}}$ | `evidencias/pi13/validacion_local/casos/CP06/` |
+| **CP05** | Funcional | Ejecución COMPLETADA con UUID, hashes y 18 predicciones verificadas en SQLite. | [Comprobaciones](evidencias/pi13/o1_20261115_181721/CP01_CP05.json) |
+| **CP06** | Rendimiento | 30 repeticiones independientes por lote. p95 del flujo comparativo de **0,096739 s** con 18 módulos y **47,783318 s** con JM1 completo (13 204 módulos). | [Mediciones](evidencias/pi13/o1_20261115_181721/CP06_mediciones.csv) · [Resumen](evidencias/pi13/o1_20261115_181721/CP06_resumen_segundos.csv) |
 | **CP11** | Seguridad | Rechazo de extensiones incompatibles (`.xlsx`) e IDs duplicados | `evidencias/pi13/validacion_local/casos/CP11/` |
 | **CP12** | Seguridad | Bloqueo estricto del pipeline ante alteración del hash SHA-256 | `evidencias/pi13/validacion_local/casos/CP12/` |
-| **Pytest** | Automatizada | **15 pruebas aprobadas al 100 %** (0 fallos, 0 omisiones, incluye tests de calibración) | `evidencias/pi13/validacion_local/suite_pytest.txt` |
+| **Pytest** | Automatizada | **15 pruebas aprobadas**, incluida la integración con E6 y las comprobaciones de calibración. | [Registro pytest](evidencias/pi13/o1_20261115_181721/suite_pytest.txt) |
 
-Las evidencias visuales con las 11 capturas de pantalla de la interfaz y su matriz de trazabilidad se ubican en [evidencias/pi13/capturas/INDICE_CAPTURAS.csv](evidencias/pi13/capturas/INDICE_CAPTURAS.csv).
+El total de CP06 mide validación, inferencia comparativa, calibración, cálculo de rankings y serialización CSV. Excluye arranque, persistencia, inferencia adicional en UI04 y renderizado. La meta de 5 s corresponde al lote de 18 módulos.
+
+La validación operativa de O1 y las [capturas reales de Streamlit](evidencias/pi13/o1_20261115_181721/capturas/) se documentan en el [índice de evidencias](evidencias/pi13/o1_20261115_181721/LEEME.md). La evaluación experimental Nested LOPO corresponde a la sección anterior. Las capturas históricas se conservan en su [índice original](evidencias/pi13/capturas/INDICE_CAPTURAS.csv).
 
 ---
 

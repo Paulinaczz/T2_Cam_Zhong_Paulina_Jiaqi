@@ -112,10 +112,12 @@ Las pruebas locales reproducibles registraron los siguientes resultados en `evid
   - **CP05 (Historial e integridad SQLite):** Aprobado en backend y visualmente (`historial.csv`, `predicciones_sqlite.csv`).
   - **CP11 (Rechazo de formato no CSV y duplicados):** Aprobado en backend (`rechazos.txt`).
   - **CP12 (Bloqueo por alteración SHA-256):** Aprobado en backend sobre copia temporal (`rechazo_hash.txt`).
-  - **Suite Pytest:** 15 pruebas unitarias e integración aprobadas al 100 % (incluye pruebas de calibración y comparación de estrategias).
-- **Rendimiento (CP06 — 30 repeticiones por lote):**
-  - **Lote `ejemplo_18` (18 módulos):** Tiempo de inferencia $p_{95} = \mathbf{0,0767\text{ s}}$, cumpliendo con holgura la meta exigida de $p_{95} \le 5\text{ s}$.
-  - **Lote `JM1_completo` (13 204 módulos):** Tiempo de inferencia $p_{95} \approx \mathbf{50,50\text{ s}}$ (media 48,89 s; validación 0,47 s), reportado con fines descriptivos de escalabilidad.
+  - **Suite pytest de O1:** 15 pruebas aprobadas en la rama del PR #3. [Registro](../evidencias/pi13/o1_20261115_181721/suite_pytest.txt)
+
+La [verificación operativa de O1](../evidencias/pi13/o1_20261115_181721/LEEME.md) comprobó la integridad de E6 y del calibrador serializado, los tres rankings y la exportación para 18 módulos (CP01), y la persistencia del UUID, las huellas y las 18 predicciones (CP05). En el prototipo, el ranking operativo sigue ordenado por margen E6. El calibrador ajustado sobre márgenes históricos fuera de pliegue se usa en la comparación de estrategias. El Nested LOPO de la sección anterior utiliza una calibración por pliegue y es la fuente de los resultados científicos frente a ManualUp. Esa evaluación no aporta evidencia de una mejora consistente.
+
+**CP06 en el PR #3.** Se realizaron 30 repeticiones independientes por tamaño de lote, con un p95 del flujo comparativo de **0,096739 s** para 18 módulos y **47,783318 s** para JM1 completo (13 204 módulos). La meta original de 5 s aplica al lote pequeño. La inferencia en JM1 alcanzó un p95 de 47,193291 s. Se midieron por separado validación, inferencia, calibración, rankings y exportación. El total excluye arranque, persistencia, inferencia adicional en UI04 y renderizado. [Mediciones individuales](../evidencias/pi13/o1_20261115_181721/CP06_mediciones.csv) · [Resumen estadístico](../evidencias/pi13/o1_20261115_181721/CP06_resumen_segundos.csv)
+
 
 ---
 
