@@ -121,11 +121,10 @@ La [verificación operativa de O1](../evidencias/pi13/o1_20261115_181721/LEEME.m
 
 ---
 
-## 5. Estado de Observaciones y Casos Pendientes
+## 5. Seguimiento PI13–PI14
 
-Para mantener el rigor académico y no declarar aprobaciones prematuras:
-
-1. **CP09 (Sensibilidad y repetibilidad):** Permanece como pendiente formal hasta consolidar un protocolo de repetición con número suficiente de semillas e iteraciones independientes.
-2. **CP10 (Aceptación y usabilidad con usuarios):** Permanece pendiente de ejecución real mediante la aplicación del instrumento validado I-05 a evaluadores y analistas de QA; no se simulan participantes ni respuestas ficticias.
-3. **Capturas de rechazo de interfaz:** Las evidencias visuales cubren el flujo positivo (EVV01–EVV11). Los mensajes específicos de error para CP02, CP03 y CP11 en el navegador no disponen de captura fotográfica en esta entrega, quedando respaldados por los reportes de backend.
-4. **Observaciones del asesor:** Permanecen en revisión continua hasta contar con el dictamen y aprobación formal correspondiente.
+- **UI04 corregida.** CM1 y JM1 son los proyectos con delta positivo en Recall@20 % LOC. La prueba de regresión obtiene los proyectos del CSV experimental y los compara con lo mostrado. Los resultados históricos conservan sus cifras. [Verificación](../evidencias/pi14_revision/UI04/LEEME.md)
+- **Ejecutado.** CP09 incluye una repetición de recetas externas fijas para cinco proyectos y tres algoritmos. El protocolo formal de 27 configuraciones requiere ejecutar la búsqueda anidada completa. CP02, CP03, CP04, CP11 y CP12 se comprobaron en Streamlit. CP12 usó una copia aislada alterada. [Repetibilidad](../evidencias/pi14_revision/A/LEEME.md) · [Capturas y resultados](../evidencias/pi14_revision/C/LEEME.md)
+- **Preparado.** I-05 incluye ficha para 2–3 jueces, matriz V de Aiken, tareas equivalentes y formatos de registro. I-06 está preparado para revisión. El juicio de expertos, el consentimiento y las sesiones con al menos cinco participantes reales quedan pendientes. [Instrumentos](../evidencias/pi14_revision/B/)
+- **Auditoría de criterios.** Los indicadores históricos de cobertura y protocolo se distinguen de umbrales de calidad. F1, AUC-ROC y Average Precision se reportan como descriptivos por proyecto y en macro. Cualquier criterio de calidad nuevo y la reformulación de OE2 requieren aprobación previa. [Tabla y criterios](../evidencias/pi14_revision/D/criterios_y_metricas.md)
+- **Escalabilidad y OE4.** El límite operativo es de 20 000 filas y 10 MiB. JM1 aporta evidencia a 13 204 filas. El análisis de cohortes y la comparación exploratoria frente a ManualUp se interpretan por separado de la validación del prototipo. [Alcance y recomendaciones](../evidencias/pi14_revision/E/escalabilidad_y_OE4.md)

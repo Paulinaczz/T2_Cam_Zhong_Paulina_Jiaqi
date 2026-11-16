@@ -241,7 +241,7 @@ elif page=="Resultados":
             st.info("""
             **Marco Metodológico y Conclusiones del Experimento Científico:**
             - En la evaluación entre proyectos (CPDP) con cinco proyectos (CM1, JM1, KC1, KC2, PC1), la estrategia ML calibrada/LOC alcanzó un **Recall@20 % LOC promedio de 29.09 %** frente a **28.74 % de ManualUp** (+0.36 p.p.).
-            - La estrategia ML superó a ManualUp en **2 de los 5 proyectos** (CM1 y PC1), mientras que ManualUp fue superior en los otros 3.
+            - La estrategia ML superó a ManualUp en **2 de los 5 proyectos** (CM1 y JM1), mientras que ManualUp fue superior en los otros 3.
             - Los intervalos de confianza bootstrap del 95 % para la diferencia incluyen el cero ([-4.90, +4.84]), por lo que **no existe evidencia estadística para afirmar superioridad consistente del ML sobre ManualUp**.
             - La estrategia operativa desplegada sigue siendo el margen SVM, mientras que la calibración por LOC se presenta como herramienta analítica experimental.
             """)

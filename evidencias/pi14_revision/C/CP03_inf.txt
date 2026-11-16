@@ -1,0 +1,1 @@
+    - paragraph: "No se pudo validar: 'loc' contiene valores infinitos"

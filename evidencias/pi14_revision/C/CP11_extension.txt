@@ -1,0 +1,4 @@
+    - generic "CP11_extension_invalida.xlsx, 2.2KB":
+      - generic "CP11_extension_invalida.xlsx": CP11_e...valida.xlsx
+      - button "Remove CP11_extension_invalida.xlsx":
+      - alert: "Error: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet files are not allowed."

@@ -1,0 +1,12 @@
+{
+  "max_filas": 20000,
+  "max_bytes": 10485760,
+  "jm1_filas": 13204,
+  "jm1_sha256": "cd5b399ed10a77234c39da4e8242f260761cf844c1bfb4b96eb0e07727e555e3",
+  "aceptadas_lectura_filas_sinteticas": 20000,
+  "rechazos": {
+    "filas": "El CSV tiene demasiados registros (máximo 20,000)",
+    "bytes": "El CSV supera el límite de 10 MB"
+  },
+  "alcance": "Lectura y límites del CSV; no se midió latencia al máximo."
+}

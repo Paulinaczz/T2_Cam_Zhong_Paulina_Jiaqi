@@ -101,13 +101,13 @@ La validación operativa de O1 y las [capturas reales de Streamlit](evidencias/p
 
 ---
 
-## 5. Casos y Observaciones Mantenidos como Pendientes
+## 5. Seguimiento PI13–PI14
 
-En estricto cumplimiento del código de ética académica y las directrices de asesoría:
-1. **CP09 (Evaluación formal de repetibilidad):** Permanece como pendiente hasta culminar la serie requerida de repeticiones de modelado.
-2. **CP10 (Validación con usuarios en entorno real):** Requiere la aplicación del instrumento de evaluación I-05 a evaluadores y desarrolladores humanos en sesiones controladas; no se formulan estimaciones simuladas.
-3. **Capturas de rechazo visual en navegador:** Las pantallas de alerta de error específicas de CP02, CP03 y CP11 en la interfaz no disponen de captura fotográfica en esta entrega, quedando su efectividad demostrada a nivel de backend y logs.
-4. **Observaciones metodológicas del asesor:** En proceso de sustentación continua hasta contar con el dictamen formal.
+- **UI04 — O1:** la interfaz identifica a CM1 y JM1 como los proyectos con delta positivo frente a ManualUp. Una prueba de Streamlit contrasta el texto renderizado con el CSV experimental. [Corrección y prueba](evidencias/pi14_revision/UI04/LEEME.md)
+- **CP09 — repetibilidad:** se repitió el entrenamiento de las recetas históricas por proyecto y algoritmo. La búsqueda anidada completa de 27 configuraciones permanece pendiente. [Protocolo y alcance](evidencias/pi14_revision/A/LEEME.md)
+- **CP10 — piloto:** I-05 e I-06 están preparados para revisión. Quedan pendientes el juicio de expertos, la aprobación del protocolo y las sesiones con participantes voluntarios. [Guion y ficha de jueces](evidencias/pi14_revision/B/I05_guion_y_ficha_jueces.md)
+- **Streamlit:** se ejecutaron CP02, CP03, CP04, CP11 y CP12 con capturas de navegador y evidencia del CSV exportado. [Registro visual](evidencias/pi14_revision/C/LEEME.md)
+- **OE1–OE4 y escalabilidad:** se documentan las métricas externas, los criterios anteriores a la evaluación y las propuestas pendientes de aprobación. [Índice PI13–PI14](evidencias/pi14_revision/F/LEEME.md)
 
 ---
 
