@@ -1,0 +1,22 @@
+campo,significado esperado,candidato para extracción C,estado de equivalencia
+loc,LOC de McCabe,McCabe IQ por módulo o contraste de CountLineCode de Understand,Pendiente de par fuente-fila
+v(g),Complejidad ciclomática,McCabe IQ v(G) o Understand Cyclomatic; CCN de Lizard como contraste,CCN ejecutado en ejemplo; equivalencia histórica pendiente
+ev(g),Complejidad esencial,McCabe IQ ev(G) o Understand Essential,Disponible según documentación; equivalencia pendiente
+iv(g),Complejidad de diseño de módulo,McCabe IQ iv(G),Disponible según documentación; equivalencia pendiente
+n,Longitud Halstead,McCabe IQ Length o Understand HalsteadLength; total_Op + total_Opnd,Fórmula candidata; verificar tokenización y redondeo
+v,Volumen Halstead,McCabe IQ Volume o Understand HalsteadVol; N por log2 de vocabulario,Fórmula candidata; verificar tokenización y redondeo
+l,Nivel Halstead,McCabe IQ Program Level; candidato 1/d,Fórmula candidata; verificar ceros y precisión
+d,Dificultad Halstead,McCabe IQ Difficulty o Understand HalsteadDifficulty,Fórmula candidata; verificar tokenización y ceros
+i,Contenido inteligente Halstead,McCabe IQ Intelligent Content; candidato v/d,Fórmula candidata; conservar precisión antes de redondear
+e,Esfuerzo Halstead,McCabe IQ Effort o Understand HalsteadEffort; candidato d*v,Fórmula candidata
+b,Estimación de errores Halstead,McCabe IQ Error Estimate; candidato v/3000,Fórmula candidata; confirmar convención histórica
+t,Estimación de tiempo Halstead,McCabe IQ Programming Time; candidato e/18,Fórmula candidata; confirmar unidad y redondeo
+lOCode,Líneas de código según conteo Halstead,McCabe IQ line counts o contraste con Understand CountLineCode,No equiparar con loc sin comparación
+lOComment,Líneas con comentarios,McCabe IQ Lines of Comment o Understand CountLineComment,Verificar inclusión de líneas mixtas y previas
+lOBlank,Líneas en blanco,McCabe IQ Lines Left Blank o Understand CountLineBlank,Verificar límites por función
+locCodeAndComment,Líneas que contienen código y comentario,McCabe IQ Mixed Code and Comments o analizador léxico con intersección por línea,Verificar límites por función y preprocesado
+uniq_Op,Operadores distintos,Understand HalsteadDistinctOperators o conteo Halstead documentado de McCabe IQ,Verificar alfabeto de operadores
+uniq_Opnd,Operandos distintos,Understand HalsteadDistinctOperands o conteo Halstead documentado de McCabe IQ,Verificar alfabeto de operandos
+total_Op,Total de operadores,Understand HalsteadTotalOperators o conteo Halstead documentado de McCabe IQ,Verificar alfabeto de operadores
+total_Opnd,Total de operandos,Understand HalsteadTotalOperands o conteo Halstead documentado de McCabe IQ,Verificar alfabeto de operandos
+branchCount,Ramas en el grafo de flujo,Exportar grafo con McCabe IQ y acordar convención de conteo,Pendiente de convención; 2*v(g)-1 no reproduce todas las filas

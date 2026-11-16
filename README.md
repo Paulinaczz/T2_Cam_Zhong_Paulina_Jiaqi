@@ -104,10 +104,12 @@ La validación operativa de O1 y las [capturas reales de Streamlit](evidencias/p
 ## 5. Seguimiento PI13–PI14
 
 - **UI04 — O1:** la interfaz identifica a CM1 y JM1 como los proyectos con delta positivo frente a ManualUp. Una prueba de Streamlit contrasta el texto renderizado con el CSV experimental. [Corrección y prueba](evidencias/pi14_revision/UI04/LEEME.md)
-- **CP09 — repetibilidad:** se repitió el entrenamiento de las recetas históricas por proyecto y algoritmo. La búsqueda anidada completa de 27 configuraciones permanece pendiente. [Protocolo y alcance](evidencias/pi14_revision/A/LEEME.md)
-- **CP10 — piloto:** I-05 e I-06 están preparados para revisión. Quedan pendientes el juicio de expertos, la aprobación del protocolo y las sesiones con participantes voluntarios. [Guion y ficha de jueces](evidencias/pi14_revision/B/I05_guion_y_ficha_jueces.md)
+- **CP09 — parcialmente comprobado:** dos repeticiones locales con semilla 42 produjeron CSV idénticos. NumPy 2.1.3 reprodujo las tres métricas históricas de 4 de 15 recetas. Se observó sensibilidad del escalado y de ADASYN a la pila numérica. El entorno histórico de Colab sigue sin recuperarse por completo y la búsqueda Nested LOPO de 27 configuraciones está pendiente. [Diagnóstico y trazas](evidencias/pi14_cierre/CP09/LEEME.md)
+- **CP10 — no ejecutado:** I-05, la matriz de Aiken e I-06 son borradores. Faltan la revisión por jueces expertos, la aprobación del protocolo y las sesiones con participantes reales. [Instrumentos](evidencias/pi14_revision/B/)
 - **Streamlit:** se ejecutaron CP02, CP03, CP04, CP11 y CP12 con capturas de navegador y evidencia del CSV exportado. [Registro visual](evidencias/pi14_revision/C/LEEME.md)
-- **OE1–OE4 y escalabilidad:** se documentan las métricas externas, los criterios anteriores a la evaluación y las propuestas pendientes de aprobación. [Índice PI13–PI14](evidencias/pi14_revision/F/LEEME.md)
+- **Escalabilidad:** el lector admite 20 000 filas y 10 MiB. En 30 corridas con 20 000 módulos sintéticos (2,12 MiB), el flujo comparativo obtuvo **p95 67,837039 s** y **mediana 64,824879 s** en Windows 10, Ryzen 5 3600 y unos 16 GiB de RAM. Se excluyeron arranque, espera del servidor, persistencia, inferencia adicional del ranking operativo, transferencia y renderizado. El plan no fijó una meta para ese lote. [Mediciones y entorno](evidencias/pi14_cierre/escalabilidad/LEEME.md)
+- **Extracción:** Lizard 1.25.0 obtuvo NLOC, complejidad ciclomática y tokens por función en un ejemplo C. La equivalencia de las 21 métricas sigue pendiente. Streamlit sigue recibiendo métricas precalculadas. [Demostración](evidencias/pi14_cierre/metricas/LEEME.md)
+- **Matriz PI13–PI14:** [comprobado, parcialmente comprobado y pendiente](evidencias/pi14_cierre/INFORME.md).
 
 ---
 

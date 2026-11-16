@@ -1,0 +1,22 @@
+{
+  "version": "1.25.0",
+  "resultados": [
+    {
+      "funcion": "clamp_negative",
+      "linea_inicio": 2,
+      "linea_fin": 8,
+      "NLOC_lizard": 7,
+      "CCN_lizard": 2,
+      "tokens_lizard": 21
+    },
+    {
+      "funcion": "aggregate_positive",
+      "linea_inicio": 10,
+      "linea_fin": 18,
+      "NLOC_lizard": 8,
+      "CCN_lizard": 2,
+      "tokens_lizard": 46
+    }
+  ],
+  "alcance": "Salida de Lizard para el ejemplo; compatibilidad con PDS-QA no demostrada."
+}
