@@ -21,13 +21,13 @@ Este directorio reúne las versiones más recientes de los informes de validaci�
 | **CP07** | Experimental (Calidad predictiva) | **Documentado en investigación** | `research/experimentos/` |
 | **CP08** | Experimental (Comparación configuraciones) | **Documentado en investigación** | `research/experimentos/comparacion_configuraciones/` |
 | **CP09** | Experimental (Sensibilidad/Replicabilidad) | **Recetas fijas repetidas; búsqueda completa pendiente** | En evaluación metodológica |
-| **CP10** | Usabilidad / Aceptación en usuarios | **Pendiente de validación de instrumento y pruebas reales** | Requiere participantes reales y validación formal de I-05 |
+| **CP10** | Usabilidad / aceptación | **NO EJECUTADO** | Fuera del alcance final. Sin evidencia de usabilidad |
 | **CP11** | Seguridad (Extensión y duplicados) | **Aprobado en backend** | `evidencias/pi13/validacion_local/casos/CP11/rechazos.txt` |
 | **CP12** | Seguridad (Integridad SHA-256 del modelo) | **Aprobado en backend** | `evidencias/pi13/validacion_local/casos/CP12/rechazo_hash.txt` |
 
 ## Elementos Mantenidos Explícitamente como Pendientes
 
 1. **CP09:** La repetición de recetas externas está registrada. La búsqueda Nested LOPO completa de 27 configuraciones queda pendiente.
-2. **CP10:** Requiere la aplicación del cuestionario I-05 con usuarios y evaluadores reales; no se simulan ni inventan sesiones de participantes.
+2. **CP10:** NO EJECUTADO por decisión de alcance. Se registra como limitación del estudio.
 3. **Capturas de rechazo de interfaz:** Se registraron capturas reales para CP02, CP03, CP04, CP11 y CP12 en la [revisión PI13–PI14](../../evidencias/pi14_revision/C/LEEME.md).
 4. **Observaciones del asesor:** Las observaciones metodológicas permanecen bajo revisión continua hasta contar con la confirmación y aprobación formal correspondiente.
