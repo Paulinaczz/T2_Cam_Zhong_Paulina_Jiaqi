@@ -127,7 +127,9 @@ if page=="Inicio":
         - **Observación O1 (PI13–PI14):** Se incorpora la comparación visible entre el ranking operativo por margen SVM, la estrategia experimental de probabilidad calibrada por LOC (densidad de riesgo) y la heurística de referencia ManualUp.
         """)
         st.write("Entrenado sobre la cohorte deduplicada de cinco proyectos históricos (CM1, JM1, KC1, KC2 y PC1) tras evaluación entre proyectos (CPDP).")
-        st.write("F1 promedio de selección entre proyectos: **0.419** (frente a E7 con 0.415; diferencia pareada Wilcoxon p=0.4375, sin significancia estadística).")
+        st.write("Evaluación histórica anterior de recetas fijas: E6 obtuvo F1 promedio **0.419**, frente a E7 con 0.415 (Wilcoxon bilateral p=0.4375).")
+        st.write("Resultados oficiales de OE3 en la nueva evaluación Nested LOPO: XGBoost obtuvo el mayor F1 macro (0.423066) y AP (0.380567); SVM obtuvo el mayor AUC-ROC (0.727687). E6 permanece como modelo operativo previamente validado; el candidato experimental nuevo se conserva separado.")
+        st.markdown("[Tabla oficial de OE3 y entorno de investigación](https://github.com/Paulinaczz/T2_Cam_Zhong_Paulina_Jiaqi/blob/v1.0-tesis/evidencias/pi15/oe3/RESULTADOS_OE3.md)")
         st.write("En la evaluación de esfuerzo (Recall@20 % LOC), la estrategia calibrada/LOC promedió 29.09 % frente a 28.74 % de ManualUp (+0.36 p.p.), superando a ManualUp en 2 de 5 proyectos con intervalos bootstrap que incluyen el cero.")
         st.write("Este resultado proviene de la validación entre proyectos y no equivale a una prueba independiente del artefacto final sobre un proyecto inédito.")
         st.write("La procedencia documental y equivalencias de métricas continúan sujetas a verificación humana.")
@@ -240,10 +242,11 @@ elif page=="Resultados":
 
             st.info("""
             **Marco Metodológico y Conclusiones del Experimento Científico:**
-            - En la evaluación entre proyectos (CPDP) con cinco proyectos (CM1, JM1, KC1, KC2, PC1), la estrategia ML calibrada/LOC alcanzó un **Recall@20 % LOC promedio de 29.09 %** frente a **28.74 % de ManualUp** (+0.36 p.p.).
+            - En la evaluación entre proyectos (CPDP) con cinco proyectos (CM1, JM1, KC1, KC2, PC1), la estrategia ML calibrada/LOC, en un análisis exploratorio, alcanzó un **Recall@20 % LOC promedio de 29.09 %** frente a **28.74 % de ManualUp** (+0.36 p.p.).
             - La estrategia ML superó a ManualUp en **2 de los 5 proyectos** (CM1 y JM1), mientras que ManualUp fue superior en los otros 3.
-            - Los intervalos de confianza bootstrap del 95 % para la diferencia incluyen el cero ([-4.90, +4.84]), por lo que **no existe evidencia estadística para afirmar superioridad consistente del ML sobre ManualUp**.
-            - La estrategia operativa desplegada sigue siendo el margen SVM, mientras que la calibración por LOC se presenta como herramienta analítica experimental.
+            - Los cinco intervalos bootstrap del 95 % por proyecto publicados incluyen el cero, por lo que **no existe evidencia estadística para afirmar superioridad consistente del ML sobre ManualUp**.
+            - El 29.09 % procede de calibradores ajustados exclusivamente con los proyectos fuente de cada pliegue. No valida el calibrador operativo único, ajustado sobre los márgenes históricos OOF.
+            - El ranking operativo conserva el margen SVM de E6 previamente validado. La comparación calibrada/LOC es una herramienta analítica experimental.
             """)
 
             if comparison is not None:

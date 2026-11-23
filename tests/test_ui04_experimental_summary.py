@@ -46,3 +46,32 @@ def test_ui04_favorable_projects_match_experimental_csv(tmp_path, monkeypatch):
     displayed_projects = set(re.findall(r"[A-Z]+\d+", match.group(3)))
     assert (int(match.group(1)), int(match.group(2))) == (len(expected), len(rows))
     assert displayed_projects == expected
+
+
+    assert "análisis exploratorio" in messages
+    assert "proyectos fuente de cada pliegue" in messages
+    assert "No valida el calibrador operativo único" in messages
+    assert "[-4.90" not in messages and "+4.84]" not in messages
+
+
+def test_ui01_current_oe3_and_historical_e6_are_identified(tmp_path, monkeypatch):
+    monkeypatch.setenv("PDS_DB_PATH", str(tmp_path / "inicio.sqlite3"))
+    app = AppTest.from_file(str(ROOT / "app.py"))
+    app.run()
+    assert not app.exception
+    assert not app.error
+    text = "\n".join(str(element.value) for element in app.markdown)
+    assert "Evaluación histórica anterior de recetas fijas" in text
+    assert "E6 permanece como modelo operativo previamente validado" in text
+    assert "Resultados oficiales de OE3" in text
+    path = ROOT / "evidencias/pi15/oe3/ejecucion_completa/resumen_algoritmos_externos.csv"
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    best_f1 = max(rows, key=lambda row: float(row["f1_macro_externo"]))
+    best_ap = max(rows, key=lambda row: float(row["ap_macro_externo"]))
+    best_auc = max(rows, key=lambda row: float(row["auc_macro_externo"]))
+    assert best_f1["algoritmo"] == best_ap["algoritmo"] == "XGBoost"
+    assert best_auc["algoritmo"] == "SVM"
+    for row, key in ((best_f1, "f1_macro_externo"), (best_ap, "ap_macro_externo"),
+                     (best_auc, "auc_macro_externo")):
+        assert f'{float(row[key]):.6f}' in text
