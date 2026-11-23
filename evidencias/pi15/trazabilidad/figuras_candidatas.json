@@ -1,6 +1,6 @@
 {
-  "identificacion_figura_6_1": "NO_COMPROBADA; falta la version de tesis con esa figura",
-  "identificacion_figura_6_2": "NO_COMPROBADA; falta la version de tesis con esa figura",
+  "identificacion_figura_6_1": "COMPROBADA al recibir la tesis; curvas_recall_LOC.png, igualdad exacta de pixeles en escala de grises",
+  "identificacion_figura_6_2": "COMPROBADA al recibir la tesis; delta_por_proyecto_IC95.png, igualdad exacta de pixeles en escala de grises",
   "candidatos_trazables": [
     {
       "figura": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/curvas_recall_LOC.png",
@@ -26,5 +26,6 @@
       "notebook": "research/Entrenamiento_Prediccion_Defectos.ipynb",
       "celda_codigo_0_based": 22
     }
-  ]
+  ],
+  "prueba_correspondencia": "figuras_tesis_verificadas.json"
 }
