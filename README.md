@@ -55,19 +55,33 @@ La interfaz web se iniciará automáticamente en `http://localhost:8501`.
 - **Hash de integridad SHA-256:** `5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f`.
 - **Score operativo:** Margen funcional de la función de decisión (`decision_function`). El ranking operativo ordena los módulos de mayor a menor margen.
 
-### B. Evaluación Experimental y Comparación con la Heurística ManualUp
+### B. Resultados oficiales nuevos de OE3
+
+| Algoritmo | F1 macro | AUC-ROC macro | AP macro |
+|---|---:|---:|---:|
+| XGBoost | 0,423066 | 0,711975 | 0,380567 |
+| SVM | 0,413096 | 0,727687 | 0,348831 |
+| Random Forest | 0,361601 | 0,693271 | 0,360133 |
+
+XGBoost obtuvo el mayor F1 y AP del procedimiento Nested LOPO; SVM obtuvo el mayor AUC-ROC. E6 permanece como modelo operativo previamente validado. Esta decisión conserva el alcance funcional y las evidencias del prototipo; la integración de otro clasificador requeriría su validación operativa. El nuevo experimento no justifica superioridad estadística universal de E6.
+
+La búsqueda completa evaluó 27 configuraciones y 675 ajustes candidatos. La tabla corresponde a selección interna por algoritmo y evaluación externa por proyecto. [Resultados nuevos y contraste con Colab](evidencias/pi15/oe3/RESULTADOS_OE3.md)
+
+### C. Evaluación exploratoria de esfuerzo frente a ManualUp
 En el marco de la investigación en Google Colab sobre predicción entre proyectos (CPDP con CM1, JM1, KC1, KC2 y PC1 deduplicados), se evaluó una estrategia de **probabilidad calibrada por líneas de código ($\widehat{P} / \text{LOC}$)**:
 
-| Métrica / Estrategia | E6 Calibrado / LOC | ManualUp (LOC asc.) | Diferencia ($\Delta$) | Intervalo Bootstrap (IC 95 %) |
-| :--- | :--- | :--- | :--- | :--- |
-| **Recall@20 % LOC (Promedio)** | **29,09 %** | **28,74 %** | **+0,36 p.p.** | CM1: [-5,56, +11,63] p.p. |
-| **Recall@10 % LOC (Promedio)** | 15,39 % | 15,25 % | +0,15 p.p. | JM1: [-0,83, +2,30] p.p. |
-| **$P_{\text{opt}}$ normalizado (0–20 %)** | 25,50 % | **25,71 %** | -0,21 p.p. | KC1: [-3,04, +1,06] p.p. |
-| **Proyectos ganados** | 2 de 5 (CM1, JM1) | **3 de 5** (KC1, KC2, PC1) | — | Todos incluyen el 0 |
+| Métrica / Estrategia | E6 Calibrado / LOC | ManualUp (LOC asc.) | Diferencia ($\Delta$) |
+| :--- | :--- | :--- | :--- |
+| **Recall@20 % LOC (Promedio)** | **29,09 %** | **28,74 %** | **+0,36 p.p.** |
+| **Recall@10 % LOC (Promedio)** | 15,39 % | 15,25 % | +0,15 p.p. |
+| **$P_{\text{opt}}$ normalizado (0–20 %)** | 25,50 % | **25,71 %** | -0,21 p.p. |
+| **Proyectos ganados** | 2 de 5 (CM1, JM1) | **3 de 5** (KC1, KC2, PC1) | — |
+
+Los intervalos bootstrap de Recall@20 % LOC se reportan [por proyecto en su CSV](research/experimentos/estrategia_esfuerzo/principal_deduplicada/IC95_por_proyecto.csv).
 
 > **Conclusión metodológica:** La diferencia media en Recall@20 % LOC es de +0,36 puntos porcentuales y los intervalos bootstrap al 95 % de las diferencias incluyen el cero en la totalidad de los proyectos. Por lo tanto, **no existe evidencia estadística suficiente para sostener una superioridad consistente del aprendizaje automático frente a la regla determinista de priorizar módulos pequeños (ManualUp)**. Estos resultados forman parte del análisis experimental de investigación y se documentan con rigurosidad académica en [docs/METODOLOGIA_Y_LIMITES.md](docs/METODOLOGIA_Y_LIMITES.md).
 
-### C. Artefacto Calibrador para Inferencia (Observación O1)
+### D. Artefacto Calibrador para Inferencia (Observación O1)
 - **Calibrador serializado:** `artifacts/models/calibrador_probabilidad_e6.joblib` (SHA-256: `a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19`).
 - **Función de calibración:** Sigmoide de Platt ajustada sobre los 11 690 márgenes *out-of-fold* del conjunto histórico ($\beta_1 = 0,7743$, $\beta_0 = -1,2852$). Mapea el margen SVM continuo a una probabilidad en $[0, 1]$.
 - **Integridad del pipeline base:** El modelo predictivo principal `modelo_predictivo_pds.joblib` (SHA-256: `5a420bc5...`) permanece 100 % intacto e inalterado.
@@ -104,7 +118,7 @@ La validación operativa de O1 y las [capturas reales de Streamlit](evidencias/p
 ## 5. Seguimiento PI13–PI14
 
 - **UI04 — O1:** la interfaz identifica a CM1 y JM1 como los proyectos con delta positivo frente a ManualUp. Una prueba de Streamlit contrasta el texto renderizado con el CSV experimental. [Corrección y prueba](evidencias/pi14_revision/UI04/LEEME.md)
-- **CP09 — parcialmente comprobado:** dos repeticiones locales con semilla 42 produjeron CSV idénticos. NumPy 2.1.3 reprodujo las tres métricas históricas de 4 de 15 recetas. Se observó sensibilidad del escalado y de ADASYN a la pila numérica. El entorno histórico de Colab sigue sin recuperarse por completo y la búsqueda Nested LOPO de 27 configuraciones está pendiente. [Diagnóstico y trazas](evidencias/pi14_cierre/CP09/LEEME.md)
+- **CP09 — parcialmente comprobado:** dos repeticiones locales con semilla 42 produjeron CSV idénticos. NumPy 2.1.3 reprodujo las tres métricas históricas de 4 de 15 recetas. Se observó sensibilidad del escalado y de ADASYN a la pila numérica. El entorno histórico de Colab sigue sin recuperarse por completo. La nueva búsqueda Nested LOPO ya completó las 27 configuraciones y 675 ajustes candidatos. [Diagnóstico y trazas](evidencias/pi14_cierre/CP09/LEEME.md)
 - **CP10 — NO EJECUTADO:** la evaluación con participantes quedó fuera del alcance final. No hay evidencia empírica de satisfacción, facilidad de uso ni cambios en el tiempo humano de QA. [Limitaciones](docs/METODOLOGIA_Y_LIMITES.md)
 - **Streamlit:** se ejecutaron CP02, CP03, CP04, CP11 y CP12 con capturas de navegador y evidencia del CSV exportado. [Registro visual](evidencias/pi14_revision/C/LEEME.md)
 - **Escalabilidad:** el lector admite 20 000 filas y 10 MiB. En 30 corridas con 20 000 módulos sintéticos (2,12 MiB), el flujo comparativo obtuvo **p95 67,837039 s** y **mediana 64,824879 s** en Windows 10, Ryzen 5 3600 y unos 16 GiB de RAM. Se excluyeron arranque, espera del servidor, persistencia, inferencia adicional del ranking operativo, transferencia y renderizado. El plan no fijó una meta para ese lote. [Mediciones y entorno](evidencias/pi14_cierre/escalabilidad/LEEME.md)

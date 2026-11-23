@@ -15,7 +15,7 @@ Este documento resume los fundamentos metodológicos, la evidencia experimental 
 
 ## 2. Selección del modelo y evidencia experimental
 
-### A. Selección de la receta ganadora (`E6_ADASYN_MI`)
+### A. Selección histórica de la receta (`E6_ADASYN_MI`)
 - **Pipeline seleccionado:** Clasificador Support Vector Machine (`SVM`) con sobremuestreo adaptativo `ADASYN` y selección de características por Información Mutua (`SelectKBest` con `mutual_info_classif`).
 - **Criterio de selección:** Promedio no ponderado del F1 de la clase defectuosa entre proyectos.
 - **Comparación directa E6 frente a E7:**
@@ -25,8 +25,20 @@ Este documento resume los fundamentos metodológicos, la evidencia experimental 
   - Estadístico \(W = 4,0\), \(p\)-valor bilateral exacto = **0,4375**.
   - **Interpretación:** No se detectó una diferencia estadísticamente significativa entre ambas recetas. Con una muestra de solo 5 proyectos, **la ausencia de significancia estadística no demuestra equivalencia**, reflejando que la ventaja observada es estrecha y dependiente del conjunto de datos.
 
-### B. Desempeño en validación externa anidada
-- En la evaluación anidada externa (*outer loop*), SVM superó a los algoritmos competidores en F1 y Recall:
+### B. Resultados oficiales nuevos de OE3
+
+| Algoritmo | F1 macro | AUC-ROC macro | AP macro |
+|---|---:|---:|---:|
+| XGBoost | 0,423066 | 0,711975 | 0,380567 |
+| SVM | 0,413096 | 0,727687 | 0,348831 |
+| Random Forest | 0,361601 | 0,693271 | 0,360133 |
+
+XGBoost obtuvo el mayor F1 y AP del procedimiento Nested LOPO; SVM obtuvo el mayor AUC-ROC. E6 permanece como modelo operativo previamente validado. Esta decisión conserva el alcance funcional y las evidencias del prototipo; la integración de otro clasificador requeriría su validación operativa. El nuevo experimento no justifica superioridad estadística universal de E6.
+
+En PI15 se completaron las 27 configuraciones y 675 ajustes candidatos de la búsqueda anidada y global. Los resultados se presentan como promedios de cinco proyectos externos con igual peso. [Entorno y resultados](../evidencias/pi15/oe3/RESULTADOS_OE3.md)
+
+### C. Desempeño histórico en Colab
+- En la evaluación histórica de Colab (*outer loop*), SVM superó a los algoritmos competidores en F1 y Recall:
   - **SVM:** Macro F1 outer = **0,4122** | AUC = **0,7277** | Recall = **0,5763**
   - **XGBoost:** Macro F1 outer = **0,3983** | AUC = **0,7123** | Recall = **0,4560**
   - **Random Forest:** Macro F1 outer = **0,3606** | AUC = **0,6899** | Recall = **0,4147**
@@ -124,7 +136,7 @@ La [verificación operativa de O1](../evidencias/pi13/o1_20261115_181721/LEEME.m
 ## 5. Seguimiento PI13–PI14
 
 - **UI04 corregida.** CM1 y JM1 son los proyectos con delta positivo en Recall@20 % LOC. La prueba de regresión obtiene los proyectos del CSV experimental y los compara con lo mostrado. Los resultados históricos conservan sus cifras. [Verificación](../evidencias/pi14_revision/UI04/LEEME.md)
-- **CP09 — parcialmente comprobado.** Dos repeticiones locales con semilla 42 dieron CSV idénticos. Con NumPy 2.1.3 coincidieron las tres métricas históricas de 4 de 15 recetas, frente a 3 de 15 con la versión base. Cambiar el paquete NumPy y su OpenBLAS incluido produjo la primera diferencia local en el escalado. Cambiar el backend de distancias o el orden de empates afectó la vecindad y el balanceo ADASYN. No se recuperaron el entorno completo de Colab ni sus trazas intermedias; la primera divergencia histórica y la repetición Nested LOPO de 27 configuraciones siguen pendientes. [Diagnóstico y comparaciones](../evidencias/pi14_cierre/CP09/LEEME.md)
+- **CP09 — parcialmente comprobado.** Dos repeticiones locales con semilla 42 dieron CSV idénticos. Con NumPy 2.1.3 coincidieron las tres métricas históricas de 4 de 15 recetas, frente a 3 de 15 con la versión base. Cambiar el paquete NumPy y su OpenBLAS incluido produjo la primera diferencia local en el escalado. Cambiar el backend de distancias o el orden de empates afectó la vecindad y el balanceo ADASYN. No se recuperaron el entorno completo de Colab ni sus trazas intermedias; la primera divergencia histórica sigue abierta. La nueva ejecución Nested LOPO completó las 27 configuraciones y 675 ajustes candidatos; sus resultados se publicaron con el entorno fijado. [Diagnóstico y comparaciones](../evidencias/pi14_cierre/CP09/LEEME.md)
 - **Pruebas negativas.** CP02, CP03, CP04, CP11 y CP12 se comprobaron en Streamlit. CP12 usó una copia aislada alterada. [Capturas y resultados](../evidencias/pi14_revision/C/LEEME.md)
 - **CP10 — NO EJECUTADO.** El piloto con participantes quedó fuera del alcance final. No se recogieron datos empíricos de satisfacción, facilidad de uso, errores de interacción ni tiempo humano de QA. Las pruebas funcionales y los tiempos de procesamiento caracterizan el prototipo y el equipo de prueba. LOC aproxima el esfuerzo bajo un presupuesto fijo y no permite estimar minutos de revisión ahorrados.
 - **Auditoría de criterios.** Los indicadores históricos de cobertura y protocolo se distinguen de umbrales de calidad. F1, AUC-ROC y Average Precision se reportan como descriptivos por proyecto y en macro. Cualquier criterio de calidad nuevo y la reformulación de OE2 requieren aprobación previa. [Tabla y criterios](../evidencias/pi14_revision/D/criterios_y_metricas.md)
