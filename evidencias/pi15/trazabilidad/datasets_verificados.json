@@ -1,0 +1,80 @@
+{
+  "consultado_utc": "2026-11-23T02:19:46.277901+00:00",
+  "archivos": [
+    {
+      "proyecto": "CM1",
+      "url": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/main/cm1.csv",
+      "archivo": "CM1.csv",
+      "sha256": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+      "registros": "498",
+      "variable_objetivo": "defects",
+      "url_version_fijada": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/3898d21e287c130c76d458faf65793d32483076d/cm1.csv",
+      "commit_espejo": "3898d21e287c130c76d458faf65793d32483076d",
+      "ultimo_commit_archivo": "88221a4a9e90d509e21425ba301ca04b6be60066",
+      "sha256_remoto": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+      "sha256_local": "c05e4834217c7b0af59f4615c4972b36ef636d2f8414141de6e523bb82e70ac5",
+      "coincide_tres_huellas": true,
+      "alcance": "Espejo secundario; identidad por bytes. Version de NASA/PROMISE original no certificada."
+    },
+    {
+      "proyecto": "JM1",
+      "url": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/main/jm1.csv",
+      "archivo": "JM1.csv",
+      "sha256": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+      "registros": "13204",
+      "variable_objetivo": "defects",
+      "url_version_fijada": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/3898d21e287c130c76d458faf65793d32483076d/jm1.csv",
+      "commit_espejo": "3898d21e287c130c76d458faf65793d32483076d",
+      "ultimo_commit_archivo": "3898d21e287c130c76d458faf65793d32483076d",
+      "sha256_remoto": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+      "sha256_local": "013cb035b07f176e217c0db3abeaeeb214d262e1a63b237a44737ea0f301cc03",
+      "coincide_tres_huellas": true,
+      "alcance": "Espejo secundario; identidad por bytes. Version de NASA/PROMISE original no certificada."
+    },
+    {
+      "proyecto": "KC1",
+      "url": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/main/kc1.csv",
+      "archivo": "KC1.csv",
+      "sha256": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+      "registros": "2109",
+      "variable_objetivo": "defects",
+      "url_version_fijada": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/3898d21e287c130c76d458faf65793d32483076d/kc1.csv",
+      "commit_espejo": "3898d21e287c130c76d458faf65793d32483076d",
+      "ultimo_commit_archivo": "88221a4a9e90d509e21425ba301ca04b6be60066",
+      "sha256_remoto": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+      "sha256_local": "bdc2221d5490243bd033baaf35a1a906a460cd88a54444dfe8be92aba430e798",
+      "coincide_tres_huellas": true,
+      "alcance": "Espejo secundario; identidad por bytes. Version de NASA/PROMISE original no certificada."
+    },
+    {
+      "proyecto": "KC2",
+      "url": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/main/kc2.csv",
+      "archivo": "KC2.csv",
+      "sha256": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+      "registros": "522",
+      "variable_objetivo": "problems",
+      "url_version_fijada": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/3898d21e287c130c76d458faf65793d32483076d/kc2.csv",
+      "commit_espejo": "3898d21e287c130c76d458faf65793d32483076d",
+      "ultimo_commit_archivo": "88221a4a9e90d509e21425ba301ca04b6be60066",
+      "sha256_remoto": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+      "sha256_local": "fedb0f8b4e131dad110e2a7713f7d3b1c0efb68a55b7df7c469610998dafbec7",
+      "coincide_tres_huellas": true,
+      "alcance": "Espejo secundario; identidad por bytes. Version de NASA/PROMISE original no certificada."
+    },
+    {
+      "proyecto": "PC1",
+      "url": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/main/pc1.csv",
+      "archivo": "PC1.csv",
+      "sha256": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4",
+      "registros": "1109",
+      "variable_objetivo": "defects",
+      "url_version_fijada": "https://raw.githubusercontent.com/ApoorvaKrisna/NASA-promise-dataset-repository/3898d21e287c130c76d458faf65793d32483076d/pc1.csv",
+      "commit_espejo": "3898d21e287c130c76d458faf65793d32483076d",
+      "ultimo_commit_archivo": "88221a4a9e90d509e21425ba301ca04b6be60066",
+      "sha256_remoto": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4",
+      "sha256_local": "9331ea04c83dfbcb618dbb707c8123e661f2ac5f59c85c03031f46fa0ce9f3e4",
+      "coincide_tres_huellas": true,
+      "alcance": "Espejo secundario; identidad por bytes. Version de NASA/PROMISE original no certificada."
+    }
+  ]
+}

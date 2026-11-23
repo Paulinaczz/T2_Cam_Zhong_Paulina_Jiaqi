@@ -1,0 +1,31 @@
+{
+  "identificacion_figura_6_1": "COMPROBADA al recibir la tesis; curvas_recall_LOC.png, igualdad exacta de pixeles en escala de grises",
+  "identificacion_figura_6_2": "COMPROBADA al recibir la tesis; delta_por_proyecto_IC95.png, igualdad exacta de pixeles en escala de grises",
+  "candidatos_trazables": [
+    {
+      "figura": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/curvas_recall_LOC.png",
+      "figura_sha256": "fe13ac6eda8cb16e8c2f960bc7860e5d939711d87036fe15006b6e30bdcc6e66",
+      "csv": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/resumen_macro_por_metodo_y_presupuesto.csv",
+      "csv_sha256": "3e82bbfd11a7d3449191a3e6e78e72e5e76a849ac15d455dce12319732cf44c7",
+      "script": "research/experimentos/estrategia_esfuerzo/cpdp_estrategia_esfuerzo.py",
+      "script_sha256": "9c5b56f90e31db2359984ee86920af0b9ecfa3b8ec663e1a2b3e70f2274f0173",
+      "funcion": "ejecutar",
+      "linea_guardado": 226,
+      "notebook": "research/Entrenamiento_Prediccion_Defectos.ipynb",
+      "celda_codigo_0_based": 22
+    },
+    {
+      "figura": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/delta_por_proyecto_IC95.png",
+      "figura_sha256": "4ede324d12ac00f3a3d4877292890862404488931c259168dfecbc9d964a51fd",
+      "csv": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/diferencias_20pct_LOC_por_proyecto.csv",
+      "csv_sha256": "a3a578495ee708e9d0b4f3c3097f84caab578c11d6940b8bc58cce6adf911a26",
+      "script": "research/experimentos/estrategia_esfuerzo/cpdp_estrategia_esfuerzo.py",
+      "script_sha256": "9c5b56f90e31db2359984ee86920af0b9ecfa3b8ec663e1a2b3e70f2274f0173",
+      "funcion": "ejecutar",
+      "linea_guardado": 239,
+      "notebook": "research/Entrenamiento_Prediccion_Defectos.ipynb",
+      "celda_codigo_0_based": 22
+    }
+  ],
+  "prueba_correspondencia": "figuras_tesis_verificadas.json"
+}

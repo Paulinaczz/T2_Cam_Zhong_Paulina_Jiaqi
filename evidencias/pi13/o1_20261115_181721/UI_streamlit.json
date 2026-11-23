@@ -1,0 +1,19 @@
+{
+  "modo": "AppTest, entrada validada inyectada; sin navegador",
+  "pestanas": [
+    "🟢 Ranking Operativo (Margen SVM E6)",
+    "🔬 Comparación de Estrategias (Observación O1)"
+  ],
+  "columnas": [
+    "id_modulo",
+    "loc",
+    "clase_predicha",
+    "score_riesgo_svm",
+    "prioridad_operativa_svm",
+    "probabilidad_calibrada",
+    "densidad_riesgo_loc",
+    "prioridad_experimental_calibrada_loc",
+    "prioridad_referencia_manualup"
+  ],
+  "filas": 18
+}

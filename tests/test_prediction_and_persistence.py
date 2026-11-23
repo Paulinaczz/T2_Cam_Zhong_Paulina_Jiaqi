@@ -2,8 +2,8 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from pds.model import ModelArtifact
-from pds.prediction import predict,csv_results,SCORE_TYPE
-from pds.persistence import init_db,register_execution,list_executions,get_execution
+from pds.prediction import predict, csv_results, SCORE_TYPE, compare_strategies, csv_comparison_results, calibrate_probabilities
+from pds.persistence import init_db, register_execution, list_executions, get_execution
 from pds.validation import validate_input
 from pds.errors import ModelError
 
@@ -54,3 +54,19 @@ def test_sqlite_record_and_read(tmp_path):
     assert len(saved)==6
     assert meta['sha256_modelo']==model.sha256
     assert saved.prioridad.tolist()==list(range(1,7))
+
+
+def test_strategy_comparison_and_calibration():
+    data, model, _ = fixture_result()
+    comp = compare_strategies(data, model)
+    assert len(comp) == len(data.features)
+    assert set(comp["prioridad_operativa_svm"]) == set(range(1, len(data.features) + 1))
+    assert set(comp["prioridad_experimental_calibrada_loc"]) == set(range(1, len(data.features) + 1))
+    assert set(comp["prioridad_referencia_manualup"]) == set(range(1, len(data.features) + 1))
+    assert (comp["probabilidad_calibrada"] >= 0.0).all() and (comp["probabilidad_calibrada"] <= 1.0).all()
+    assert (comp["densidad_riesgo_loc"] > 0.0).all()
+
+    # Sanitización de fórmulas en exportación comparativa
+    comp.loc[0, "id_modulo"] = "=2+3"
+    csv_bytes = csv_comparison_results(comp)
+    assert "'=2+3" in csv_bytes.decode("utf-8-sig")

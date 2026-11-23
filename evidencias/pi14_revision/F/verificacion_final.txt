@@ -1,0 +1,5 @@
+................                                                         [100%]
+16 passed in 5.90s
+git diff --check: correcto.
+Sin cambios frente a c6536fc en evidencias O1 versionadas, artefactos, research ni src.
+La recopilacion inicial desde toda la carpeta detecto el directorio local de pandas del diagnostico. La ejecucion final especifica tests, la suite del proyecto.

@@ -1,0 +1,47 @@
+{
+  "filas": 20000,
+  "bytes": 2226768,
+  "sha256": "272931dce0fdfe2315d6cb7e40ddc6cc1e623493390fa8a0f550bc1baa030c0d",
+  "perfiles_repetidos": 18,
+  "python": "3.13.0",
+  "sistema": "Windows-10-10.0.19045-SP0",
+  "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+  "procesadores_logicos": 12,
+  "ram_bytes": 17102508032,
+  "versiones": {
+    "numpy": "2.5.5",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.6.1",
+    "imbalanced-learn": "0.14.2"
+  },
+  "bibliotecas_nativas": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 12,
+      "prefix": "libscipy_openblas",
+      "version": "0.3.34.237.2",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 12,
+      "prefix": "vcomp",
+      "version": null
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 12,
+      "prefix": "libscipy_openblas",
+      "version": "0.3.31.dev",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    }
+  ],
+  "e6_sha256": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+  "calibrador_sha256": "a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19"
+}

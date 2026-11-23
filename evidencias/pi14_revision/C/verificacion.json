@@ -1,0 +1,27 @@
+{
+  "capturas_sha256": {
+    "CP02_sin_loc.jpg": "6ce82b1606e992efaa8623fe082a223dd30cb5fd2f51c8d141a9d2a2b7cabff9",
+    "CP03_inf.jpg": "91d61b2b8260cb4605985794ccdb8014c1a174500017de3900192013512f5f80",
+    "CP03_texto.jpg": "fa807038cc5a5503e98286d6c60a4f054ed7017f532ae30e87bca280122bdbea",
+    "CP04_exportacion.jpg": "04465be8ce77c0685bcaac88e3f6346b2589438103df8bd7dabbac59d4c1af2d",
+    "CP11_extension.jpg": "2f71db21083ccb29029bd5110b317d3e2b1845770391d6cccfcd09fbe99450d9",
+    "CP11_id_duplicado.jpg": "65adde9eb7c34adadfbb200412f388e5bfbe68acc0e9f60cf102c9172600cd93",
+    "CP12_hash.jpg": "a1b4adcda62a31653157bcd0744765ee7139fdb21d77d81623e66f7e95b3109e"
+  },
+  "CP04": {
+    "filas_exportadas": 18,
+    "id_escapado": "'=1+2",
+    "sha256_csv": "7521a0a5a2cc038a24afaf96fd76d6feebb86ea7b7c08ba5049cc7c16a41637a"
+  },
+  "sqlite_aislada": {
+    "ejecuciones": 1,
+    "archivo": "CP04_formula.csv",
+    "predicciones": 18
+  },
+  "CP12": {
+    "e6_original": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f",
+    "copia_alterada": "a4f249c972dcb286822f96d68849c24b86b39be2930fb7626a3a15478104b3c5",
+    "calibrador_original": "a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19",
+    "rechazo": "No se puede iniciar el prototipo: El SHA-256 del pipeline no coincide con el valor registrado"
+  }
+}

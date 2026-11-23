@@ -1,0 +1,19 @@
+﻿prioridad,id_modulo,clase_predicha,score_riesgo,tipo_score,interpretacion
+1,'=1+2,1,1.31199140,margen_svm_no_calibrado,Potencialmente defectuoso
+2,modulo_ejemplo_002,1,0.93759515,margen_svm_no_calibrado,Potencialmente defectuoso
+3,modulo_ejemplo_011,0,-0.22495686,margen_svm_no_calibrado,No defectuoso previsto
+4,modulo_ejemplo_010,0,-0.28032130,margen_svm_no_calibrado,No defectuoso previsto
+5,modulo_ejemplo_015,0,-0.35427315,margen_svm_no_calibrado,No defectuoso previsto
+6,modulo_ejemplo_009,0,-0.59882297,margen_svm_no_calibrado,No defectuoso previsto
+7,modulo_ejemplo_003,0,-0.60274215,margen_svm_no_calibrado,No defectuoso previsto
+8,modulo_ejemplo_016,0,-0.64883094,margen_svm_no_calibrado,No defectuoso previsto
+9,modulo_ejemplo_013,0,-0.71218588,margen_svm_no_calibrado,No defectuoso previsto
+10,modulo_ejemplo_005,0,-0.71813047,margen_svm_no_calibrado,No defectuoso previsto
+11,modulo_ejemplo_006,0,-0.71813047,margen_svm_no_calibrado,No defectuoso previsto
+12,modulo_ejemplo_004,0,-0.73615436,margen_svm_no_calibrado,No defectuoso previsto
+13,modulo_ejemplo_014,0,-0.83773830,margen_svm_no_calibrado,No defectuoso previsto
+14,modulo_ejemplo_008,0,-0.89037417,margen_svm_no_calibrado,No defectuoso previsto
+15,modulo_ejemplo_017,0,-0.93997401,margen_svm_no_calibrado,No defectuoso previsto
+16,modulo_ejemplo_007,0,-0.98063593,margen_svm_no_calibrado,No defectuoso previsto
+17,modulo_ejemplo_018,0,-1.02968916,margen_svm_no_calibrado,No defectuoso previsto
+18,modulo_ejemplo_012,0,-1.08612352,margen_svm_no_calibrado,No defectuoso previsto

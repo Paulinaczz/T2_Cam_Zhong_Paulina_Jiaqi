@@ -1,5 +1,5 @@
 {
-  "inicio_utc": "2026-11-10T04:28:34+00:00",
+  "inicio_utc": "2026-11-15T22:13:41+00:00",
   "sistema_operativo": "Windows-10-10.0.19045-SP0",
   "arquitectura": "AMD64",
   "procesador": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
@@ -14,7 +14,7 @@
     "streamlit": "1.65.0"
   },
   "ruta_repositorio": ".",
-  "git_commit": "76a4786f638ba5fae248d100ae2b6310e86905a2",
+  "git_commit": "473669c87e810f967219112804833bbde533bede",
   "ruta_evidencias": "evidencias/pi13/validacion_local",
   "ambito": "pruebas automatizadas backend; completar capturas reales de interfaz"
 }

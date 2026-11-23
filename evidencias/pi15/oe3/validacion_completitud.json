@@ -1,0 +1,43 @@
+{
+  "checkpoints": [
+    {
+      "checkpoint": "inner_CM1.json",
+      "candidatos": 27,
+      "pliegues_por_candidato": 4,
+      "errores": 0
+    },
+    {
+      "checkpoint": "inner_JM1.json",
+      "candidatos": 27,
+      "pliegues_por_candidato": 4,
+      "errores": 0
+    },
+    {
+      "checkpoint": "inner_KC1.json",
+      "candidatos": 27,
+      "pliegues_por_candidato": 4,
+      "errores": 0
+    },
+    {
+      "checkpoint": "inner_KC2.json",
+      "candidatos": 27,
+      "pliegues_por_candidato": 4,
+      "errores": 0
+    },
+    {
+      "checkpoint": "inner_PC1.json",
+      "candidatos": 27,
+      "pliegues_por_candidato": 4,
+      "errores": 0
+    },
+    {
+      "checkpoint": "seleccion_final_cv.json",
+      "candidatos": 27,
+      "pliegues_por_candidato": 5,
+      "errores": 0
+    }
+  ],
+  "ajustes_candidatos_verificados": 675,
+  "archivos_salida_con_sha256_verificado": 30,
+  "artefactos_operativos_intactos": true
+}

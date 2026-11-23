@@ -1,0 +1,22 @@
+{
+  "base_main": "473669c87e810f967219112804833bbde533bede",
+  "head_PR3": "9dfc66e2bc3bfc52b4ffec357837a99f8714d562",
+  "pytest_rama": {
+    "aprobadas": 16,
+    "duracion_s": 26.97,
+    "python": "3.13.0",
+    "fecha_local": "2026-11-22"
+  },
+  "github_mergeable": true,
+  "github_mergeable_state": "clean",
+  "fusion": "AUTORIZADA; resultado definitivo en release v1.0-tesis",
+  "modelo": {
+    "archivo": "modelo_predictivo_pds.joblib",
+    "sha256": "5a420bc52058979620cd2b86cbca01536e17be931056327ed715256719c8023f"
+  },
+  "calibrador": {
+    "archivo": "calibrador_probabilidad_e6.joblib",
+    "sha256": "a15aab94b20b2826f0ffd07e13a23bd36600743d26ec8657196b3f16f6884d19"
+  },
+  "autorizacion_usuario": "RECIBIDA: publicar cierre documental, fusionar mediante merge commit, validar main y crear etiqueta y release"
+}

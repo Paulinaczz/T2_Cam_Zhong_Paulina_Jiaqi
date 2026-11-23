@@ -1,0 +1,359 @@
+
+[deduplicado] TEST EXTERNO 1/5: CM1
+  candidato 01/27 · SVM / E0_BASELINE
+      F1(macro)=0.135 · AP=0.373
+  candidato 02/27 · Random Forest / E0_BASELINE
+      F1(macro)=0.213 · AP=0.410
+  candidato 03/27 · XGBoost / E0_BASELINE
+      F1(macro)=0.206 · AP=0.399
+  candidato 04/27 · SVM / E1_SMOTE
+      F1(macro)=0.417 · AP=0.372
+  candidato 05/27 · Random Forest / E1_SMOTE
+      F1(macro)=0.401 · AP=0.405
+  candidato 06/27 · XGBoost / E1_SMOTE
+      F1(macro)=0.367 · AP=0.395
+  candidato 07/27 · SVM / E2_ADASYN
+      F1(macro)=0.413 · AP=0.351
+  candidato 08/27 · Random Forest / E2_ADASYN
+      F1(macro)=0.389 · AP=0.399
+  candidato 09/27 · XGBoost / E2_ADASYN
+      F1(macro)=0.363 · AP=0.390
+  candidato 10/27 · SVM / E3_MI
+      F1(macro)=0.097 · AP=0.385
+  candidato 11/27 · Random Forest / E3_MI
+      F1(macro)=0.239 · AP=0.397
+  candidato 12/27 · XGBoost / E3_MI
+      F1(macro)=0.214 · AP=0.417
+  candidato 13/27 · SVM / E4_RF_FS
+      F1(macro)=0.117 · AP=0.371
+  candidato 14/27 · Random Forest / E4_RF_FS
+      F1(macro)=0.224 · AP=0.390
+  candidato 15/27 · XGBoost / E4_RF_FS
+      F1(macro)=0.216 · AP=0.410
+  candidato 16/27 · SVM / E5_SMOTE_MI
+      F1(macro)=0.426 · AP=0.414
+  candidato 17/27 · Random Forest / E5_SMOTE_MI
+      F1(macro)=0.416 · AP=0.402
+  candidato 18/27 · XGBoost / E5_SMOTE_MI
+      F1(macro)=0.422 · AP=0.418
+  candidato 19/27 · SVM / E6_ADASYN_MI
+      F1(macro)=0.422 · AP=0.381
+  candidato 20/27 · Random Forest / E6_ADASYN_MI
+      F1(macro)=0.409 · AP=0.394
+  candidato 21/27 · XGBoost / E6_ADASYN_MI
+      F1(macro)=0.417 · AP=0.401
+  candidato 22/27 · SVM / E7_SMOTE_RF
+      F1(macro)=0.434 · AP=0.397
+  candidato 23/27 · Random Forest / E7_SMOTE_RF
+      F1(macro)=0.397 · AP=0.393
+  candidato 24/27 · XGBoost / E7_SMOTE_RF
+      F1(macro)=0.406 · AP=0.404
+  candidato 25/27 · SVM / E8_ADASYN_RF
+      F1(macro)=0.429 · AP=0.371
+  candidato 26/27 · Random Forest / E8_ADASYN_RF
+      F1(macro)=0.411 · AP=0.386
+  candidato 27/27 · XGBoost / E8_ADASYN_RF
+      F1(macro)=0.408 · AP=0.402
+   Configuración elegida internamente: SVM / E7_SMOTE_RF
+   SVM: F1=0.333 | AP=0.260
+   Random Forest: F1=0.167 | AP=0.208
+   XGBoost: F1=0.371 | AP=0.249
+
+[deduplicado] TEST EXTERNO 2/5: JM1
+  candidato 01/27 · SVM / E0_BASELINE
+      F1(macro)=0.081 · AP=0.321
+  candidato 02/27 · Random Forest / E0_BASELINE
+      F1(macro)=0.177 · AP=0.313
+  candidato 03/27 · XGBoost / E0_BASELINE
+      F1(macro)=0.257 · AP=0.325
+  candidato 04/27 · SVM / E1_SMOTE
+      F1(macro)=0.348 · AP=0.282
+  candidato 05/27 · Random Forest / E1_SMOTE
+      F1(macro)=0.337 · AP=0.302
+  candidato 06/27 · XGBoost / E1_SMOTE
+      F1(macro)=0.360 · AP=0.331
+  candidato 07/27 · SVM / E2_ADASYN
+      F1(macro)=0.319 · AP=0.260
+  candidato 08/27 · Random Forest / E2_ADASYN
+      F1(macro)=0.352 · AP=0.313
+  candidato 09/27 · XGBoost / E2_ADASYN
+      F1(macro)=0.364 · AP=0.336
+  candidato 10/27 · SVM / E3_MI
+      F1(macro)=0.121 · AP=0.351
+  candidato 11/27 · Random Forest / E3_MI
+      F1(macro)=0.252 · AP=0.325
+  candidato 12/27 · XGBoost / E3_MI
+      F1(macro)=0.278 · AP=0.338
+  candidato 13/27 · SVM / E4_RF_FS
+      F1(macro)=0.108 · AP=0.350
+  candidato 14/27 · Random Forest / E4_RF_FS
+      F1(macro)=0.235 · AP=0.311
+  candidato 15/27 · XGBoost / E4_RF_FS
+      F1(macro)=0.278 · AP=0.350
+  candidato 16/27 · SVM / E5_SMOTE_MI
+      F1(macro)=0.388 · AP=0.313
+  candidato 17/27 · Random Forest / E5_SMOTE_MI
+      F1(macro)=0.351 · AP=0.319
+  candidato 18/27 · XGBoost / E5_SMOTE_MI
+      F1(macro)=0.380 · AP=0.343
+  candidato 19/27 · SVM / E6_ADASYN_MI
+      F1(macro)=0.375 · AP=0.300
+  candidato 20/27 · Random Forest / E6_ADASYN_MI
+      F1(macro)=0.363 · AP=0.308
+  candidato 21/27 · XGBoost / E6_ADASYN_MI
+      F1(macro)=0.368 · AP=0.323
+  candidato 22/27 · SVM / E7_SMOTE_RF
+      F1(macro)=0.377 · AP=0.313
+  candidato 23/27 · Random Forest / E7_SMOTE_RF
+      F1(macro)=0.339 · AP=0.313
+  candidato 24/27 · XGBoost / E7_SMOTE_RF
+      F1(macro)=0.360 · AP=0.347
+  candidato 25/27 · SVM / E8_ADASYN_RF
+      F1(macro)=0.369 · AP=0.302
+  candidato 26/27 · Random Forest / E8_ADASYN_RF
+      F1(macro)=0.338 · AP=0.312
+  candidato 27/27 · XGBoost / E8_ADASYN_RF
+      F1(macro)=0.373 · AP=0.346
+   Configuración elegida internamente: SVM / E5_SMOTE_MI
+   SVM: F1=0.424 | AP=0.358
+   Random Forest: F1=0.367 | AP=0.333
+   XGBoost: F1=0.383 | AP=0.363
+
+[deduplicado] TEST EXTERNO 3/5: KC1
+  candidato 01/27 · SVM / E0_BASELINE
+      F1(macro)=0.151 · AP=0.353
+  candidato 02/27 · Random Forest / E0_BASELINE
+      F1(macro)=0.203 · AP=0.399
+  candidato 03/27 · XGBoost / E0_BASELINE
+      F1(macro)=0.237 · AP=0.377
+  candidato 04/27 · SVM / E1_SMOTE
+      F1(macro)=0.409 · AP=0.337
+  candidato 05/27 · Random Forest / E1_SMOTE
+      F1(macro)=0.330 · AP=0.389
+  candidato 06/27 · XGBoost / E1_SMOTE
+      F1(macro)=0.380 · AP=0.370
+  candidato 07/27 · SVM / E2_ADASYN
+      F1(macro)=0.402 · AP=0.321
+  candidato 08/27 · Random Forest / E2_ADASYN
+      F1(macro)=0.365 · AP=0.387
+  candidato 09/27 · XGBoost / E2_ADASYN
+      F1(macro)=0.390 · AP=0.369
+  candidato 10/27 · SVM / E3_MI
+      F1(macro)=0.121 · AP=0.345
+  candidato 11/27 · Random Forest / E3_MI
+      F1(macro)=0.216 · AP=0.367
+  candidato 12/27 · XGBoost / E3_MI
+      F1(macro)=0.235 · AP=0.382
+  candidato 13/27 · SVM / E4_RF_FS
+      F1(macro)=0.105 · AP=0.339
+  candidato 14/27 · Random Forest / E4_RF_FS
+      F1(macro)=0.205 · AP=0.372
+  candidato 15/27 · XGBoost / E4_RF_FS
+      F1(macro)=0.233 · AP=0.390
+  candidato 16/27 · SVM / E5_SMOTE_MI
+      F1(macro)=0.415 · AP=0.378
+  candidato 17/27 · Random Forest / E5_SMOTE_MI
+      F1(macro)=0.341 · AP=0.365
+  candidato 18/27 · XGBoost / E5_SMOTE_MI
+      F1(macro)=0.398 · AP=0.372
+  candidato 19/27 · SVM / E6_ADASYN_MI
+      F1(macro)=0.424 · AP=0.366
+  candidato 20/27 · Random Forest / E6_ADASYN_MI
+      F1(macro)=0.375 · AP=0.353
+  candidato 21/27 · XGBoost / E6_ADASYN_MI
+      F1(macro)=0.409 · AP=0.382
+  candidato 22/27 · SVM / E7_SMOTE_RF
+      F1(macro)=0.413 · AP=0.357
+  candidato 23/27 · Random Forest / E7_SMOTE_RF
+      F1(macro)=0.345 · AP=0.365
+  candidato 24/27 · XGBoost / E7_SMOTE_RF
+      F1(macro)=0.372 · AP=0.370
+  candidato 25/27 · SVM / E8_ADASYN_RF
+      F1(macro)=0.408 · AP=0.326
+  candidato 26/27 · Random Forest / E8_ADASYN_RF
+      F1(macro)=0.344 · AP=0.347
+  candidato 27/27 · XGBoost / E8_ADASYN_RF
+      F1(macro)=0.373 · AP=0.371
+   Configuración elegida internamente: SVM / E6_ADASYN_MI
+   SVM: F1=0.417 | AP=0.385
+   Random Forest: F1=0.374 | AP=0.357
+   XGBoost: F1=0.407 | AP=0.370
+
+[deduplicado] TEST EXTERNO 4/5: KC2
+  candidato 01/27 · SVM / E0_BASELINE
+      F1(macro)=0.118 · AP=0.290
+  candidato 02/27 · Random Forest / E0_BASELINE
+      F1(macro)=0.144 · AP=0.300
+  candidato 03/27 · XGBoost / E0_BASELINE
+      F1(macro)=0.194 · AP=0.300
+  candidato 04/27 · SVM / E1_SMOTE
+      F1(macro)=0.344 · AP=0.271
+  candidato 05/27 · Random Forest / E1_SMOTE
+      F1(macro)=0.278 · AP=0.293
+  candidato 06/27 · XGBoost / E1_SMOTE
+      F1(macro)=0.310 · AP=0.284
+  candidato 07/27 · SVM / E2_ADASYN
+      F1(macro)=0.337 · AP=0.265
+  candidato 08/27 · Random Forest / E2_ADASYN
+      F1(macro)=0.261 · AP=0.278
+  candidato 09/27 · XGBoost / E2_ADASYN
+      F1(macro)=0.296 · AP=0.282
+  candidato 10/27 · SVM / E3_MI
+      F1(macro)=0.079 · AP=0.290
+  candidato 11/27 · Random Forest / E3_MI
+      F1(macro)=0.171 · AP=0.288
+  candidato 12/27 · XGBoost / E3_MI
+      F1(macro)=0.177 · AP=0.292
+  candidato 13/27 · SVM / E4_RF_FS
+      F1(macro)=0.081 · AP=0.294
+  candidato 14/27 · Random Forest / E4_RF_FS
+      F1(macro)=0.165 · AP=0.289
+  candidato 15/27 · XGBoost / E4_RF_FS
+      F1(macro)=0.215 · AP=0.320
+  candidato 16/27 · SVM / E5_SMOTE_MI
+      F1(macro)=0.343 · AP=0.300
+  candidato 17/27 · Random Forest / E5_SMOTE_MI
+      F1(macro)=0.290 · AP=0.272
+  candidato 18/27 · XGBoost / E5_SMOTE_MI
+      F1(macro)=0.338 · AP=0.290
+  candidato 19/27 · SVM / E6_ADASYN_MI
+      F1(macro)=0.355 · AP=0.301
+  candidato 20/27 · Random Forest / E6_ADASYN_MI
+      F1(macro)=0.273 · AP=0.262
+  candidato 21/27 · XGBoost / E6_ADASYN_MI
+      F1(macro)=0.341 · AP=0.291
+  candidato 22/27 · SVM / E7_SMOTE_RF
+      F1(macro)=0.351 · AP=0.300
+  candidato 23/27 · Random Forest / E7_SMOTE_RF
+      F1(macro)=0.287 · AP=0.264
+  candidato 24/27 · XGBoost / E7_SMOTE_RF
+      F1(macro)=0.348 · AP=0.303
+  candidato 25/27 · SVM / E8_ADASYN_RF
+      F1(macro)=0.360 · AP=0.290
+  candidato 26/27 · Random Forest / E8_ADASYN_RF
+      F1(macro)=0.291 · AP=0.269
+  candidato 27/27 · XGBoost / E8_ADASYN_RF
+      F1(macro)=0.334 · AP=0.295
+   Configuración elegida internamente: SVM / E8_ADASYN_RF
+   SVM: F1=0.628 | AP=0.548
+   Random Forest: F1=0.566 | AP=0.638
+   XGBoost: F1=0.661 | AP=0.679
+
+[deduplicado] TEST EXTERNO 5/5: PC1
+  candidato 01/27 · SVM / E0_BASELINE
+      F1(macro)=0.148 · AP=0.368
+  candidato 02/27 · Random Forest / E0_BASELINE
+      F1(macro)=0.225 · AP=0.401
+  candidato 03/27 · XGBoost / E0_BASELINE
+      F1(macro)=0.238 · AP=0.414
+  candidato 04/27 · SVM / E1_SMOTE
+      F1(macro)=0.428 · AP=0.378
+  candidato 05/27 · Random Forest / E1_SMOTE
+      F1(macro)=0.379 · AP=0.391
+  candidato 06/27 · XGBoost / E1_SMOTE
+      F1(macro)=0.381 · AP=0.399
+  candidato 07/27 · SVM / E2_ADASYN
+      F1(macro)=0.420 · AP=0.352
+  candidato 08/27 · Random Forest / E2_ADASYN
+      F1(macro)=0.399 · AP=0.386
+  candidato 09/27 · XGBoost / E2_ADASYN
+      F1(macro)=0.375 · AP=0.394
+  candidato 10/27 · SVM / E3_MI
+      F1(macro)=0.143 · AP=0.391
+  candidato 11/27 · Random Forest / E3_MI
+      F1(macro)=0.237 · AP=0.388
+  candidato 12/27 · XGBoost / E3_MI
+      F1(macro)=0.219 · AP=0.404
+  candidato 13/27 · SVM / E4_RF_FS
+      F1(macro)=0.163 · AP=0.386
+  candidato 14/27 · Random Forest / E4_RF_FS
+      F1(macro)=0.237 · AP=0.391
+  candidato 15/27 · XGBoost / E4_RF_FS
+      F1(macro)=0.243 · AP=0.419
+  candidato 16/27 · SVM / E5_SMOTE_MI
+      F1(macro)=0.438 · AP=0.395
+  candidato 17/27 · Random Forest / E5_SMOTE_MI
+      F1(macro)=0.351 · AP=0.375
+  candidato 18/27 · XGBoost / E5_SMOTE_MI
+      F1(macro)=0.425 · AP=0.400
+  candidato 19/27 · SVM / E6_ADASYN_MI
+      F1(macro)=0.436 · AP=0.386
+  candidato 20/27 · Random Forest / E6_ADASYN_MI
+      F1(macro)=0.348 · AP=0.374
+  candidato 21/27 · XGBoost / E6_ADASYN_MI
+      F1(macro)=0.358 · AP=0.389
+  candidato 22/27 · SVM / E7_SMOTE_RF
+      F1(macro)=0.440 · AP=0.385
+  candidato 23/27 · Random Forest / E7_SMOTE_RF
+      F1(macro)=0.377 · AP=0.378
+  candidato 24/27 · XGBoost / E7_SMOTE_RF
+      F1(macro)=0.451 · AP=0.415
+  candidato 25/27 · SVM / E8_ADASYN_RF
+      F1(macro)=0.443 · AP=0.376
+  candidato 26/27 · Random Forest / E8_ADASYN_RF
+      F1(macro)=0.356 · AP=0.376
+  candidato 27/27 · XGBoost / E8_ADASYN_RF
+      F1(macro)=0.416 · AP=0.411
+   Configuración elegida internamente: XGBoost / E7_SMOTE_RF
+   SVM: F1=0.264 | AP=0.194
+   Random Forest: F1=0.335 | AP=0.264
+   XGBoost: F1=0.293 | AP=0.241
+
+[deduplicado] SELECCION GLOBAL mediante cinco folds LOGO
+  candidato 01/27 · SVM / E0_BASELINE
+      F1(macro)=0.145 · AP=0.341
+  candidato 02/27 · Random Forest / E0_BASELINE
+      F1(macro)=0.188 · AP=0.379
+  candidato 03/27 · XGBoost / E0_BASELINE
+      F1(macro)=0.202 · AP=0.378
+  candidato 04/27 · SVM / E1_SMOTE
+      F1(macro)=0.406 · AP=0.338
+  candidato 05/27 · Random Forest / E1_SMOTE
+      F1(macro)=0.361 · AP=0.374
+  candidato 06/27 · XGBoost / E1_SMOTE
+      F1(macro)=0.371 · AP=0.376
+  candidato 07/27 · SVM / E2_ADASYN
+      F1(macro)=0.398 · AP=0.328
+  candidato 08/27 · Random Forest / E2_ADASYN
+      F1(macro)=0.361 · AP=0.366
+  candidato 09/27 · XGBoost / E2_ADASYN
+      F1(macro)=0.358 · AP=0.369
+  candidato 10/27 · SVM / E3_MI
+      F1(macro)=0.101 · AP=0.354
+  candidato 11/27 · Random Forest / E3_MI
+      F1(macro)=0.190 · AP=0.358
+  candidato 12/27 · XGBoost / E3_MI
+      F1(macro)=0.246 · AP=0.385
+  candidato 13/27 · SVM / E4_RF_FS
+      F1(macro)=0.105 · AP=0.349
+  candidato 14/27 · Random Forest / E4_RF_FS
+      F1(macro)=0.171 · AP=0.360
+  candidato 15/27 · XGBoost / E4_RF_FS
+      F1(macro)=0.243 · AP=0.404
+  candidato 16/27 · SVM / E5_SMOTE_MI
+      F1(macro)=0.417 · AP=0.375
+  candidato 17/27 · Random Forest / E5_SMOTE_MI
+      F1(macro)=0.362 · AP=0.355
+  candidato 18/27 · XGBoost / E5_SMOTE_MI
+      F1(macro)=0.420 · AP=0.378
+  candidato 19/27 · SVM / E6_ADASYN_MI
+      F1(macro)=0.417 · AP=0.360
+  candidato 20/27 · Random Forest / E6_ADASYN_MI
+      F1(macro)=0.350 · AP=0.352
+  candidato 21/27 · XGBoost / E6_ADASYN_MI
+      F1(macro)=0.387 · AP=0.375
+  candidato 22/27 · SVM / E7_SMOTE_RF
+      F1(macro)=0.415 · AP=0.363
+  candidato 23/27 · Random Forest / E7_SMOTE_RF
+      F1(macro)=0.359 · AP=0.351
+  candidato 24/27 · XGBoost / E7_SMOTE_RF
+      F1(macro)=0.410 · AP=0.382
+  candidato 25/27 · SVM / E8_ADASYN_RF
+      F1(macro)=0.415 · AP=0.349
+  candidato 26/27 · Random Forest / E8_ADASYN_RF
+      F1(macro)=0.349 · AP=0.346
+  candidato 27/27 · XGBoost / E8_ADASYN_RF
+      F1(macro)=0.388 · AP=0.379
+[deduplicado] Comparación intra-SVM: SVM_base
+[deduplicado] Comparación intra-SVM: SVM_SMOTE_RF
+NESTED LOPO COMPLETO TERMINADO {"modo": "deduplicado", "candidatos_por_busqueda": 27, "folds_externos": 5, "macro_f1_outer": 0.41898170666738405, "macro_ap_outer": 0.3583400503805486, "macro_auc_outer": 0.7216812334647879, "ganador_final": {"algoritmo": "XGBoost", "escenario": "E5_SMOTE_MI", "f1_cv_proyectos": 0.41953988731719843, "ap_cv_proyectos": 0.3782078376841259}, "nota": "Nested outer estima procedimiento selecci\u00f3n por proyecto; final es receta global reentrenada. Sin prueba in\u00e9dita del joblib."}

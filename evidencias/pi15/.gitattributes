@@ -1,0 +1,2 @@
+# Conservar bytes y reconocer los finales CRLF de las salidas de Windows.
+oe3/ejecucion_completa/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
