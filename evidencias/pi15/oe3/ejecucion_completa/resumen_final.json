@@ -1,0 +1,15 @@
+{
+  "modo": "deduplicado",
+  "candidatos_por_busqueda": 27,
+  "folds_externos": 5,
+  "macro_f1_outer": 0.41898170666738405,
+  "macro_ap_outer": 0.3583400503805486,
+  "macro_auc_outer": 0.7216812334647879,
+  "ganador_final": {
+    "algoritmo": "XGBoost",
+    "escenario": "E5_SMOTE_MI",
+    "f1_cv_proyectos": 0.41953988731719843,
+    "ap_cv_proyectos": 0.3782078376841259
+  },
+  "nota": "Nested outer estima procedimiento selección por proyecto; final es receta global reentrenada. Sin prueba inédita del joblib."
+}

@@ -168,3 +168,7 @@ python herramientas_pi13/ejecutar_pi13.py --repo . --modo funcionales --salida e
 # Medición de rendimiento CP06 (30 repeticiones)
 python herramientas_pi13/ejecutar_pi13.py --repo . --modo rendimiento --repeticiones 30 --salida evidencias/pi13/validacion_local
 ```
+
+## Versión final de tesis
+
+La versión de referencia es [v1.0-tesis](https://github.com/Paulinaczz/T2_Cam_Zhong_Paulina_Jiaqi/releases/tag/v1.0-tesis). El entorno fijado y la búsqueda completa de 27 configuraciones Nested LOPO de PI15 están documentados en [resultados OE3](evidencias/pi15/oe3/RESULTADOS_OE3.md). Esas tablas se proponen como resultados oficiales nuevos de OE3; las tablas anteriores quedan como antecedentes históricos. Se conservan el E6 operativo y el calibrador. [Procedencia y figuras 6.1–6.2](evidencias/pi15/trazabilidad/INFORME_T10_T11.md).

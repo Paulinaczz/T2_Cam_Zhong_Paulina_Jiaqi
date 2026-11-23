@@ -1,0 +1,46 @@
+{
+  "tesis_archivo": "T2_Tesis_Cam_Zhong_Paulina_Jiaqi_15-11.docx",
+  "tesis_sha256": "16eeb03e4b2e382d8de8c04b4ac8c4ad3dcea93c43c49b406eea1d74f3d555fa",
+  "figuras": [
+    {
+      "leyenda": "Figura 6.1. Curvas de recuperaci\u00f3n acumulada seg\u00fan porcentaje de LOC inspeccionado. Fuente: salida experimental del notebook.",
+      "parrafo_leyenda": 884,
+      "parrafo_imagen": 883,
+      "imagen_docx": "word/media/image7.png",
+      "sha256_imagen_docx": "755dd93cd2be53673e65b77160739f48201af0f8cdd7cb1678a77d688ff2da99",
+      "dimensiones": [
+        1800,
+        900
+      ],
+      "coincidencias": [
+        {
+          "archivo": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/curvas_recall_LOC.png",
+          "igualdad_pixeles_escala_grises": true,
+          "modo_comparacion": "Pillow convert L, igualdad exacta en tama\u00f1o y bytes de todos los p\u00edxeles",
+          "sha256_png_repositorio": "fe13ac6eda8cb16e8c2f960bc7860e5d939711d87036fe15006b6e30bdcc6e66",
+          "sha256_pixeles_L": "cb9521231963856d918bd8d417505f59ce81a279b7f0c64643483edd93dec976"
+        }
+      ]
+    },
+    {
+      "leyenda": "Figura 6.2. Diferencias Recall@20 % LOC (E6 calibrado/LOC menos ManualUp) e IC95 bootstrap condicionales. Fuente: salida experimental.",
+      "parrafo_leyenda": 886,
+      "parrafo_imagen": 885,
+      "imagen_docx": "word/media/image8.png",
+      "sha256_imagen_docx": "06bf8cd4a6e55e713df929fe7332cd68e944d8f64cef789eada78005757a7e06",
+      "dimensiones": [
+        1620,
+        900
+      ],
+      "coincidencias": [
+        {
+          "archivo": "research/experimentos/estrategia_esfuerzo/principal_deduplicada/delta_por_proyecto_IC95.png",
+          "igualdad_pixeles_escala_grises": true,
+          "modo_comparacion": "Pillow convert L, igualdad exacta en tama\u00f1o y bytes de todos los p\u00edxeles",
+          "sha256_png_repositorio": "4ede324d12ac00f3a3d4877292890862404488931c259168dfecbc9d964a51fd",
+          "sha256_pixeles_L": "6230e7c847cc53662d6fbce033e0139833fe1e325e30f779913b034656190ed3"
+        }
+      ]
+    }
+  ]
+}
